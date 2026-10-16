@@ -1,64 +1,54 @@
 # UnGesto 🌍
 
-**Una persona, una identificación, múltiples causas. Sin donaciones, anuncios ni newsletters.**
+**Una firma. Muchas causas.**
 
-[Ver la aplicación publicada](https://ungesto-solidario.floot.app)
+UnGesto es una plataforma solidaria gratuita que permite **leer títulos y descripciones, tildar las causas elegidas, completar los datos una sola vez y registrar adhesiones individuales en una única operación**.
 
-## Qué queremos construir
+**Aplicación web:** https://ungesto-solidario.floot.app
 
-Una persona lee declaraciones relacionadas con causas verificables, selecciona cuáles desea apoyar, introduce su nombre, correo y mensaje una sola vez, y autoriza sus adhesiones en una única acción.
+## Estado real — octubre de 2026
 
-## Estado real (16 de octubre de 2026)
+✅ Lista inicial de diez causas con sus fuentes y declaraciones legibles  
+✅ Selección individual o múltiple, con botón para marcar todas las visibles  
+✅ Un único formulario de identificación y un mensaje general opcional  
+✅ Consentimiento explícito que cubre todas las causas elegidas  
+✅ API de registro transaccional, hasta 20 causas por solicitud  
+✅ Comprobante único, registro separado por causa, revocación y borrado de datos por comprobante  
+✅ API probada con solicitudes reales de prueba, posteriormente revocadas  
+✅ Sin donaciones, publicidad, boletines ni estadísticas de visitantes  
 
-- ✅ Catálogo inicial de 10 causas con enlaces a organizaciones reconocidas.
-- ✅ Lectura de una declaración original y rastreable por cada causa.
-- ✅ Selección múltiple, formulario único y consentimiento informado.
-- ✅ Registro de cada adhesión en la base de datos de **UnGesto**, con versión del texto respaldado, fecha, fuente y mensaje.
-- ✅ Comprobante individual por envío, revocación y eliminación desde el dispositivo que lo creó.
-- ✅ No solicitamos donaciones, no enviamos marketing y no registramos visitas en analytics.
-- ⚠️ **Las adhesiones NO se envían todavía a las ONG**. Las APIs y acuerdos para hacerlo están pendientes.
-- ⚠️ Los registros de identidad en UnGesto **no están verificados por correo**; no son firmas oficialmente reconocidas ni equivalen a firmar en un tercero.
+**⚠️ Todavía no enviamos firmas a las plataformas externas.** Las adhesiones permanecen en UnGesto: aunque veas causas de Greenpeace, Rainforest Rescue o Amnistía, **eso no constituye una firma oficial en sus sitios**. Falta conseguir integraciones autorizadas que preserven la opción de no recibir correos. No se simulan envíos ni se declaran como entregadas firmas no aceptadas por terceros.
 
-**No mostramos una firma externa como completada sin respuesta confirmada de una integración autorizada.**
+## Flujo
 
-## Cómo funciona hoy
+1. Leer el título y la descripción de cada causa (con declaración extensa disponible).
+2. Seleccionar una o muchas casillas.
+3. Pulsar **Firmar N causas**.
+4. Introducir nombre y correo una sola vez (país y mensaje general son opcionales).
+5. Dar el consentimiento una sola vez para las declaraciones escogidas.
+6. Recibir un comprobante local con clave privada para revocar las adhesiones.
 
-1. Explorar y leer la declaración por causa.
-2. Marcar todas las causas elegidas.
-3. Completar nombre, email, país opcional y comentario opcional **una sola vez**.
-4. Confirmar explícitamente el respaldo de todas las declaraciones seleccionadas y el tratamiento de datos.
-5. Recibir un comprobante por lote, con adhesiones individuales.
-6. Revocar los registros desde el mismo dispositivo cuando se desee.
+## Cómo está construido
 
-Los datos de nombre, correo y mensaje se almacenan en la base de datos de UnGesto para el registro solicitado. No se transfieren a organizaciones externas ni se usan para listas comerciales. El navegador conserva un token secreto para solicitar la revocación; **no compartas ese token**.
+Proyecto desarrollado en Floot: frontend React/TypeScript, API serverless, PostgreSQL y Kysely.
 
-## Arquitectura actual
+Este repositorio contiene los **archivos propios** de la aplicación desplegada, como fuente pública/auditable, pero **no es un paquete independiente instalable**: la ejecución utiliza componentes y servicios preinstalados de Floot que no se incluyen aquí.
 
-- Web: React + TypeScript (proyecto alojado y servido por Floot).
-- Persistencia: PostgreSQL administrado; acceso interno con Kysely.
-- API propia: `POST /_api/endorsements`, `POST /_api/revoke-endorsements`.
-- Los textos asociados al consentimiento son versionados e incluyen URLs de origen.
-- Sin OAuth de terceros, sin campañas masivas de email, sin automatización de navegadores contra sistemas de terceros.
+- `pages/_index.tsx`: catálogo, filtros y selección de causas.
+- `components/BatchSignature.tsx`: un solo formulario, lectura y consentimiento.
+- `helpers/petitionStatements.tsx`: texto y origen de cada declaración.
+- `endpoints/endorsements_POST.ts`: registro y comprobante.
+- `endpoints/revoke-endorsements_POST.ts`: revocación y eliminación.
+- `helpers/schema.tsx`: definiciones SQL generadas (sin credenciales).
 
-## Integraciones externas: requisitos
+Más información: [Arquitectura](docs/ARCHITECTURE.md), [Integraciones](docs/INTEGRATIONS.md) y [Privacidad](docs/PRIVACY.md).
 
-Para entregar firmas oficialmente a una causa se necesita:
+## Objetivo de desarrollo
 
-1. Permiso, convenio o API autorizada con la organización.
-2. Petición real, vigente y con identificador oficial.
-3. Especificar campos requeridos, consentimiento, posibles confirmaciones y criterios antiabuso.
-4. **No añadir al firmante a listas de email** salvo consentimiento separado y opcional.
-5. Guardar un acuse real del destino: `accepted`, `pending_confirmation`, `rejected` o `not_supported`.
-6. Nunca eludir verificaciones, CAPTCHA ni medidas antifraude.
+UnGesto pretende que el usuario pueda firmar legalmente y de forma válida en muchas plataformas mediante un único consentimiento, **cuando existan acuerdos y APIs oficiales que lo permitan**, con resultados verificables por cada destino. Los envíos deben ser solo a campañas expresamente elegidas, sin newsletters por defecto, sin eludir CAPTCHA ni verificaciones requeridas.
 
-**Action Network:** tiene API de firmas pero su flujo de firma puede suscribir automáticamente a la persona a listas; no se usa sin una solución contractual/técnica que respete esta política.
+## Participar
 
-## Contribuciones
+Bienvenidas colaboraciones de desarrolladores, organizaciones y defensores de privacidad. No envíes información personal ni tokens secretos a issues.
 
-Apreciamos colaboraciones para integraciones autorizadas, acceso a peticiones, revisión de privacidad, accesibilidad y seguridad. No publiques datos de firmantes ni claves API en issues o PR.
-
-Este repositorio documenta el desarrollo y conserva una copia de los archivos específicos de la aplicación alojada en Floot. No debe considerarse una distribución independiente lista para producción sin las dependencias y servicios de Floot.
-
-## Licencia
-
-**Pendiente de elección por la persona titular del proyecto.** Que el repositorio sea público no significa automáticamente que el código tenga una licencia open source.
+**Licencia de reutilización pendiente de definir por el titular.** Que un repositorio sea público no implica por sí mismo permisos de reutilización de su código.
