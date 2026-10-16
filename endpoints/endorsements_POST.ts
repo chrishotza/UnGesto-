@@ -31,7 +31,7 @@ export async function handle(request: Request): Promise<Response> {
   const result:OutputType={
    receiptId:batch.id,receiptToken,
    recorded:ids.map(causeId=>({causeId,status:"recorded_in_ungesto" as const,externalStatus:"not_sent" as const})),
-   summary:"Adhesiones registradas en UnGesto. Ninguna firma fue enviada a organizaciones externas."
+   summary:"Apoyos registrados para cada causa elegida en UnGesto. Integraciones de firma externa pendientes."
   };
   return new Response(superjson.stringify(result),{status:201,headers:{"Cache-Control":"no-store"}});
  }catch(err){
