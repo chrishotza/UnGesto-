@@ -221,6 +221,50 @@
       "provider": "www.amnesty.org",
       "consent_version": "2026-10-16.1",
       "consent_text": "Apoyo el derecho de estudiantes y docentes a una educación que respete la libertad de pensamiento, el acceso a información plural y los derechos humanos."
+    },
+    {
+      "id": "openpet-pennsylvania-water",
+      "title": "Defender el agua ante centros de datos en Pensilvania",
+      "description": "Pedí controles ambientales para proteger agua, salud y comunidades ante la expansión de centros de datos.",
+      "category": "Clima",
+      "organization": "openPetition",
+      "source_url": "https://www.openpetition.org/us/petition/online/protect-the-commonwealth-of-pa-and-residents-from-the-harms-of-unregulated-data-centers",
+      "provider": "www.openpetition.org",
+      "consent_version": "2026-10-16.2",
+      "consent_text": "Apoyo regulaciones y evaluaciones ambientales para proteger el agua, la salud y las comunidades de Pensilvania ante la expansión de centros de datos sin controles suficientes."
+    },
+    {
+      "id": "openpet-kodagu-hills",
+      "title": "Proteger las colinas y los bosques de Kodagu",
+      "description": "Defendé las colinas ecológicamente sensibles de Kodagu frente a proyectos comerciales de gran escala.",
+      "category": "Bosques",
+      "organization": "openPetition",
+      "source_url": "https://www.openpetition.org/petition/online/beyond-malma-betta-end-the-exploitation-of-kodagus-eco-sensitive-hills",
+      "provider": "www.openpetition.org",
+      "consent_version": "2026-10-16.2",
+      "consent_text": "Pido que las autoridades protejan las zonas ecológicamente sensibles de Kodagu, sus montañas, bosques y fuentes de agua frente al desarrollo comercial perjudicial."
+    },
+    {
+      "id": "openpet-rockview-park",
+      "title": "Convertir Rockview en parque estatal",
+      "description": "Apoyá que tierras de Pensilvania se preserven como parque público y protejan la cuenca de Spring Creek.",
+      "category": "Bosques",
+      "organization": "openPetition",
+      "source_url": "https://www.openpetition.org/us/petition/online/turn-sci-rockview-into-a-pennsylvania-state-park",
+      "provider": "www.openpetition.org",
+      "consent_version": "2026-10-16.2",
+      "consent_text": "Apoyo proteger los terrenos de Rockview mediante su transformación en un parque estatal, conservando la cuenca de Spring Creek y creando acceso público responsable."
+    },
+    {
+      "id": "openpet-battery-recycling",
+      "title": "Garantizar el reciclaje gratuito de baterías",
+      "description": "Solicitá sistemas de reciclaje accesibles de baterías para reducir contaminación del suelo y del agua en Massachusetts.",
+      "category": "Clima",
+      "organization": "openPetition",
+      "source_url": "https://www.openpetition.org/us/petition/online/enforce-free-battery-recycling-in-ma",
+      "provider": "www.openpetition.org",
+      "consent_version": "2026-10-16.2",
+      "consent_text": "Apoyo medidas que garanticen la recuperación y el reciclaje gratuito de baterías en Massachusetts, evitando que sus sustancias peligrosas lleguen al suelo y al agua."
     }
   ]
 }

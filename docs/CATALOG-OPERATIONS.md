@@ -1,6 +1,6 @@
 # Curaduría y chequeos automáticos de fuentes
 
-UnGesto contiene 20 causas en `catalog/causes.json`, con identificador, título, descripción, URL oficial, organización y texto de consentimiento versionado.
+UnGesto contiene 24 causas en `catalog/causes.json`, con identificador, título, descripción, URL oficial, organización y texto de consentimiento versionado.
 
 `node scripts/audit-catalog.mjs` genera dos archivos en `artifacts/` (NO versionados) y comprueba URLs por GET de forma controlada con límite temporal, sin cookies ni datos personales.
 

@@ -40,3 +40,7 @@ No se precompletan ni transfieren datos de firmantes guardados en UnGesto, y ope
 **Limitaciones:** este widget es específico de una campaña, no envía automáticamente una sola firma a múltiples causas. El script no se encuentra aún instalado en la app de producción de Floot mientras su cuota diaria de cambios está agotada. Nunca declarar el proyecto de GitHub como despliegue activo.
 
 La API pública de openPetition para recuento ya se verificó por GET (sin firmantes).
+
+## Cuatro causas incorporadas al catálogo fuente
+
+Las páginas de Pensilvania, Kodagu, Rockview y reciclaje de baterías fueron incorporadas a GitHub como nuevas fuentes y declaraciones. **Sólo la primera cuenta con un widget oficial configurado**. Las demás aún requieren crear un widget individual si se usa esa modalidad. La web en Floot todavía no refleja estos cambios, hasta su próximo despliegue.
