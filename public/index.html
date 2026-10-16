@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174832"><meta name="description" content="UnGesto: elegí causas reales y firmá en el sistema oficial receptor. Gratis y sin suscripciones de UnGesto.">
+<title>UnGesto | Firmas que llegan</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#153e2d;background:#f6f8f2;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:1040px;margin:auto;padding:0 23px}
+nav{height:74px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dfe8de}
+.brand{font:600 26px Fraunces,serif;color:#17563a}.brand span{color:#67a776}
+nav small{color:#6a7d6d;font-weight:650}
+header{background:linear-gradient(130deg,#e7f3e5,#f7f8ef);padding:60px 0 55px;border-bottom:1px solid #dde7d9}
+.overline{letter-spacing:.12em;text-transform:uppercase;color:#387d50;font-size:11px;font-weight:800}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600}
+h1{font-size:clamp(40px,6vw,69px);line-height:1.1;letter-spacing:-.035em;max-width:790px;margin:16px 0}
+h1 em{font-style:italic;color:#1c7650}header p{font-size:16px;color:#526a56;line-height:1.7;max-width:670px}
+.trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:21px}.trust span{background:#fff;border:1px solid #d5e4d3;border-radius:99px;padding:9px 13px;font-size:12px;font-weight:700}
+main{padding:44px 0 75px}.heading{display:flex;justify-content:space-between;align-items:center;gap:15px}.heading h2{font-size:33px;margin:0 0 10px}
+small.muted{font-size:12px;color:#728478}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:25px}
+.card{display:flex;gap:15px;align-items:start;border:1px solid #dce6da;background:#fffefa;border-radius:17px;padding:22px;cursor:pointer;transition:border-color .15s}
+.card:hover{border-color:#7db68a}.card:has(input:checked){border-color:#3d9963;background:#ecf7e9}
+.card input{accent-color:#176747;width:23px;height:23px;flex-shrink:0;margin:2px 0}
+.card h3{font-size:23px;margin:2px 0 10px;line-height:1.24}.card p{color:#657668;font-size:12px;line-height:1.65;margin:0 0 11px}
+.card small{font-weight:700;font-size:10px;color:#2d8654}
+.actions{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.summary{font-size:13px;font-weight:700;color:#316348}.actions button,.buttons button,.buttons a,.copy{font:700 13px 'DM Sans',sans-serif;border:0;border-radius:11px;background:#176747;color:white;padding:14px 19px;cursor:pointer;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+button:disabled{cursor:not-allowed;opacity:.43}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #87b994;outline-offset:3px}
+.note{display:flex;gap:12px;background:#e9f2e6;border:1px solid #d4e5d1;border-radius:13px;padding:15px 17px;margin-top:28px;color:#58715c;line-height:1.65;font-size:12px}
+#flow[hidden],#choose[hidden]{display:none}
+.progress{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px;font-weight:800;color:#32724b;margin-bottom:23px}
+.stage{border:1px solid #d6e5d2;background:white;border-radius:19px;padding:23px}
+.stage h2{font-size:30px;margin:7px 0 12px}.stage p{font-size:13px;color:#5d7564;line-height:1.7}
+textarea{display:block;width:100%;min-height:77px;border:1px solid #d4e4d1;border-radius:10px;background:#fff;padding:13px;font:13px 'DM Sans',sans-serif;color:#18472f;resize:vertical}
+.copy{margin-top:10px;background:#e8f2e5;color:#1e6b44;border:1px solid #c8dfcb;font-size:11px;padding:9px 13px}
+.privacy{background:#f1f6ee;padding:15px;border-radius:13px;margin:21px 0;font-size:12px;line-height:1.65}
+.privacy label{display:flex;align-items:start;gap:10px;cursor:pointer}.privacy input{width:18px;height:18px;accent-color:#176747;flex-shrink:0}
+.provider iframe{width:100%;height:940px;border:0;background:white}
+.provider{margin-top:17px;border:1px solid #dce9d8;border-radius:12px;overflow:hidden}
+.provider[hidden]{display:none}
+.buttons{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:24px}.buttons .back{background:#eaf1e7;color:#1d613e}
+.buttons a{background:#fff;color:#216945;border:1px solid #aecfb3}
+footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
+@media(max-width:700px){header{padding:40px 0}.cards{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}.actions{flex-direction:column;align-items:stretch}.actions button{justify-content:center}.stage{padding:16px}.provider iframe{height:1050px}}
+</style></head><body>
+<div class="wrap"><nav><div class="brand">un<span>gesto.</span></div><small>FIRMAS OFICIALES · PILOTO</small></nav></div>
+<header><div class="wrap"><div class="overline">Ayudar no debería ser complicado</div><h1>Tu voz puede llegar <em>a donde importa.</em></h1><p>Seleccioná las causas que apoyás y usá sus canales oficiales de firma, directamente desde este espacio cuando el proveedor lo permita. Sin donaciones ni newsletters de UnGesto.</p>
+<div class="trust"><span>✓ Gratis</span><span>✓ Sin crear cuenta en UnGesto</span><span>✓ Formulario del receptor</span></div></div></header>
+<main class="wrap">
+<section id="choose"><div class="heading"><h2>¿Qué causas querés apoyar?</h2><small class="muted">Elegí libremente. Ninguna está seleccionada.</small></div>
+<div id="cards" class="cards" aria-label="Peticiones reales"></div>
+<div class="actions"><span id="selectedCount" class="summary">0 causas elegidas</span><button id="begin" disabled>Continuar a firmas oficiales →</button></div>
+<div class="note"><span>ⓘ</span><span>Las plataformas externas pueden pedir confirmar tu correo o completar su formulario. UnGesto no enviará información a ninguna causa que no hayas elegido, ni interpretará una visita como una firma aceptada.</span></div>
+</section>
+<section id="flow" hidden><div class="progress"><button class="copy" id="back" style="margin:0">← Volver a las causas</button><span id="progress"></span></div>
+<div class="stage"><small id="providerName" class="overline">OPENPETITION</small><h2 id="stageTitle"></h2><p id="stageDescription"></p>
+<label class="overline" for="message">Mensaje personal general (opcional)</label><textarea id="message" maxlength="1000" placeholder="Escribilo una sola vez. Podés copiarlo al formulario del destinatario si acepta comentarios."></textarea>
+<button id="copy" class="copy">Copiar mi mensaje</button>
+<div class="privacy"><label><input id="consent" type="checkbox"><span>Quiero acceder al formulario de esta causa. Entiendo que openPetition procesará directamente los datos que introduzca y que puede solicitar una confirmación por correo. No autorizo suscripciones publicitarias opcionales.</span></label></div>
+<div class="buttons"><button id="load" disabled>Mostrar formulario oficial</button><a id="officialLink" target="_blank" rel="noopener noreferrer">Abrir petición original ↗</a></div>
+<div id="provider" class="provider" hidden></div>
+<p id="providerStatus" role="status"></p>
+<div class="buttons"><button id="prev" class="back">← Anterior</button><button id="next">Siguiente causa →</button></div>
+</div></section>
+</main>
+<footer><div class="wrap">UnGesto es independiente de openPetition. Este piloto no almacena datos personales ni confirma firmas por su cuenta. Las firmas pertenecen a la plataforma que recibe y verifica cada solicitud.</div></footer>
+<script>
+"use strict";
+const petitions=[
+{id:"openpet-pennsylvania-water",title:"Proteger el agua frente a centros de datos",description:"Exigir controles ambientales para la expansión de centros de datos en Pensilvania.",source:"https://www.openpetition.org/us/petition/online/protect-the-commonwealth-of-pa-and-residents-from-the-harms-of-unregulated-data-centers"},
+{id:"openpet-kodagu-hills",title:"Proteger los bosques de Kodagu",description:"Defender la biodiversidad y los recursos hídricos en India.",source:"https://www.openpetition.org/petition/online/beyond-malma-betta-end-the-exploitation-of-kodagus-eco-sensitive-hills"},
+{id:"openpet-rockview-park",title:"Crear el parque estatal Rockview",description:"Proteger terrenos y conservar la cuenca Spring Creek en Pensilvania.",source:"https://www.openpetition.org/us/petition/online/turn-sci-rockview-into-a-pennsylvania-state-park"},
+{id:"openpet-battery-recycling",title:"Reciclaje de baterías sin cargos",description:"Facilitar el reciclaje seguro de baterías en Massachusetts.",source:"https://www.openpetition.org/us/petition/online/enforce-free-battery-recycling-in-ma"}
+];
+const widgets=Object.create(null);
+const selected=new Set();
+const byId=id=>document.getElementById(id);
+let flow=[],cursor=0;
+petitions.forEach(p=>{
+ const card=document.createElement("label");card.className="card";
+ const input=document.createElement("input");input.type="checkbox";input.value=p.id;input.addEventListener("change",()=>{
+   if(input.checked)selected.add(p.id);else selected.delete(p.id);
+   byId("selectedCount").textContent=selected.size+" "+(selected.size===1?"causa elegida":"causas elegidas");
+   byId("begin").disabled=selected.size===0;
+ });
+ const data=document.createElement("div");const h=document.createElement("h3");h.textContent=p.title;
+ const desc=document.createElement("p");desc.textContent=p.description;
+ const org=document.createElement("small");org.textContent="openPetition · receptor externo";
+ data.append(h,desc,org);card.append(input,data);byId("cards").appendChild(card);
+});
+async function loadWidgets(){
+ try{
+ const response=await fetch("provider-widgets.json",{cache:"no-store"});
+ if(!response.ok)throw Error("No config");
+ const config=await response.json();
+ if(location.origin!==config.authorizedOrigin)return;
+ for(const w of config.campaigns||[]) {
+  if(w.active && /^[a-f0-9]{64}$/.test(w.widgetId) && petitions.some(p=>p.id===w.causeId))widgets[w.causeId]=w.widgetId;
+ }
+ }catch{}
+}
+loadWidgets();
+function widgetHTML(id){
+ const safeId=/^[a-f0-9]{64}$/.test(id)?id:"";
+ return `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>body{margin:0;font-family:sans-serif}</style></head>
+ <body><div id="op_widget_container_${safeId}"></div>
+ <script>var OPWIDGET={"base_url":"https://www.openpetition.org","api_key":"${safeId}","options":{"primarycolor":"#176747","secondarycolor":"#3e3d40","backgroundcolor":"#ffffff","mainfontsize":"16px"}};</scr`+`ipt>
+ <script src="https://www.openpetition.de/javascript/widget.js"></scr`+`ipt></body></html>`;
+}
+function display(){
+ const p=flow[cursor];if(!p)return;
+ byId("progress").textContent="Petición "+(cursor+1)+" de "+flow.length;
+ byId("stageTitle").textContent=p.title;byId("stageDescription").textContent=p.description;
+ byId("officialLink").href=p.source;byId("consent").checked=false;byId("load").disabled=true;
+ byId("provider").hidden=true;byId("provider").replaceChildren();byId("providerStatus").textContent="";
+ byId("prev").disabled=cursor===0;byId("next").textContent=cursor===flow.length-1?"Terminar selección ✓":"Siguiente causa →";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+byId("begin").addEventListener("click",()=>{flow=petitions.filter(p=>selected.has(p.id));cursor=0;byId("choose").hidden=true;byId("flow").hidden=false;display();});
+byId("back").addEventListener("click",()=>{byId("flow").hidden=true;byId("choose").hidden=false;window.scrollTo(0,0);});
+byId("consent").addEventListener("change",e=>byId("load").disabled=!e.target.checked);
+byId("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(byId("message").value);byId("copy").textContent="Mensaje copiado ✓";}catch{byId("copy").textContent="Copialo manualmente";}});
+byId("load").addEventListener("click",()=>{
+ const p=flow[cursor];const container=byId("provider");container.replaceChildren();container.hidden=false;
+ const widgetId=widgets[p.id];
+ if(!widgetId){const link=document.createElement("a");link.href=p.source;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir formulario oficial de openPetition ↗";link.style.cssText="display:block;padding:28px;color:#176747;font-weight:800;text-align:center";container.appendChild(link);byId("providerStatus").textContent="El formulario embebido para este dominio aún no está habilitado. Podés firmar directamente en la página original.";return;}
+ const frame=document.createElement("iframe");frame.title="Formulario oficial de "+p.title;frame.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox");frame.referrerPolicy="strict-origin-when-cross-origin";frame.srcdoc=widgetHTML(widgetId);container.appendChild(frame);
+ byId("providerStatus").textContent="openPetition gestiona la firma y la confirmación por correo. Este paso no se marca automáticamente como firmado.";
+});
+byId("prev").addEventListener("click",()=>{if(cursor>0){cursor--;display()}});
+byId("next").addEventListener("click",()=>{if(cursor+1<flow.length){cursor++;display();}else{byId("flow").hidden=true;byId("choose").hidden=false;window.scrollTo(0,0);}});
+</script>
+</body></html>
