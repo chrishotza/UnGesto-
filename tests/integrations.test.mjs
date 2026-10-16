@@ -49,3 +49,29 @@ test("no automated bulk signing claimed",()=>{
  assert.equal(OPENPETITION_CAPABILITIES.signatureApiPOST,false);
  assert.equal(NETWORKS.actionNetwork.canSendViaUnGesto,false);
 });
+
+import officialWidgets from "../integrations/official-widgets.json" with { type: "json" };
+import {readFile} from "node:fs/promises";
+test("official provider registry contains generated campaign-specific widgets only",async()=>{
+ const ids=new Set(),causeIds=new Set();
+ const catalog=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
+ const campaignIds=new Set(catalog.causes.map(c=>c.id));
+ for(const w of officialWidgets.campaigns){
+   assert.ok(campaignIds.has(w.causeId));
+   assert.match(w.widgetId,/^[a-f0-9]{64}$/);
+   assert.ok(!ids.has(w.widgetId));
+   assert.ok(!causeIds.has(w.causeId));
+   assert.ok(w.petitionUrl.startsWith("https://www.openpetition.org/"));
+   assert.ok(w.widgetOverview.includes(w.widgetId));
+   ids.add(w.widgetId);causeIds.add(w.causeId);
+ }
+ assert.equal(ids.size,4);
+ assert.equal(officialWidgets.campaigns.filter(w=>w.administratorEmailConfirmed).length,1);
+});
+test("widget page loads only one selected campaign and requires third-party consent",async()=>{
+ const code=await readFile(new URL("../pages/firma-oficial.tsx",import.meta.url),"utf8");
+ assert.match(code,/showWidget/);
+ assert.match(code,/privacyApproved/);
+ assert.match(code,/selected\.administratorEmailConfirmed/);
+ assert.match(code,/sandbox="allow-forms allow-scripts/);
+});

@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "source": "openPetition public signing widgets generated for UnGesto domain",
+  "domain": "https://ungesto-solidario.floot.app",
+  "campaigns": [
+    {
+      "causeId": "openpet-pennsylvania-water",
+      "petitionUrl": "https://www.openpetition.org/us/petition/online/protect-the-commonwealth-of-pa-and-residents-from-the-harms-of-unregulated-data-centers",
+      "widgetId": "03e3da52701e65753dc9d31ac94b2cab6bc846258f0ea9c43d4cb2f459780de9",
+      "widgetOverview": "https://www.openpetition.org/us/widget/uebersicht/03e3da52701e65753dc9d31ac94b2cab6bc846258f0ea9c43d4cb2f459780de9",
+      "administratorEmailConfirmed": true
+    },
+    {
+      "causeId": "openpet-kodagu-hills",
+      "petitionUrl": "https://www.openpetition.org/petition/online/beyond-malma-betta-end-the-exploitation-of-kodagus-eco-sensitive-hills",
+      "widgetId": "6e0b7e9ca3a17f20e92db10412edd308bc878280f16728493e9818dee6aee1b2",
+      "widgetOverview": "https://www.openpetition.org/widget/uebersicht/6e0b7e9ca3a17f20e92db10412edd308bc878280f16728493e9818dee6aee1b2",
+      "administratorEmailConfirmed": false
+    },
+    {
+      "causeId": "openpet-rockview-park",
+      "petitionUrl": "https://www.openpetition.org/us/petition/online/turn-sci-rockview-into-a-pennsylvania-state-park",
+      "widgetId": "7609802dbff0c1acf32475228ad219074ea5f7ed10e9db8685a75017109a053a",
+      "widgetOverview": "https://www.openpetition.org/us/widget/uebersicht/7609802dbff0c1acf32475228ad219074ea5f7ed10e9db8685a75017109a053a",
+      "administratorEmailConfirmed": false
+    },
+    {
+      "causeId": "openpet-battery-recycling",
+      "petitionUrl": "https://www.openpetition.org/us/petition/online/enforce-free-battery-recycling-in-ma",
+      "widgetId": "201dc350edc02d7ef04b573081f27bd870db4dbf759c73f3bb149ad0326733c5",
+      "widgetOverview": "https://www.openpetition.org/us/widget/uebersicht/201dc350edc02d7ef04b573081f27bd870db4dbf759c73f3bb149ad0326733c5",
+      "administratorEmailConfirmed": false
+    }
+  ]
+}

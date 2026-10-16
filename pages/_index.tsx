@@ -123,6 +123,7 @@ export default function HomePage(){
        <div className={styles.simpleCauseMeta}><span>{c.icon} {c.category}</span><span>{c.organization}</span>{registered.includes(c.id)&&<span className={styles.internalStatus}>Apoyo registrado en UnGesto</span>}</div>
        <h3>{c.title}</h3><p>{c.summary}</p>
        <div className={styles.simpleCauseFoot}>
+         {c.organization==="openPetition" && <a href={"/firma-oficial?cause="+encodeURIComponent(c.id)} style={{color:"#176747",fontWeight:800}}>Firma en plataforma oficial <ExternalLink size={14}/></a>}
         <Button variant="ghost" size="sm" onClick={()=>setReading(reading===c.id?null:c.id)}>{reading===c.id?"Ocultar declaración":"Leer declaración a firmar"} <ChevronDown size={14}/></Button>
         <a href={c.url} rel="noopener noreferrer" target="_blank">Ver petición original <ExternalLink size={13}/></a>
        </div>

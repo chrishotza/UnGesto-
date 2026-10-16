@@ -44,3 +44,14 @@ La API pública de openPetition para recuento ya se verificó por GET (sin firma
 ## Cuatro causas incorporadas al catálogo fuente
 
 Las páginas de Pensilvania, Kodagu, Rockview y reciclaje de baterías fueron incorporadas a GitHub como nuevas fuentes y declaraciones. **Sólo la primera cuenta con un widget oficial configurado**. Las demás aún requieren crear un widget individual si se usa esa modalidad. La web en Floot todavía no refleja estos cambios, hasta su próximo despliegue.
+
+## Seguimiento de cuatro campañas (16 de octubre de 2026)
+
+Se generaron tres widgets adicionales mediante el generador público oficial:
+- Kodagu: `6e0b7e9ca3a17f20e92db10412edd308bc878280f16728493e9818dee6aee1b2`
+- Rockview: `7609802dbff0c1acf32475228ad219074ea5f7ed10e9db8685a75017109a053a`
+- Reciclaje: `201dc350edc02d7ef04b573081f27bd870db4dbf759c73f3bb149ad0326733c5`
+
+Cada identificador fue comprobado en el endpoint de overview de openPetition. Se usó la misma organización y el dominio `https://ungesto-solidario.floot.app`. Los tres todavía requieren verificación de email administrador y por eso **no se cargan como widgets habilitados**. La petición original de cada campaña sí sigue siendo accesible y permite recibir firmas verificadas directamente en openPetition.
+
+`integrations/official-widgets.json` es el manifiesto verificable de estos cuatro widgets. `pages/firma-oficial.tsx` implementa cuatro opciones con estados individuales y contacto externo informado.
