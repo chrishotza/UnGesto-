@@ -24,4 +24,4 @@ const lines=["# UnGesto — revisión automática de fuentes","","Fecha UTC: "+t
 "| Causa | Resultado | HTTP | Revisión |","|---|---|---:|---|",
 ...results.map(x=>"| "+x.id+" | "+x.result+" | "+(x.http_status??"-")+" | "+x.detail.replace(/\|/g,"/")+" |"),""];
 await writeFile(new URL("../artifacts/catalog-health.md",import.meta.url),lines.join("\n"));
-console.log(JSON.stringify({checked_at:timestamp,counts,catalog_count:validation.count}));
+console.log(JSON.stringify({checked_at:timestamp,counts,catalog_count:validation.count,needs_review:results.filter(x=>x.result!=="reachable")}));
