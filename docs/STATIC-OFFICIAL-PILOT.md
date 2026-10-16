@@ -14,3 +14,8 @@ This is a **static**, privacy-aware pilot. It does not access the Floot database
 The Render domain listed in `provider-widgets.json` is a placeholder until deployment returns its actual, verified public hostname. It does not authorize loading anything on its own.
 
 Run `node --test tests/*.test.mjs` for integration contracts. No automated mass signatures or subscription-list enrollment.
+
+
+## Catálogo completo y perfil efímero
+
+El piloto incorpora ahora las 24 causas del repositorio. Se pueden buscar por título o categoría y marcar solo las que la persona elija. El nombre, el correo y el mensaje general son opcionales y se mantienen únicamente en memoria de esta pestaña para facilitar su copia hacia cada formulario oficial. No se almacenan en servidor y no se envían automáticamente. La firma queda en manos del formulario de cada plataforma.
