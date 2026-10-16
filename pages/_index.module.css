@@ -212,3 +212,14 @@
 .simpleCauseFoot{gap:8px}
 .simpleCauseFoot button,.simpleCauseFoot a{font-size:10px!important}
 }
+/* La lista es la interfaz principal: causas visibles sin una landing que ocupe la primera pantalla. */
+.heroInner{grid-template-columns:1fr;min-height:245px}
+.heroVisual{display:none}
+.heroCopy{padding:33px 0 40px}
+.heroCopy h1{font-size:clamp(39px,4.1vw,56px);line-height:1.05;letter-spacing:-1.5px;max-width:850px;margin:15px 0 11px}
+.heroCopy p{max-width:770px;font-size:15px;line-height:1.55}
+.heroActions{margin-top:17px}
+.heroTrust{margin-top:17px}
+.catalog{padding-top:50px}
+@media(max-width:760px){.heroCopy{padding:25px 0 30px}.heroCopy h1{font-size:41px}.heroCopy p{font-size:13px}.heroActions{margin-top:17px;gap:12px}.heroTrust{margin-top:16px}.catalog{padding-top:38px}}
+
