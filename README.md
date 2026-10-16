@@ -8,7 +8,7 @@ UnGesto es una plataforma solidaria gratuita que permite **leer títulos y descr
 
 ## Estado real — octubre de 2026
 
-✅ Lista inicial de diez causas con sus fuentes y declaraciones legibles  
+✅ Catálogo inicial de 20 causas con sus fuentes y declaraciones legibles  
 ✅ Selección individual o múltiple, con botón para marcar todas las visibles  
 ✅ Un único formulario de identificación y un mensaje general opcional  
 ✅ Consentimiento explícito que cubre todas las causas elegidas  
@@ -52,3 +52,7 @@ UnGesto pretende que el usuario pueda firmar legalmente y de forma válida en mu
 Bienvenidas colaboraciones de desarrolladores, organizaciones y defensores de privacidad. No envíes información personal ni tokens secretos a issues.
 
 **Licencia de reutilización pendiente de definir por el titular.** Que un repositorio sea público no implica por sí mismo permisos de reutilización de su código.
+
+## Calidad y mantenimiento del catálogo
+
+La selección de 20 causas tiene ahora un [inventario JSON con textos de consentimiento](catalog/causes.json) y una [auditoría automática diaria de URLs](docs/CATALOG-OPERATIONS.md). GitHub Actions publica el resultado como artefacto y nunca utiliza datos de firmantes. La respuesta HTTP 200 solo acredita que se pudo consultar la página; **no** confirma vigencia de la campaña ni la aceptación de firmas.

@@ -1,0 +1,36 @@
+name: Catalog source health
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 11 * * *'
+  push:
+    paths:
+      - 'catalog/**'
+      - 'integrations/catalog.mjs'
+      - 'scripts/audit-catalog.mjs'
+      - '.github/workflows/catalog-health.yml'
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate catalog and review HTTP reachability
+        run: node scripts/audit-catalog.mjs
+      - name: Publish public-source report into job summary
+        if: always()
+        run: |
+          if test -f artifacts/catalog-health.md; then cat artifacts/catalog-health.md >> "$GITHUB_STEP_SUMMARY"; fi
+      - name: Preserve reports for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-source-health
+          path: artifacts/catalog-health.*
+          if-no-files-found: warn
+          retention-days: 14
