@@ -70,3 +70,16 @@ test("Greenpeace bundled letter only includes explicitly selected causes",async(
  assert.match(page,/mailto:info\.int@greenpeace\.org/);
  assert.match(page,/Please do not add me to any newsletters/);
 });
+
+test("Action Network official signing route keeps opt-outs off, requires user consent, and resumes only known campaigns",async()=>{
+ const page=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ assert.match(page,/id="actionNetworkPanel"/);
+ for(const option of ["subscription_user","subscription_group","subscription_referrer"]){
+  assert.ok(page.includes('u.searchParams.set("'+option+'","false")'));
+ }
+ assert.match(page,/function buildActionNetworkUrl\(p\)/);
+ assert.match(page,/function resumeAfterActionNetworkReturn\(\)/);
+ assert.match(page,/sessionStorage.setItem\("ungesto_action_flow"/);
+ assert.match(page,/if\(!byId\("consent"\).checked/);
+ assert.doesNotMatch(page,/sessionStorage\.setItem\(["'](?:name|email|message)/i);
+});

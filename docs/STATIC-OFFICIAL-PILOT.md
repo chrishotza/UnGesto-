@@ -19,3 +19,12 @@ Run `node --test tests/*.test.mjs` for integration contracts. No automated mass 
 ## Catálogo completo y perfil efímero
 
 El piloto incorpora ahora las 24 causas del repositorio. Se pueden buscar por título o categoría y marcar solo las que la persona elija. El nombre, el correo y el mensaje general son opcionales y se mantienen únicamente en memoria de esta pestaña para facilitar su copia hacia cada formulario oficial. No se almacenan en servidor y no se envían automáticamente. La firma queda en manos del formulario de cada plataforma.
+
+
+## Firma real en Action Network con suscripciones desmarcadas
+
+Action Network ofrece formularios oficiales de firma y documenta argumentos de URL para desmarcar opt-ins: `subscription_user=false`, `subscription_group=false`, `subscription_referrer=false`. El flujo ahora incorpora un botón especial en cada causa de esta plataforma. El botón solo se habilita con consentimiento de abrir el proveedor y dirige al formulario oficial real, no a un simulador.
+
+También se proporciona `redirect` para volver al sitio piloto si Action Network lo respeta. La selección de IDs de causas (no nombres, correos ni mensajes) se mantiene transitoriamente en sessionStorage para continuar. **Este retorno no es un comprobante firmado: la verificación final depende de Action Network.**
+
+La API ciega de firma de Action Network continúa DESACTIVADA porque añadiría nuevos suscriptores. El enlace hospedado permite desmarcar los controles y la persona verifica las preferencias antes de firmar.

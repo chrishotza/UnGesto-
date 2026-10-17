@@ -44,6 +44,7 @@ footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
 @media(max-width:700px){header{padding:40px 0}.cards{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}.actions{flex-direction:column;align-items:stretch}.actions button{justify-content:center}.stage{padding:16px}.provider iframe{height:1050px}}
 .tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}.tools input,.tools select,.identity input{border:1px solid #cfdfca;background:white;border-radius:10px;padding:12px 14px;font:13px 'DM Sans',sans-serif;color:#1c4d34}.tools input{flex:1;min-width:220px}.tools select{min-width:140px}.tools button{margin:0!important}.identity{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:15px 0}.identity>div{display:flex;align-items:flex-start;flex-direction:column;gap:7px}.identity input{width:100%}.identity button{margin:0!important}.local-data{background:#eef5eb;border-radius:11px;padding:10px 13px}.card[hidden]{display:none}@media(max-width:700px){.identity{grid-template-columns:1fr}.tools input,.tools select{width:100%}}
 .directDelivery{margin-top:22px;border:1px solid #b5d5b9;background:#e9f5e7;border-radius:14px;padding:19px}.directDelivery>strong{font:600 20px Fraunces,Georgia,serif;color:#205339}.directDelivery p{font-size:12px;color:#516e58;line-height:1.65}.directDelivery>div{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px}.directDelivery small{font-size:11px;color:#376849}.directAction{display:inline-flex;align-items:center;gap:8px;background:#176747;color:white!important;text-decoration:none;font-size:12px;font-weight:800;border-radius:10px;padding:13px 17px}.sourceInfo{margin-left:13px;display:inline-flex;font-size:11px;font-weight:700;color:#356a4b!important}.directDelivery[hidden]{display:none}@media(max-width:680px){.directAction,.sourceInfo{margin:7px 0;display:flex;justify-content:center}.directDelivery{padding:15px}}
+.action-sign-panel{margin:22px 0;background:linear-gradient(120deg,#e2f2de,#f4f9ed);border:2px solid #9ecba3;border-radius:17px;padding:21px}.action-sign-panel[hidden]{display:none}.action-sign-panel h3{font-size:25px;margin:10px 0 8px;color:#19583b}.action-sign-panel p{font-size:12px;line-height:1.7;color:#43654c}.action-sign-panel small{display:block;margin-top:13px;font-size:11px;line-height:1.6;color:#57735d}.officialBadge{font-size:10px;letter-spacing:1px;font-weight:800;color:#29724a}.officialSignButton{background:#176747!important;color:white!important;text-decoration:none;font-size:13px;font-weight:800;padding:14px 19px;border-radius:11px;display:inline-block}.officialSignButton[aria-disabled="true"]{opacity:.45;pointer-events:none;cursor:not-allowed}
 </style></head><body>
 <div class="wrap"><nav><div class="brand">un<span>gesto.</span></div><small>FIRMAS OFICIALES · PILOTO</small></nav></div>
 <header><div class="wrap"><div class="overline">Ayudar no debería ser complicado</div><h1>Tu voz puede llegar <em>a donde importa.</em></h1><p>Seleccioná las causas que apoyás y usá sus canales oficiales de firma, directamente desde este espacio cuando el proveedor lo permita. Sin donaciones ni newsletters de UnGesto.</p>
@@ -82,6 +83,13 @@ footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
 </div>
 <div class="privacy"><label><input id="consent" type="checkbox"><span>Quiero abrir el formulario oficial de esta causa. El proveedor indicado procesará los datos que introduzca y puede solicitar una confirmación de correo. No deseo suscripciones publicitarias opcionales.</span></label></div>
 <div class="buttons"><button id="load" disabled>Mostrar formulario oficial</button><a id="officialLink" target="_blank" rel="noopener noreferrer">Abrir petición original ↗</a></div>
+<section id="actionNetworkPanel" class="action-sign-panel" hidden>
+ <span class="officialBadge">FIRMA DIRECTAMENTE EN LA PLATAFORMA RECEPTORA</span>
+ <h3>Firmá esta petición de verdad</h3>
+ <p>Action Network guarda tu firma en su propia plataforma. Te llevamos al formulario con las casillas de suscripción a emails desmarcadas. Revisá los datos y pulsá <strong>Sign</strong> allí. No enviamos nada a tus espaldas.</p>
+ <div class="buttons"><a id="actionNetworkSign" class="officialSignButton" aria-disabled="true">Abrir firma oficial y continuar ↗</a></div>
+ <small>Action Network puede recordar tus datos para las siguientes causas. Si el formulario lo permite, al terminar volverás a UnGesto para seguir con las restantes. La aceptación queda a cargo del receptor, no de nuestro contador.</small>
+</section>
 <div id="provider" class="provider" hidden></div>
 <div id="directDelivery" class="directDelivery" hidden>
  <strong>Enviar tu apoyo directamente al organismo</strong>
@@ -103,6 +111,36 @@ const petitions=[{"id":"an-omaha-coal","title":"Cerrar la planta de carbón de N
 const widgets=Object.create(null);
 const directByCause=Object.create(null);
 const selected=new Set();
+function buildActionNetworkUrl(p){
+ const u=new URL(p.source);
+ if(u.protocol!=="https:"||u.hostname!=="actionnetwork.org"||!/^\/petitions\/[a-z0-9-]+\/?$/.test(u.pathname))throw new Error("Petición no autorizada");
+ u.search="";u.hash="";
+ u.searchParams.set("subscription_user","false");
+ u.searchParams.set("subscription_group","false");
+ u.searchParams.set("subscription_referrer","false");
+ const returnTo=new URL("/",location.origin);returnTo.searchParams.set("ungesto_return",p.id);
+ u.searchParams.set("redirect",returnTo.toString());
+ return u.toString();
+}
+function refreshActionPanel(){
+ const p=flow[cursor],isAction=p && p.organization==="Action Network",panel=byId("actionNetworkPanel");
+ panel.hidden=!isAction;
+ if(!isAction)return;
+ const link=byId("actionNetworkSign");
+ if(byId("consent").checked){
+  link.href=buildActionNetworkUrl(p);
+  link.setAttribute("aria-disabled","false");
+ }else{
+  link.removeAttribute("href");link.setAttribute("aria-disabled","true");
+ }
+}
+byId("actionNetworkSign").addEventListener("click",(event)=>{
+ const p=flow[cursor];
+ if(!byId("consent").checked||!p||p.organization!=="Action Network"){event.preventDefault();return;}
+ // Only non-personal campaign identifiers are kept through the external website.
+ sessionStorage.setItem("ungesto_action_flow",JSON.stringify({ids:flow.map(c=>c.id),current:p.id}));
+});
+
 const cardElements=new Map();
 const byId=id=>document.getElementById(id);
 let flow=[],cursor=0;
@@ -251,17 +289,37 @@ function display(){
  byId("stageTitle").textContent=p.title;byId("stageDescription").textContent=p.description+" · Declaración: "+p.statement;byId("providerName").textContent=p.organization.toUpperCase();
  byId("officialLink").href=p.source;byId("consent").checked=false;byId("load").disabled=true;
  byId("provider").hidden=true;byId("provider").replaceChildren();byId("providerStatus").textContent="";
- refreshDirectLink();byId("prev").disabled=cursor===0;byId("next").textContent=cursor===flow.length-1?"Terminar selección ✓":"Siguiente causa →";
+ refreshDirectLink();refreshActionPanel();byId("prev").disabled=cursor===0;byId("next").textContent=cursor===flow.length-1?"Terminar selección ✓":"Siguiente causa →";
  window.scrollTo({top:0,behavior:"smooth"});
 }
 byId("begin").addEventListener("click",()=>{flow=petitions.filter(p=>selected.has(p.id));cursor=0;byId("choose").hidden=true;byId("flow").hidden=false;display();});
+function resumeAfterActionNetworkReturn(){
+ const returned=new URLSearchParams(location.search).get("ungesto_return");
+ if(!returned)return;
+ let saved;try{saved=JSON.parse(sessionStorage.getItem("ungesto_action_flow")||"null")}catch{return;}
+ if(!saved||!Array.isArray(saved.ids)||saved.current!==returned)return;
+ const uniqueIds=[...new Set(saved.ids)].filter(id=>petitions.some(p=>p.id===id));
+ const idx=uniqueIds.indexOf(returned);if(idx<0||uniqueIds.length===0)return;
+ for(const id of uniqueIds){selected.add(id);cardElements.get(id).querySelector("input").checked=true;}
+ flow=petitions.filter(p=>selected.has(p.id));
+ const previous=flow.findIndex(p=>p.id===returned);
+ if(previous<0)return;
+ cursor=Math.min(previous+1,flow.length-1);
+ byId("choose").hidden=true;byId("flow").hidden=false;display();
+ const status=byId("providerStatus");
+ status.textContent=previous+1<flow.length
+ ? "Volviste desde el formulario oficial. UnGesto no verifica el resultado de esa firma. Podés seguir con la próxima causa."
+ : "Volviste de Action Network. Completaste el recorrido de causas seleccionadas; revisá en la plataforma la confirmación de tus firmas.";
+ try{sessionStorage.removeItem("ungesto_action_flow");window.history.replaceState(null,"",location.pathname)}catch{}
+}
+resumeAfterActionNetworkReturn();
 byId("back").addEventListener("click",()=>{byId("flow").hidden=true;byId("choose").hidden=false;window.scrollTo(0,0);});
-byId("consent").addEventListener("change",e=>byId("load").disabled=!e.target.checked);
+byId("consent").addEventListener("change",e=>{byId("load").disabled=!e.target.checked;refreshActionPanel();});
 byId("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(byId("message").value);byId("copy").textContent="Mensaje copiado ✓";}catch{byId("copy").textContent="Copialo manualmente";}});
 byId("load").addEventListener("click",()=>{
  const p=flow[cursor];const container=byId("provider");container.replaceChildren();container.hidden=false;
  const widgetId=p.organization==="openPetition"?widgets[p.id]:undefined;
- if(!widgetId){const link=document.createElement("a");link.href=p.source;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir formulario oficial de "+p.organization+" ↗";link.style.cssText="display:block;padding:28px;color:#176747;font-weight:800;text-align:center";container.appendChild(link);byId("providerStatus").textContent="Abrí la petición en el sitio de "+p.organization+" y completá su formulario oficial. Esa plataforma valida la firma.";return;}
+ if(!widgetId){const link=document.createElement("a");link.href=p.source;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir formulario oficial de "+p.organization+" ↗"; if(p.organization==="Action Network"){link.href=buildActionNetworkUrl(p);}link.style.cssText="display:block;padding:28px;color:#176747;font-weight:800;text-align:center";container.appendChild(link);byId("providerStatus").textContent="Abrí la petición en el sitio de "+p.organization+" y completá su formulario oficial. Esa plataforma valida la firma.";return;}
  const frame=document.createElement("iframe");frame.title="Formulario oficial de "+p.title;frame.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox");frame.referrerPolicy="strict-origin-when-cross-origin";frame.srcdoc=widgetHTML(widgetId);container.appendChild(frame);
  byId("providerStatus").textContent="openPetition gestiona la firma y la confirmación por correo. Este paso no se marca automáticamente como firmado.";
 });
