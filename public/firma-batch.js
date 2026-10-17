@@ -4,7 +4,7 @@ const $=id=>document.getElementById(id);
 const API=location.hostname==="ungesto-firma-batch.onrender.com"?"":"https://ungesto-firma-batch.onrender.com";
 const selected=new Set(),connected=new Map(),sourceById=new Map();
 const icons={"Animales":"♡","Bosques":"♧","Clima":"✳","Océanos":"≈","Salud":"✚","Derechos humanos":"⚖","Educación":"✎","Ambiente":"✳","Vivienda":"⌂","Transporte":"↗","Otros":"◌"};
-let all=[],filtered=[],mode="connected",shown=0,receipt=null,busy=false;
+let all=[],filtered=[],mode=new URLSearchParams(location.search).get("vista")==="biblioteca"?"all":"connected",shown=0,receipt=null,busy=false;
 const receiptKey="ungesto_batch_receipts_v1";
 const $el=(tag,className,txt)=>{const e=document.createElement(tag);if(className)e.className=className;if(txt!==undefined)e.textContent=String(txt);return e;};
 function safeUrl(url){try{const u=new URL(url);return u.protocol==="https:"?u.href:null}catch{return null}}
@@ -141,6 +141,7 @@ async function revoke(){
  finally{$("revoke").disabled=false}
 }
 async function init(){
+ for(const button of document.querySelectorAll("[data-mode]"))button.classList.toggle("active",button.dataset.mode===mode);
  $("signForm").addEventListener("submit",submit);
  $("signAgain").addEventListener("click",reset);$("revoke").addEventListener("click",revoke);
  $("copyReceipt").addEventListener("click",async()=>{
