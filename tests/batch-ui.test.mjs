@@ -6,7 +6,7 @@ test("main form implements exactly one batch submit, not sequential external for
  const js=await readFile(new URL("../public/firma-batch.js",import.meta.url),"utf8");
  const html=await readFile(new URL("../public/firma-batch.html",import.meta.url),"utf8");
  assert.doesNotThrow(()=>new Script(js));
- assert.match(html,/Una firma/);assert.match(html,/Muchas causas/);
+ assert.match(html,/Una firma/);assert.match(html,/Mucho por cambiar/);
  assert.match(html,/id="signForm"/);assert.match(html,/id="signerName"/);
  assert.match(html,/id="signerEmail"/);assert.match(html,/id="signerMessage"/);
  assert.match(html,/id="consent"/);
