@@ -116,7 +116,7 @@ petitions.forEach(p=>{
  const data=document.createElement("div");const h=document.createElement("h3");h.textContent=p.title;
  const desc=document.createElement("p");desc.textContent=p.description;
  const org=document.createElement("small");org.textContent=p.organization+" · formulario externo";
- if(["openpet-pennsylvania-water","openpet-battery-recycling"].includes(p.id)){const badge=document.createElement("small");badge.textContent=" · Carta directa al organismo";badge.style.color="#176747";org.appendChild(badge)}data.append(h,desc,org);card.append(input,data);byId("cards").appendChild(card);cardElements.set(p.id,card);
+ if(["openpet-pennsylvania-water","openpet-battery-recycling"].includes(p.id)){const badge=document.createElement("small");badge.textContent=" · Carta directa al organismo";badge.style.color="#176747";org.appendChild(badge)}if(["Rainforest Rescue","Greenpeace Internacional"].includes(p.organization)){const badge=document.createElement("small");badge.textContent=" · Apoyo agrupado a la organización";badge.style.color="#176747";org.appendChild(badge)}data.append(h,desc,org);card.append(input,data);byId("cards").appendChild(card);cardElements.set(p.id,card);
 });
 const cats=[...new Set(petitions.map(p=>p.category))].sort();
 for(const cat of cats){const option=document.createElement("option");option.value=cat;option.textContent=cat;byId("category").appendChild(option);}

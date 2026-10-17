@@ -61,6 +61,22 @@ Cuatro widgets oficiales de openPetition han sido creados para el dominio de Flo
 
 Proveedores evaluados: openPetition (widget de formulario y confirmación), Action Network (mecanismos de firma con posible inclusión en listas), Petitions.nz (documenta embeds, método por campaña en investigación). Solicitudes de integración enviadas a las organizaciones.
 
+## Canales de entrega de apoyo (piloto)
+
+El sitio piloto en Render permite preparar mensajes personalizados para **destinatarios reales publicados por fuentes oficiales**, sin registrar datos personales en su servidor:
+
+| Ruta | Causas cubiertas | Canal |
+|---|---:|---|
+| Rainforest Rescue | 13 | Una carta agrupada a `info@rainforest-rescue.org` |
+| Greenpeace Internacional | 3 | Una carta agrupada a `info.int@greenpeace.org` |
+| Pennsylvania DCED GRID | 1 | Carta a `RA-DCEDGRID@pa.gov` |
+| Massachusetts DEP | 1 | Carta a `john.fischer@mass.gov` |
+| openPetition y demás peticiones | Según formulario original | Firma gestionada por la propia organización |
+
+Los mensajes se generan sólo para las causas elegidas; no se disparan emails por detrás. La persona debe abrir su cliente de correo y confirmar **Enviar**. **Un email preparado no está entregado**; aun cuando el correo se envíe, no puede contarse como firma validada por la plataforma de la petición hasta que esta lo confirme. No existe ninguna firma externa aceptada automáticamente que podamos acreditar por ahora.
+
+Detalle de cada integración en [envíos directos](docs/DIRECT-ADVOCACY.md), [Rainforest Rescue](docs/RAINFOREST-GROUPED-DELIVERY.md) y [Greenpeace](docs/GREENPEACE-GROUPED-DELIVERY.md).
+
 ## Participar
 
 Bienvenidas colaboraciones de desarrolladores, organizaciones y defensores de privacidad. No envíes información personal ni tokens secretos a issues.
