@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UnGesto — Una firma. Muchas causas.</title>
+<meta name="description" content="Elegí las causas que te importan, completá tus datos una sola vez y registrá tu apoyo en todas juntas. Sin newsletters ni donaciones.">
+<meta name="theme-color" content="#123d2d">
+<link rel="stylesheet" href="/firma-batch.css"><script defer src="/firma-batch.js"></script>
+</head><body>
+<div class="shell">
+ <nav class="nav" aria-label="Menú">
+  <a href="/" class="brand" aria-label="UnGesto inicio">un<span>gesto</span><b>.</b></a>
+  <div class="navlinks"><a href="/manifiesto.html">Nuestro propósito</a><a href="/biblioteca.html#biblioteca">Biblioteca de peticiones</a></div>
+ </nav>
+ <header class="hero">
+  <div class="eyebrow"><span class="indicator"></span> UN GESTO PUEDE HACER MUCHO</div>
+  <h1>Una firma.<br><em>Muchas causas.</em></h1>
+  <p>Elegí las causas que realmente te importan. Completá tus datos una vez y registrá tu apoyo para todas juntas, con una sola acción.</p>
+  <div class="heroBenefits"><span>Sin donaciones</span><span>Sin suscripciones</span><span>Sin repetir formularios</span></div>
+ </header>
+ <div class="steps" aria-label="Cómo funciona">
+  <span><b>01</b> Elegí tus causas</span><i></i>
+  <span><b>02</b> Firmá una vez</span><i></i>
+  <span><b>03</b> Recibí un comprobante</span>
+ </div>
+ <main class="content">
+  <section id="causeSection" aria-labelledby="causesHeading">
+   <div class="sectionTitle"><div><span class="overline">TUS CAUSAS</span><h2 id="causesHeading">¿Qué querés cambiar?</h2><p>Marcá una, varias o todas. Ninguna viene seleccionada.</p></div><div class="selectionCount"><strong id="countTop">0</strong><span>seleccionadas</span></div></div>
+   <div class="tools">
+    <label class="searchWrap"><span>⌕</span><input id="search" type="search" aria-label="Buscar causas" maxlength="100" placeholder="Buscar por nombre, organización o tema"></label>
+    <select id="category" aria-label="Filtrar categorías"><option value="">Todas las categorías</option></select>
+   </div>
+   <div class="bulkActions"><button type="button" id="selectAll">Seleccionar todas las visibles</button><button type="button" id="clearAll">Desmarcar todas</button><span id="visibleCount"></span></div>
+   <div id="causes" class="causeGrid" role="group" aria-label="Elegir causas"></div>
+   <div class="libraryTeaser"><span class="libraryIcon">✳</span><div><strong>También estamos construyendo una gran biblioteca de peticiones.</strong><p>Más de dos mil campañas documentadas para investigar y explorar. Están separadas de este formulario hasta tener una integración de firma válida.</p></div><a href="/biblioteca.html#biblioteca">Explorar biblioteca ↗</a></div>
+  </section>
+  <aside id="signPanel" class="signColumn" aria-labelledby="signHeading">
+   <form id="signForm" class="signCard" novalidate>
+    <div class="formHeader"><div class="roundSymbol">✍</div><div><span class="overline">UN SOLO FORMULARIO</span><h2 id="signHeading">Tu firma</h2></div></div>
+    <p class="formSub">Tus datos se completan una sola vez, aunque elijas veinte causas.</p>
+    <div class="chosenCount"><div><b id="countForm">0</b><span> causas elegidas</span></div><a href="#causeSection">Editar selección</a></div>
+    <label for="signerName">Nombre y apellido</label>
+    <input id="signerName" name="name" type="text" autocomplete="name" maxlength="120" required minlength="3" placeholder="Tu nombre completo">
+    <label for="signerEmail">Correo electrónico</label>
+    <input id="signerEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="tu@email.com">
+    <label for="signerCountry">País <small>(opcional)</small></label>
+    <input id="signerCountry" name="country" type="text" maxlength="80" autocomplete="country-name" placeholder="Argentina">
+    <label for="signerMessage">Tu mensaje <small>(opcional, uno para todas)</small></label>
+    <textarea id="signerMessage" name="message" rows="3" maxlength="1000" placeholder="Quiero apoyar estas causas porque…"></textarea>
+    <input name="website" id="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="consent"><input id="consent" type="checkbox" required><span>Leí las causas seleccionadas y autorizo a UnGesto a registrar mi adhesión a cada una usando estos datos. <a href="#privacyNote">Cómo se trata mi firma</a>.</span></label>
+    <button id="signButton" type="submit" disabled>Elegí al menos una causa</button>
+    <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+    <div class="smallRule"></div>
+    <p class="truth" id="privacyNote"><strong>Qué significa firmar acá:</strong> UnGesto registra tu apoyo a todas las causas elegidas y te da un comprobante. Ese registro no equivale todavía a una firma recibida por cada ONG externa. No enviamos newsletters ni pedimos dinero.</p>
+   </form>
+  </aside>
+ </main>
+ <section id="success" class="success" hidden aria-live="polite">
+  <div class="successMark">✓</div><span class="overline">REGISTRO COMPLETADO</span>
+  <h2>Un gesto. <em id="successCount">Muchas causas.</em></h2>
+  <p>Tu adhesión quedó registrada en cada una de las causas que elegiste, con una sola firma.</p>
+  <div class="receiptBox"><span>Comprobante UnGesto</span><strong id="receiptId"></strong><small id="receiptMeta"></small></div>
+  <div id="receiptCauses" class="receiptCauses"></div>
+  <p class="receiptInfo">Este comprobante acredita el registro dentro de UnGesto. No certifica recepción de las ONG externas.</p>
+  <div class="receiptButtons"><button id="copyReceipt" type="button">Copiar comprobante</button><button id="signAgain" type="button" class="secondary">Hacer otra selección</button><button id="revoke" type="button" class="danger">Eliminar mi adhesión</button></div>
+  <p id="revokeStatus" role="status"></p>
+ </section>
+ <footer><div class="footerTop"><strong class="brand">un<span>gesto</span><b>.</b></strong><p>Un gesto de verdad empieza con una decisión libre.</p></div><div class="footerBottom"><span>Gratuito · Sin suscripciones · Sin donaciones</span><a href="/manifiesto.html">Manifiesto</a><a href="/biblioteca.html#biblioteca">Biblioteca pública</a></div></footer>
+</div>
+</body></html>
