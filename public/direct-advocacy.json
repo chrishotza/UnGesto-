@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "verified_at": "2026-10-16",
+  "disclaimer": "Email to a public agency, not a signature added to a third-party petition counter. The user's mail provider sends the message only after the user confirms Send.",
+  "routes": [
+    {
+      "causeId": "openpet-pennsylvania-water",
+      "recipient": "RA-DCEDGRID@pa.gov",
+      "agency": "Pennsylvania Department of Community & Economic Development — GRID",
+      "subject": "Public comment: responsible data center development and environmental protections",
+      "source": "https://dced.pa.gov/business-assistance/data-center-resources/planning-toolkit/",
+      "type": "direct_advocacy_email_not_petition_signature"
+    },
+    {
+      "causeId": "openpet-battery-recycling",
+      "recipient": "john.fischer@mass.gov",
+      "agency": "Massachusetts Department of Environmental Protection — Waste Bans & Recycling",
+      "subject": "Public comment: accessible battery recycling without extra fees",
+      "source": "https://www.mass.gov/guides/massdep-waste-disposal-bans",
+      "type": "direct_advocacy_email_not_petition_signature"
+    }
+  ]
+}
