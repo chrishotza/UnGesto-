@@ -8,7 +8,7 @@ UnGesto es una plataforma solidaria gratuita que permite **leer títulos y descr
 
 ## Estado real — octubre de 2026
 
-✅ Catálogo de 24 causas con sus fuentes y declaraciones legibles  
+✅ Catálogo de 34 causas con sus fuentes y declaraciones legibles  
 ✅ Selección individual o múltiple, con botón para marcar todas las visibles  
 ✅ Un único formulario de identificación y un mensaje general opcional  
 ✅ Consentimiento explícito que cubre todas las causas elegidas  
@@ -85,4 +85,10 @@ Bienvenidas colaboraciones de desarrolladores, organizaciones y defensores de pr
 
 ## Calidad y mantenimiento del catálogo
 
-La selección de 24 causas tiene ahora un [inventario JSON con textos de consentimiento](catalog/causes.json) y una [auditoría automática diaria de URLs](docs/CATALOG-OPERATIONS.md). GitHub Actions publica el resultado como artefacto y nunca utiliza datos de firmantes. La respuesta HTTP 200 solo acredita que se pudo consultar la página; **no** confirma vigencia de la campaña ni la aceptación de firmas.
+La selección de 34 causas tiene ahora un [inventario JSON con textos de consentimiento](catalog/causes.json) y una [auditoría automática diaria de URLs](docs/CATALOG-OPERATIONS.md). GitHub Actions publica el resultado como artefacto y nunca utiliza datos de firmantes. La respuesta HTTP 200 solo acredita que se pudo consultar la página; **no** confirma vigencia de la campaña ni la aceptación de firmas.
+
+## Firma oficial sin inscribirse a boletines
+
+Se incorporaron **10 peticiones de Action Network con formulario real de firma**. Los enlaces de firma de UnGesto añadirán los parámetros oficiales `subscription_group=false`, `subscription_user=false` y `subscription_referrer=false` para **desmarcar** las opciones de suscripción al abrir el formulario. La persona debe comprobar que sigan desmarcadas antes de firmar. Action Network documenta que la firma se gestiona desde su formulario y que la plataforma admite enlaces de retorno a la aplicación.
+
+**No usamos el endpoint de firma por API a ciegas**: para personas nuevas podría inscribirlas automáticamente en listas. La aceptación de firmas se confirma mediante el proveedor, no mediante un contador interno de UnGesto.

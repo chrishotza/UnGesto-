@@ -22,7 +22,7 @@ import {Script} from "node:vm";
 test("pilot includes the exact 24 source URLs of its consent catalog",async()=>{
  const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
  const catalog=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
- assert.equal(catalog.causes.length,24);
+ assert.equal(catalog.causes.length,34);
  for(const c of catalog.causes)assert.ok(html.includes(JSON.stringify(c.id)));
 });
 test("public pilot inline JS is parseable",async()=>{

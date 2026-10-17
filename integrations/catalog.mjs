@@ -1,5 +1,5 @@
 /** Strict catalog and public-source health checks. No signers or PII are accessed. */
-const trustedHosts = new Set(["www.rainforest-rescue.org","www.greenpeace.org","www.amnesty.org","www.openpetition.org","www.openpetition.de","www.openpetition.eu"]);
+const trustedHosts = new Set(["www.rainforest-rescue.org","www.greenpeace.org","www.amnesty.org","www.openpetition.org","www.openpetition.de","www.openpetition.eu","actionnetwork.org"]);
 const closings = [/petition (?:is |has been )?closed/i,/petition has ended/i,/petition expired/i,/signatures are no longer being collected/i,/petition is over/i,/petici[oó]n (?:est[aá] )?cerrada/i];
 function validUrl(text){
   const u = new URL(text);

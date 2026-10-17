@@ -5,7 +5,7 @@ import {validateCatalog,probeCause} from "../integrations/catalog.mjs";
 const data=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
 test("all current public campaigns carry an exact, versioned consent statement",()=>{
   const summary=validateCatalog(data);
-  assert.equal(summary.count,24);
+  assert.equal(summary.count,34);
   assert.ok(summary.organizations.length>=3);
 });
 test("rejects SSRF, duplicates, mutable or unsafe sources",()=>{
