@@ -42,6 +42,6 @@ test("the legacy library link returns to the clean integrated explorer",async()=
  const page=await read("../public/index.html");
  const js=await read("../public/firma-batch.js");
  assert.match(page,/\?vista=biblioteca#causas/);
- assert.match(js,/get\("vista"\)===\x22biblioteca\x22/);
+ assert.match(js,/get\("vista"\)===\x22firmables\x22/);
  assert.doesNotMatch(page,/id="actionNetworkPanel"/);
 });
