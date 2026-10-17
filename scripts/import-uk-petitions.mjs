@@ -7,7 +7,7 @@ const todayUTC = () => new Date().toISOString().slice(0,10);
 
 export function classify(title, background) {
   const t = (title + " " + background).toLowerCase();
-  if (/\b(animal|cat|dog|horse|wildlife|pet|vet|bird|fox|fish|elephant)\b/.test(t)) return "Animales";
+  if (/\b(animals?|cats?|dogs?|horses?|wildlife|pets?|vets?|birds?|foxes?|fish|elephants?|whales?)\b/.test(t)) return "Animales";
   if (/\b(water|climate|environment|pollution|plastic|recycl|forest|nature|sewage|emission|carbon|air quality)\b/.test(t)) return "Ambiente";
   if (/\b(school|student|teacher|education|university|childcare)\b/.test(t)) return "Educación";
   if (/\b(hospital|health|nhs|medicine|cancer|mental health|disabilit|care home)\b/.test(t)) return "Salud";
