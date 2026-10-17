@@ -1,6 +1,6 @@
 {
   "source": "https://petition.parliament.uk/petitions.json?state=open&page=1",
-  "source_updated_at": "2026-10-17T01:01:47.806Z",
+  "source_updated_at": "2026-10-17T01:12:36.033Z",
   "eligibility": "Only British citizens or UK residents may sign; others may browse.",
   "country": "GB",
   "source_pages": 88,
@@ -40,14 +40,14 @@
       "source_api": "https://petition.parliament.uk/petitions/769589.json",
       "status": "open",
       "closing_date": "2026-12-08",
-      "signature_count": 115811,
+      "signature_count": 115812,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-05-11T11:31:25.296Z",
-      "updated_at": "2026-10-17T00:49:00.000Z"
+      "updated_at": "2026-10-17T01:03:40.000Z"
     },
     {
       "id": "uk-parliament-764785",
@@ -103,14 +103,14 @@
       "source_api": "https://petition.parliament.uk/petitions/780269.json",
       "status": "open",
       "closing_date": "2027-03-16",
-      "signature_count": 90522,
+      "signature_count": 90524,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-08-23T11:46:16.594Z",
-      "updated_at": "2026-10-17T00:59:40.000Z"
+      "updated_at": "2026-10-17T01:11:40.000Z"
     },
     {
       "id": "uk-parliament-773633",
@@ -145,14 +145,14 @@
       "source_api": "https://petition.parliament.uk/petitions/779259.json",
       "status": "open",
       "closing_date": "2027-03-14",
-      "signature_count": 72836,
+      "signature_count": 72837,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-08-10T12:22:13.932Z",
-      "updated_at": "2026-10-17T00:42:40.000Z"
+      "updated_at": "2026-10-17T01:07:00.000Z"
     },
     {
       "id": "uk-parliament-777710",
@@ -250,14 +250,14 @@
       "source_api": "https://petition.parliament.uk/petitions/771401.json",
       "status": "open",
       "closing_date": "2027-01-06",
-      "signature_count": 42847,
+      "signature_count": 42848,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-06-01T21:45:40.778Z",
-      "updated_at": "2026-10-17T00:53:40.000Z"
+      "updated_at": "2026-10-17T01:03:50.000Z"
     },
     {
       "id": "uk-parliament-776949",
@@ -313,14 +313,14 @@
       "source_api": "https://petition.parliament.uk/petitions/779519.json",
       "status": "open",
       "closing_date": "2027-03-17",
-      "signature_count": 33715,
+      "signature_count": 33717,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-08-13T09:04:39.266Z",
-      "updated_at": "2026-10-17T01:00:50.000Z"
+      "updated_at": "2026-10-17T01:04:30.000Z"
     },
     {
       "id": "uk-parliament-777325",
@@ -334,14 +334,14 @@
       "source_api": "https://petition.parliament.uk/petitions/777325.json",
       "status": "open",
       "closing_date": "2027-02-12",
-      "signature_count": 33038,
+      "signature_count": 33039,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-07-16T16:31:12.907Z",
-      "updated_at": "2026-10-17T00:20:20.000Z"
+      "updated_at": "2026-10-17T01:02:10.000Z"
     },
     {
       "id": "uk-parliament-778453",
@@ -859,14 +859,14 @@
       "source_api": "https://petition.parliament.uk/petitions/779299.json",
       "status": "open",
       "closing_date": "2027-03-14",
-      "signature_count": 15129,
+      "signature_count": 15130,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-08-10T15:35:50.038Z",
-      "updated_at": "2026-10-16T23:14:30.000Z"
+      "updated_at": "2026-10-17T01:02:10.000Z"
     },
     {
       "id": "uk-parliament-766887",
@@ -1363,14 +1363,14 @@
       "source_api": "https://petition.parliament.uk/petitions/766182.json",
       "status": "open",
       "closing_date": "2026-10-30",
-      "signature_count": 10114,
+      "signature_count": 10115,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-04-01T12:39:15.907Z",
-      "updated_at": "2026-10-17T00:37:40.000Z"
+      "updated_at": "2026-10-17T01:07:40.000Z"
     },
     {
       "id": "uk-parliament-766454",
@@ -1426,14 +1426,14 @@
       "source_api": "https://petition.parliament.uk/petitions/776517.json",
       "status": "open",
       "closing_date": "2027-02-11",
-      "signature_count": 9589,
+      "signature_count": 9590,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-07-08T22:38:53.059Z",
-      "updated_at": "2026-10-17T00:51:20.000Z"
+      "updated_at": "2026-10-17T01:03:00.000Z"
     },
     {
       "id": "uk-parliament-779105",
@@ -1447,14 +1447,14 @@
       "source_api": "https://petition.parliament.uk/petitions/779105.json",
       "status": "open",
       "closing_date": "2027-03-09",
-      "signature_count": 9214,
+      "signature_count": 9215,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-08-07T20:32:39.728Z",
-      "updated_at": "2026-10-16T23:09:00.000Z"
+      "updated_at": "2026-10-17T01:05:10.000Z"
     },
     {
       "id": "uk-parliament-771831",
@@ -1615,14 +1615,14 @@
       "source_api": "https://petition.parliament.uk/petitions/782415.json",
       "status": "open",
       "closing_date": "2027-04-14",
-      "signature_count": 7636,
+      "signature_count": 7637,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-19T12:39:44.779Z",
-      "updated_at": "2026-10-17T01:00:40.000Z"
+      "updated_at": "2026-10-17T01:12:00.000Z"
     },
     {
       "id": "uk-parliament-777837",
@@ -1720,14 +1720,14 @@
       "source_api": "https://petition.parliament.uk/petitions/765949.json",
       "status": "open",
       "closing_date": "2026-11-05",
-      "signature_count": 7101,
+      "signature_count": 7103,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-03-30T21:06:53.186Z",
-      "updated_at": "2026-10-17T00:57:40.000Z"
+      "updated_at": "2026-10-17T01:06:50.000Z"
     },
     {
       "id": "uk-parliament-781821",
@@ -1909,14 +1909,14 @@
       "source_api": "https://petition.parliament.uk/petitions/769762.json",
       "status": "open",
       "closing_date": "2026-12-11",
-      "signature_count": 6313,
+      "signature_count": 6325,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-05-12T19:23:10.205Z",
-      "updated_at": "2026-10-17T01:00:50.000Z"
+      "updated_at": "2026-10-17T01:12:10.000Z"
     },
     {
       "id": "uk-parliament-768759",
@@ -2560,14 +2560,14 @@
       "source_api": "https://petition.parliament.uk/petitions/781934.json",
       "status": "open",
       "closing_date": "2027-04-14",
-      "signature_count": 3392,
+      "signature_count": 3393,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-15T04:33:58.770Z",
-      "updated_at": "2026-10-17T00:56:00.000Z"
+      "updated_at": "2026-10-17T01:10:40.000Z"
     },
     {
       "id": "uk-parliament-767906",
@@ -3232,14 +3232,14 @@
       "source_api": "https://petition.parliament.uk/petitions/777145.json",
       "status": "open",
       "closing_date": "2027-02-10",
-      "signature_count": 2390,
+      "signature_count": 2391,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-07-15T15:30:54.026Z",
-      "updated_at": "2026-10-16T16:39:20.000Z"
+      "updated_at": "2026-10-17T01:05:20.000Z"
     },
     {
       "id": "uk-parliament-771352",
@@ -3694,14 +3694,14 @@
       "source_api": "https://petition.parliament.uk/petitions/781751.json",
       "status": "open",
       "closing_date": "2027-04-07",
-      "signature_count": 2064,
+      "signature_count": 2065,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-12T22:28:22.154Z",
-      "updated_at": "2026-10-17T00:45:40.000Z"
+      "updated_at": "2026-10-17T01:03:00.000Z"
     },
     {
       "id": "uk-parliament-773603",
@@ -3988,14 +3988,14 @@
       "source_api": "https://petition.parliament.uk/petitions/781858.json",
       "status": "open",
       "closing_date": "2027-04-08",
-      "signature_count": 1871,
+      "signature_count": 1873,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-14T11:28:18.331Z",
-      "updated_at": "2026-10-17T00:56:40.000Z"
+      "updated_at": "2026-10-17T01:08:30.000Z"
     },
     {
       "id": "uk-parliament-773432",
@@ -5941,14 +5941,14 @@
       "source_api": "https://petition.parliament.uk/petitions/781379.json",
       "status": "open",
       "closing_date": "2027-04-07",
-      "signature_count": 934,
+      "signature_count": 935,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-08T14:10:13.850Z",
-      "updated_at": "2026-10-17T00:24:50.000Z"
+      "updated_at": "2026-10-17T01:05:10.000Z"
     },
     {
       "id": "uk-parliament-779367",
@@ -6277,14 +6277,14 @@
       "source_api": "https://petition.parliament.uk/petitions/773426.json",
       "status": "open",
       "closing_date": "2027-01-29",
-      "signature_count": 873,
+      "signature_count": 874,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-06-16T21:26:21.845Z",
-      "updated_at": "2026-10-16T09:48:00.000Z"
+      "updated_at": "2026-10-17T01:01:30.000Z"
     },
     {
       "id": "uk-parliament-770412",
@@ -9637,14 +9637,14 @@
       "source_api": "https://petition.parliament.uk/petitions/782390.json",
       "status": "open",
       "closing_date": "2027-04-14",
-      "signature_count": 357,
+      "signature_count": 358,
       "eligibility": "british_citizen_or_uk_resident",
       "geography": "GB",
       "signing_channel": "official_hosted_petition",
       "newsletter_opt_in": "choice_on_provider",
       "language": "en",
       "created_at": "2026-09-19T06:47:01.008Z",
-      "updated_at": "2026-10-16T23:19:20.000Z"
+      "updated_at": "2026-10-17T01:03:20.000Z"
     },
     {
       "id": "uk-parliament-781053",
@@ -19202,6 +19202,27 @@
       "updated_at": "2026-10-15T17:59:00.000Z"
     },
     {
+      "id": "uk-parliament-782666",
+      "provider_id": "782666",
+      "source": "UK Parliament Petitions",
+      "title": "Stop charging VAT on fuel duty",
+      "description": "Remove VAT from the fuel-duty element of petrol and diesel prices. We believe a tax should not itself be taxed. Require announcements of fuel-duty changes to clearly state the full VAT-inclusive impact, rather than just the change in duty.",
+      "further_details": "VAT is charged on fuel duty: a tax on a tax. At current rates, removing this would cut the tax on petrol and diesel by 10.59p per litre, allowing the same reduction at the pump if passed on in full. Higher pump prices also mean more VAT per litre. We want relief for households and businesses, not the abolition of all fuel taxes. We believe the Government should exclude fuel duty from VAT and ensure the saving reaches consumers.",
+      "category": "Otros",
+      "url": "https://petition.parliament.uk/petitions/782666",
+      "source_api": "https://petition.parliament.uk/petitions/782666.json",
+      "status": "open",
+      "closing_date": "2027-04-16",
+      "signature_count": 104,
+      "eligibility": "british_citizen_or_uk_resident",
+      "geography": "GB",
+      "signing_channel": "official_hosted_petition",
+      "newsletter_opt_in": "choice_on_provider",
+      "language": "en",
+      "created_at": "2026-09-22T20:52:41.208Z",
+      "updated_at": "2026-10-17T01:06:00.000Z"
+    },
+    {
       "id": "uk-parliament-768732",
       "provider_id": "768732",
       "source": "UK Parliament Petitions",
@@ -19284,27 +19305,6 @@
       "language": "en",
       "created_at": "2026-07-14T15:31:49.433Z",
       "updated_at": "2026-10-06T13:04:00.000Z"
-    },
-    {
-      "id": "uk-parliament-782666",
-      "provider_id": "782666",
-      "source": "UK Parliament Petitions",
-      "title": "Stop charging VAT on fuel duty",
-      "description": "Remove VAT from the fuel-duty element of petrol and diesel prices. We believe a tax should not itself be taxed. Require announcements of fuel-duty changes to clearly state the full VAT-inclusive impact, rather than just the change in duty.",
-      "further_details": "VAT is charged on fuel duty: a tax on a tax. At current rates, removing this would cut the tax on petrol and diesel by 10.59p per litre, allowing the same reduction at the pump if passed on in full. Higher pump prices also mean more VAT per litre. We want relief for households and businesses, not the abolition of all fuel taxes. We believe the Government should exclude fuel duty from VAT and ensure the saving reaches consumers.",
-      "category": "Otros",
-      "url": "https://petition.parliament.uk/petitions/782666",
-      "source_api": "https://petition.parliament.uk/petitions/782666.json",
-      "status": "open",
-      "closing_date": "2027-04-16",
-      "signature_count": 103,
-      "eligibility": "british_citizen_or_uk_resident",
-      "geography": "GB",
-      "signing_channel": "official_hosted_petition",
-      "newsletter_opt_in": "choice_on_provider",
-      "language": "en",
-      "created_at": "2026-09-22T20:52:41.208Z",
-      "updated_at": "2026-10-16T22:56:30.000Z"
     },
     {
       "id": "uk-parliament-767569",
@@ -22919,6 +22919,27 @@
       "updated_at": "2026-10-16T17:02:50.000Z"
     },
     {
+      "id": "uk-parliament-782355",
+      "provider_id": "782355",
+      "source": "UK Parliament Petitions",
+      "title": "Review ADHD and Autism Assessments to Better Recognise Women and Girls",
+      "description": "Review ADHD and autism assessments for women & girls. We believe many tools are based on decades-old research, largely focused on male presentations. Assessments should reflect modern life, current neurodiversity research, masking & how ADHD and autism present differently in women and girls.",
+      "further_details": "We call on the Government to review how ADHD and autism are assessed. The evidence base has historically focused heavily on boys & men, with autism research dating back to the 1940s. Although our understanding has developed, some assessment approaches may still overlook people who mask or camouflage their difficulties. Assessments should reflect current research, modern life & different presentations, including how ADHD & autism may be missed in women and girls.",
+      "category": "Otros",
+      "url": "https://petition.parliament.uk/petitions/782355",
+      "source_api": "https://petition.parliament.uk/petitions/782355.json",
+      "status": "open",
+      "closing_date": "2027-04-15",
+      "signature_count": 76,
+      "eligibility": "british_citizen_or_uk_resident",
+      "geography": "GB",
+      "signing_channel": "official_hosted_petition",
+      "newsletter_opt_in": "choice_on_provider",
+      "language": "en",
+      "created_at": "2026-09-18T16:30:45.547Z",
+      "updated_at": "2026-10-17T01:10:10.000Z"
+    },
+    {
       "id": "uk-parliament-767237",
       "provider_id": "767237",
       "source": "UK Parliament Petitions",
@@ -23085,27 +23106,6 @@
       "language": "en",
       "created_at": "2026-09-10T20:12:16.675Z",
       "updated_at": "2026-10-16T13:12:40.000Z"
-    },
-    {
-      "id": "uk-parliament-782355",
-      "provider_id": "782355",
-      "source": "UK Parliament Petitions",
-      "title": "Review ADHD and Autism Assessments to Better Recognise Women and Girls",
-      "description": "Review ADHD and autism assessments for women & girls. We believe many tools are based on decades-old research, largely focused on male presentations. Assessments should reflect modern life, current neurodiversity research, masking & how ADHD and autism present differently in women and girls.",
-      "further_details": "We call on the Government to review how ADHD and autism are assessed. The evidence base has historically focused heavily on boys & men, with autism research dating back to the 1940s. Although our understanding has developed, some assessment approaches may still overlook people who mask or camouflage their difficulties. Assessments should reflect current research, modern life & different presentations, including how ADHD & autism may be missed in women and girls.",
-      "category": "Otros",
-      "url": "https://petition.parliament.uk/petitions/782355",
-      "source_api": "https://petition.parliament.uk/petitions/782355.json",
-      "status": "open",
-      "closing_date": "2027-04-15",
-      "signature_count": 75,
-      "eligibility": "british_citizen_or_uk_resident",
-      "geography": "GB",
-      "signing_channel": "official_hosted_petition",
-      "newsletter_opt_in": "choice_on_provider",
-      "language": "en",
-      "created_at": "2026-09-18T16:30:45.547Z",
-      "updated_at": "2026-10-17T00:00:30.000Z"
     },
     {
       "id": "uk-parliament-771949",
@@ -29954,6 +29954,27 @@
       "updated_at": "2026-10-16T13:12:30.000Z"
     },
     {
+      "id": "uk-parliament-782352",
+      "provider_id": "782352",
+      "source": "UK Parliament Petitions",
+      "title": "Create new national knife crime prevention strategy to save young lives",
+      "description": "We want the Government to introduce a national knife crime prevention strategy, including harsher sentences, education in schools & prisons, youth services & early intervention, a confidential support helpline, & safe guidance for people who want to surrender knives before they are used.",
+      "further_details": "No parent should have to watch their child face a future devastated by a knife attack. I am asking Parliament to act before another family gets that phone call: educate young people about knife crime, invest in youth support and early intervention, strengthen rehabilitation, and give people a safe way to ask for help and walk away from violence.",
+      "category": "Educación",
+      "url": "https://petition.parliament.uk/petitions/782352",
+      "source_api": "https://petition.parliament.uk/petitions/782352.json",
+      "status": "open",
+      "closing_date": "2027-04-15",
+      "signature_count": 45,
+      "eligibility": "british_citizen_or_uk_resident",
+      "geography": "GB",
+      "signing_channel": "official_hosted_petition",
+      "newsletter_opt_in": "choice_on_provider",
+      "language": "en",
+      "created_at": "2026-09-18T16:08:40.922Z",
+      "updated_at": "2026-10-17T01:04:30.000Z"
+    },
+    {
       "id": "uk-parliament-766876",
       "provider_id": "766876",
       "source": "UK Parliament Petitions",
@@ -30267,27 +30288,6 @@
       "language": "en",
       "created_at": "2026-08-16T15:00:49.084Z",
       "updated_at": "2026-09-17T12:53:40.000Z"
-    },
-    {
-      "id": "uk-parliament-782352",
-      "provider_id": "782352",
-      "source": "UK Parliament Petitions",
-      "title": "Create new national knife crime prevention strategy to save young lives",
-      "description": "We want the Government to introduce a national knife crime prevention strategy, including harsher sentences, education in schools & prisons, youth services & early intervention, a confidential support helpline, & safe guidance for people who want to surrender knives before they are used.",
-      "further_details": "No parent should have to watch their child face a future devastated by a knife attack. I am asking Parliament to act before another family gets that phone call: educate young people about knife crime, invest in youth support and early intervention, strengthen rehabilitation, and give people a safe way to ask for help and walk away from violence.",
-      "category": "Educación",
-      "url": "https://petition.parliament.uk/petitions/782352",
-      "source_api": "https://petition.parliament.uk/petitions/782352.json",
-      "status": "open",
-      "closing_date": "2027-04-15",
-      "signature_count": 44,
-      "eligibility": "british_citizen_or_uk_resident",
-      "geography": "GB",
-      "signing_channel": "official_hosted_petition",
-      "newsletter_opt_in": "choice_on_provider",
-      "language": "en",
-      "created_at": "2026-09-18T16:08:40.922Z",
-      "updated_at": "2026-10-16T21:17:50.000Z"
     },
     {
       "id": "uk-parliament-765302",
