@@ -9,7 +9,9 @@ test("static pilot provides cause selection without storing signers",async()=>{
  assert.match(html,/function widgetHTML/);
  assert.match(html,/iframe/);
  assert.match(html,/sandbox/);
- assert.doesNotMatch(html,/localStorage\.setItem|sessionStorage\.setItem/);
+ assert.doesNotMatch(html,/localStorage\.setItem/);
+ assert.match(html,/sessionStorage\.setItem\("ungesto_action_flow"/);
+ assert.doesNotMatch(html,/sessionStorage\.setItem\(["\x27](?:name|email|message|fullName)/i);
  assert.doesNotMatch(html,/fetch\(\s*["']\/_api\/endorsements/);
 });
 test("static pilot prohibits foreign-domain embedded widgets",async()=>{
