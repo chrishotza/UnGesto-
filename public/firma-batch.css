@@ -47,3 +47,17 @@
  .receipt-dialog{padding:20px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Referral links carry cause IDs only; the visitor opts in explicitly. */
+.share-line{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.share-line button{padding:6px 0;border:0;background:transparent;font-size:11px;font-weight:800;color:#347753}
+.share-line button:disabled{color:#a5b6aa}
+.share-line span{font-size:10px;color:#418c59;line-height:1.5}
+.shared-offer[hidden]{display:none}
+.shared-offer{display:flex;align-items:center;gap:15px;border:1px solid #c7dfca;background:#eaf6e9;border-radius:14px;padding:15px 18px;margin:0 0 24px}
+.shared-offer-icon{display:grid;place-items:center;width:39px;height:39px;border-radius:12px;color:#38835a;background:#d7ecd7;font-size:24px;flex-shrink:0}
+.shared-offer>div{flex:1;min-width:0}.shared-offer strong{font-size:13px;color:#356948}.shared-offer p{font-size:11px;color:#749079;line-height:1.55;margin:4px 0 0}
+.shared-offer button{flex-shrink:0;border:0;border-radius:9px;background:#236d4a;color:#fff;padding:12px 15px;font-size:11px;font-weight:800}
+.shared-offer .dismiss-shared{background:transparent;color:#6c8a70;padding:7px;font-size:21px;font-weight:500}
+.cause-row.suggested{outline:1px solid #a0cbab;outline-offset:-1px}
+@media(max-width:700px){.shared-offer{align-items:flex-start;flex-wrap:wrap}.shared-offer>div{flex-basis:75%}.shared-offer button:not(.dismiss-shared){margin-left:52px}.shared-offer .dismiss-shared{margin-left:auto}}

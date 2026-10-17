@@ -52,3 +52,9 @@ La biblioteca general ofrece descubrimiento de otras peticiones con fuentes y re
 Seguiremos construyendo conexiones que puedan demostrar esa recepción. No llamaremos «entregado» a nada que todavía no lo esté.
 
 Código abierto e independiente. Última actualización: octubre de 2026.
+
+## Compartir causas sin compartir datos personales
+
+Una persona que selecciona varias causas puede generar un enlace con **solo los IDs públicos** de esas campañas. Al abrirlo, otra persona ve cuáles se le sugieren y puede elegir explícitamente apoyarlas. **No se marcan casillas por defecto**, ni se incluyen nombre, email, mensaje o token de revocación en el enlace.
+
+Esta función facilita que voluntarios compartan causas relevantes sin convertir UnGesto en una base de contactos ni falsificar firmas. El registro de las causas elegidas sigue dependiendo de una única autorización voluntaria del firmante y no acredita su entrega a las ONG.

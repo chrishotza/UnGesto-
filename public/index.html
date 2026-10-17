@@ -39,6 +39,12 @@
 </section>
 <main class="wrap workspace" id="causas">
  <div class="workspace-top"><div><span class="eyebrow subtle">ENCONTRÁ TU CAUSA</span><h2>¿Qué te gustaría <em>cambiar?</em></h2><p>Explorá la biblioteca o elegí causas conectadas para registrarlas con una sola firma.</p></div><div class="selection-count"><strong id="countTop">0</strong><span>seleccionadas</span></div></div>
+ <div id="sharedOffer" class="shared-offer" hidden>
+ <span class="shared-offer-icon" aria-hidden="true">✳</span>
+ <div><strong>Alguien te compartió una selección de causas.</strong><p id="sharedOfferText">Podés verlas y decidir libremente si querés apoyarlas.</p></div>
+ <button id="chooseShared" type="button">Elegir estas causas</button>
+ <button id="dismissShared" type="button" aria-label="Ocultar sugerencias" class="dismiss-shared">×</button>
+</div>
  <div class="workspace-columns">
   <section class="explorer" id="causeSection" aria-labelledby="catalogHeading">
    <h3 id="catalogHeading" class="sr-only">Catálogo de causas</h3>
@@ -57,6 +63,7 @@
     <p class="sign-intro">Para todas las causas conectadas que elijas. Sin repetir nada.</p>
     <div class="signed-choice"><div><strong id="countForm">0</strong><span>causas seleccionadas</span></div><a href="#causas">Editar <span aria-hidden="true">↗</span></a></div>
     <div id="selectedPreview" class="selected-preview" aria-live="polite"><span>Elegí una causa para empezar.</span></div>
+    <div class="share-line"><button id="shareSelection" type="button" disabled>Compartir estas causas ↗</button><span id="shareStatus" role="status" aria-live="polite"></span></div>
     <div class="field-group"><label for="signerName">Nombre y apellido</label><input id="signerName" name="name" type="text" autocomplete="name" minlength="3" maxlength="120" required placeholder="¿Cómo te llamás?"></div>
     <div class="field-group"><label for="signerEmail">Correo electrónico</label><input id="signerEmail" name="email" type="email" autocomplete="email" maxlength="254" required placeholder="tu@email.com"></div>
     <details class="extras"><summary>Agregar país o mensaje <span aria-hidden="true">＋</span></summary><div class="field-group"><label for="signerCountry">País (opcional)</label><input id="signerCountry" name="country" type="text" maxlength="80" autocomplete="country-name" placeholder="Argentina"></div><div class="field-group"><label for="signerMessage">Mensaje compartido (opcional)</label><textarea id="signerMessage" name="message" maxlength="1000" rows="3" placeholder="Quiero apoyar estas causas porque…"></textarea></div></details>

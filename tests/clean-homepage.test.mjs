@@ -65,3 +65,17 @@ test("receipt history is recoverable on the same device and revocable without cl
  assert.match(js,/api\/revocar/);
  assert.match(html,/no constituye todavía una firma aceptada por las organizaciones externas/i);
 });
+
+test("shareable selections transfer only public cause IDs, never user identity or consent",async()=>{
+ const html=await read("../public/index.html");
+ const js=await read("../public/firma-batch.js");
+ assert.match(html,/id="shareSelection"/);
+ assert.match(html,/id="sharedOffer"/);
+ assert.match(js,/function initSharedProposal\(\)/);
+ assert.match(js,/function shareSelection\(\)/);
+ assert.match(js,/u\.searchParams\.set\("propuesta",\[\.\.\.selected\]\.join\(","\)\)/);
+ assert.match(js,/if\(connected\.has\(id\)\)sharedIds\.add\(id\)/);
+ assert.match(js,/Ninguna está preseleccionada/);
+ assert.match(js,/\$\("chooseShared"\)\.addEventListener\("click"/);
+ assert.doesNotMatch(js,/searchParams\.set\("(?:email|name|consent|message|receiptToken)"/);
+});

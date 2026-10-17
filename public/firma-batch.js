@@ -2,7 +2,7 @@
 "use strict";
 const $=id=>document.getElementById(id);
 const API=location.hostname==="ungesto-firma-batch.onrender.com"?"":"https://ungesto-firma-batch.onrender.com";
-const selected=new Set(),connected=new Map(),sourceById=new Map();
+const selected=new Set(),connected=new Map(),sourceById=new Map(),sharedIds=new Set();
 const icons={"Animales":"♡","Bosques":"♧","Clima":"✳","Océanos":"≈","Salud":"✚","Derechos humanos":"⚖","Educación":"✎","Ambiente":"✳","Vivienda":"⌂","Transporte":"↗","Otros":"◌"};
 let all=[],filtered=[],mode=new URLSearchParams(location.search).get("vista")==="firmables"?"connected":"all",shown=0,receipt=null,busy=false;
 const receiptKey="ungesto_batch_receipts_v1";
@@ -32,6 +32,7 @@ function countSelected(){
  }
  $("mobileBar").hidden=count===0;
  $("mobileBarCount").textContent=count+(count===1?" causa elegida":" causas elegidas");
+ $("shareSelection").disabled=count===0;
 }
 function selectCause(id,checked){
  if(!connected.has(id))return;
@@ -46,6 +47,7 @@ function selectCause(id,checked){
 function causeCard(c){
  const row=$el("article","cause-row");row.dataset.causeId=c.id;
  if(selected.has(c.id))row.classList.add("selected");
+ if(sharedIds.has(c.id))row.classList.add("suggested");
  if(c.kind==="connected"){
   const cb=document.createElement("input");cb.type="checkbox";cb.className="cause-check";cb.checked=selected.has(c.id);cb.setAttribute("aria-label","Apoyar: "+c.title);
   cb.addEventListener("change",()=>selectCause(c.id,cb.checked));row.append(cb);
@@ -55,6 +57,7 @@ function causeCard(c){
  row.append($el("span","cause-icon",itemIcon(c)));
  const body=$el("div","cause-info"),top=$el("div","cause-topline");
  top.append($el("span","cause-provider",c.organization||c.source||"Parlamento británico"));
+ if(sharedIds.has(c.id))top.append($el("span","cause-tag","Compartida"));
  const status=c.kind==="connected"?"Firma única":c.geography==="GB"?"Solo residentes o ciudadanos UK":"Firma en el origen";
  top.append($el("span","cause-tag"+(c.kind==="connected"?"":" waiting"),status));
  body.append(top,$el("h4","",c.title),$el("p","",c.summary||"Consultá el texto original de esta petición."));
@@ -191,12 +194,46 @@ function renderHistory(){
   actions.append(status,button);row.append(actions);list.append(row);
  }
 }
+function initSharedProposal(){
+ // IDs are public catalog keys. They are not identity, consent or signatures.
+ const raw=new URLSearchParams(location.search).get("propuesta");
+ if(!raw||raw.length>2000)return;
+ const ids=[...new Set(raw.split(","))];
+ for(const id of ids.slice(0,20))if(connected.has(id))sharedIds.add(id);
+ if(!sharedIds.size)return;
+ const n=sharedIds.size;
+ $("sharedOffer").hidden=false;
+ $("sharedOfferText").textContent="Te sugirieron "+n+(n===1?" causa.":" causas.")+" Ninguna está preseleccionada: vos decidís cuáles apoyar.";
+ $("chooseShared").textContent="Elegir "+n+(n===1?" causa":" causas");
+}
+async function shareSelection(){
+ if(!selected.size)return;
+ const u=new URL(location.pathname,location.origin);
+ u.searchParams.set("propuesta",[...selected].join(","));
+ u.hash="causas";
+ const message="Estas son las causas que elegí en UnGesto. Podés revisarlas y decidir cuáles apoyar. No hay suscripciones ni donaciones obligatorias.";
+ try{
+  if(navigator.share && matchMedia("(pointer:coarse)").matches){
+   await navigator.share({title:"Causas para apoyar · UnGesto",text:message,url:u.href});
+   $("shareStatus").textContent="Selección compartida.";
+  }else{
+   await navigator.clipboard.writeText(message+"\n"+u.href);
+   $("shareStatus").textContent="Enlace copiado. Podés enviarlo a quien quieras.";
+  }
+ }catch(err){
+  if(err?.name==="AbortError")return;
+  $("shareStatus").textContent="No se pudo compartir desde este navegador.";
+ }
+}
 async function init(){
  for(const button of document.querySelectorAll("[data-mode]"))button.classList.toggle("active",button.dataset.mode===mode);
  $("receiptHistoryOpen").addEventListener("click",()=>{renderHistory();$("receiptDialog").showModal();});
  $("receiptHistoryClose").addEventListener("click",()=>$("receiptDialog").close());
  $("receiptDialog").addEventListener("click",e=>{if(e.target===$("receiptDialog"))$("receiptDialog").close();});
  $("mobileToForm").addEventListener("click",()=>$("signPanel").scrollIntoView({behavior:"smooth",block:"start"}));
+ $("shareSelection").addEventListener("click",shareSelection);
+ $("chooseShared").addEventListener("click",()=>{for(const id of sharedIds)selected.add(id);countSelected();filterCatalog();$("signPanel").scrollIntoView({behavior:"smooth",block:"start"});});
+ $("dismissShared").addEventListener("click",()=>{$("sharedOffer").hidden=true;});
  updateHistoryBadge();
  $("signForm").addEventListener("submit",submit);
  $("signAgain").addEventListener("click",reset);$("revoke").addEventListener("click",revoke);
@@ -216,6 +253,7 @@ async function init(){
   const r=await fetch("/operable-causes.json",{cache:"no-store"});if(!r.ok)throw new Error("No se pudieron cargar las causas");
   const manifest=await r.json();if(!Array.isArray(manifest.causes)||manifest.causes.length!==20)throw new Error("El catálogo firmable no está listo");
   for(const c of manifest.causes)connected.set(c.id,c);
+  initSharedProposal();
   all=manifest.causes.map(c=>decorated({...c,category:c.category||"Otros"}));
   countSelected();renderCats();filterCatalog();
   Promise.all([
@@ -236,6 +274,7 @@ async function init(){
     }
    }
    all=[...manifest.causes.map(c=>decorated(c)),...sourceById.values()];
+   if(sharedIds.size)all.sort((a,b)=>Number(sharedIds.has(b.id))-Number(sharedIds.has(a.id)));
    $("metricCatalog").textContent=all.length.toLocaleString("es-AR");
    $("tabAll").textContent=all.length.toLocaleString("es-AR");
    $("tabConnected").textContent=connected.size;
