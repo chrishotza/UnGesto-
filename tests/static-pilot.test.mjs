@@ -61,3 +61,12 @@ test("Rainforest Rescue selected campaigns can be combined in one addressed lett
  assert.match(s,/Please do not add me to any mailing lists or newsletters/);
  assert.match(s,/Es una comunicación directa a la organización, no una firma registrada/);
 });
+
+test("Greenpeace bundled letter only includes explicitly selected causes",async()=>{
+ const c=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
+ assert.equal(c.causes.filter(x=>x.organization==="Greenpeace Internacional").length,3);
+ const page=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ assert.match(page,/function greenpeaceSelected\(\)/);
+ assert.match(page,/mailto:info\.int@greenpeace\.org/);
+ assert.match(page,/Please do not add me to any newsletters/);
+});

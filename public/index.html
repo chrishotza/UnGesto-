@@ -70,6 +70,16 @@ footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
  </div>
  <small>Es una comunicación directa a la organización, no una firma registrada en su contador. Tu correo sólo se envía cuando presionás «Enviar» en tu aplicación.</small>
 </div>
+<div id="greenpeaceGroup" class="directDelivery" hidden>
+ <strong>Una sola carta para tus campañas de Greenpeace</strong>
+ <p id="greenpeaceCount"></p>
+ <p>Esta carta reúne únicamente las causas de Greenpeace Internacional que marcaste. Podés enviarla a su email público general. No se crea ninguna lista de correo desde UnGesto.</p>
+ <p><b>Destinatario:</b> info.int@greenpeace.org</p>
+ <div class="buttons"><a id="greenpeaceCompose" class="directAction" rel="noopener">Preparar correo con mis apoyos ↗</a>
+ <button id="copyGreenpeaceLetter" type="button" class="copy">Copiar carta completa</button>
+ <a class="sourceInfo" target="_blank" rel="noopener noreferrer" href="https://www.greenpeace.org/international/about/worldwide/">Ver contacto oficial ↗</a></div>
+ <small>Esta carta llega al buzón de Greenpeace solo cuando la enviás desde tu correo. No es un voto confirmado en las peticiones de Greenpeace.</small>
+</div>
 <div class="privacy"><label><input id="consent" type="checkbox"><span>Quiero abrir el formulario oficial de esta causa. El proveedor indicado procesará los datos que introduzca y puede solicitar una confirmación de correo. No deseo suscripciones publicitarias opcionales.</span></label></div>
 <div class="buttons"><button id="load" disabled>Mostrar formulario oficial</button><a id="officialLink" target="_blank" rel="noopener noreferrer">Abrir petición original ↗</a></div>
 <div id="provider" class="provider" hidden></div>
@@ -171,6 +181,28 @@ function fullRainforestLetter(){
   email?"Contact email (if desired): "+email:""
  ].filter(Boolean).join("\n");
 }
+function greenpeaceSelected(){return flow.filter(p=>p.organization==="Greenpeace Internacional");}
+function fullGreenpeaceLetter(){
+ const causes=greenpeaceSelected(),name=byId("fullName").value.trim(),email=byId("email").value.trim(),extra=byId("message").value.trim();
+ const lines=causes.map((p,i)=>(i+1)+". "+p.title+"\nI support this request: "+p.statement+"\nOriginal action: "+p.source);
+ return ["Dear Greenpeace International team,",
+  "",
+  "I voluntarily support the "+causes.length+" campaign(s) I have explicitly selected below. This is my personal statement and I ask that it be forwarded to the relevant campaign teams. Please do not add me to any newsletters, marketing lists or recurring outreach.",
+  "",
+  ...lines.flatMap(x=>[x,""]),
+  extra?"My additional note:\n"+extra:"", "",
+  "Sincerely,",name||"[Your name]",email?"Contact email (optional): "+email:""
+ ].filter(Boolean).join("\n");
+}
+function refreshGreenpeaceLink(){
+ const causes=greenpeaceSelected(),box=byId("greenpeaceGroup");
+ box.hidden=!causes.length;if(!causes.length)return;
+ byId("greenpeaceCount").textContent=causes.length+" declaraciones seleccionadas, un solo destinatario.";
+ const subj="UnGesto: my support for "+causes.length+" selected Greenpeace campaigns";
+ byId("greenpeaceCompose").href="mailto:info.int@greenpeace.org?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(fullGreenpeaceLetter());
+}
+byId("greenpeaceCompose").addEventListener("click",refreshGreenpeaceLink);
+byId("copyGreenpeaceLetter").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fullGreenpeaceLetter());byId("copyGreenpeaceLetter").textContent="Carta copiada ✓"}catch{byId("copyGreenpeaceLetter").textContent="Copiala manualmente"}});
 function refreshGroupLink(){
  const campaigns=rainforestSelected(); const box=byId("groupLetter");
  box.hidden=campaigns.length===0;if(!campaigns.length)return;
@@ -181,7 +213,7 @@ function refreshGroupLink(){
 byId("groupCompose").addEventListener("click",refreshGroupLink);
 byId("copyGroupLetter").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fullRainforestLetter());byId("copyGroupLetter").textContent="Carta copiada ✓"}catch{byId("copyGroupLetter").textContent="Copiala manualmente"}});
 function refreshDirectLink(){
- refreshGroupLink(); const p=flow[cursor],v=directByCause[p.id],box=byId("directDelivery");
+ refreshGroupLink();refreshGreenpeaceLink(); const p=flow[cursor],v=directByCause[p.id],box=byId("directDelivery");
  box.hidden=!v; if(!v)return;
  byId("directAgency").textContent="Organismo: "+v.agency;
  byId("directContact").textContent="Destinatario: "+v.recipient;
