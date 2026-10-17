@@ -14,7 +14,7 @@
 <div class="site">
 <nav class="nav wrap" aria-label="Navegación">
  <a href="/" class="brand" aria-label="UnGesto — inicio"><span class="brand-mark" aria-hidden="true">✳</span> ungesto<span class="brand-dot">.</span></a>
- <div class="nav-side"><a href="/manifiesto.html" class="nav-text">Nuestra propuesta</a><a class="nav-pill" href="#causas">Explorar causas <span aria-hidden="true">↗</span></a></div>
+ <div class="nav-side"><button id="receiptHistoryOpen" type="button" class="receipt-history-open">Mis comprobantes <span id="receiptHistoryCount"></span></button><a href="/manifiesto.html" class="nav-text">Nuestra propuesta</a><a class="nav-pill" href="#causas">Explorar causas <span aria-hidden="true">↗</span></a></div>
 </nav>
 <header class="hero wrap">
  <div class="hero-left">
@@ -78,6 +78,13 @@
  <div class="receipt-buttons"><button id="copyReceipt" type="button">Copiar comprobante</button><button id="signAgain" type="button">Apoyar otras causas</button><button id="revoke" type="button" class="danger">Eliminar registro</button></div>
  <p id="revokeStatus" role="status"></p>
 </section>
+<dialog id="receiptDialog" class="receipt-dialog" aria-labelledby="receiptDialogTitle">
+ <div class="receipt-dialog-head"><div><span class="eyebrow subtle">TUS REGISTROS</span><h2 id="receiptDialogTitle">Mis comprobantes</h2></div><button type="button" class="close-dialog" id="receiptHistoryClose" aria-label="Cerrar">×</button></div>
+ <p class="receipt-dialog-intro">Estos comprobantes están guardados <strong>solo en este navegador</strong>. Cada uno acredita adhesiones registradas dentro de UnGesto, no firmas recibidas por organizaciones externas. Podés revocarlos cuando quieras.</p>
+ <div id="receiptHistoryList" class="receipt-history-list"></div>
+ <p class="receipt-dialog-foot">Si cambiás de dispositivo o borrás los datos del navegador, esta lista dejará de estar disponible. Nunca compartas tu token privado de revocación.</p>
+</dialog>
+<div class="mobile-bar" id="mobileBar" hidden><span id="mobileBarCount">0 causas elegidas</span><button id="mobileToForm" type="button">Ir a mi firma <span aria-hidden="true">↗</span></button></div>
 <footer class="footer wrap"><div><a href="/" class="brand"><span class="brand-mark" aria-hidden="true">✳</span> ungesto<span class="brand-dot">.</span></a><p>Hay mucho por cambiar. Se empieza por un gesto.</p></div><div><a href="/manifiesto.html">Nuestro propósito</a><a href="/?vista=biblioteca#causas">Fuentes originales</a><span>Hecho para sumar, no para molestar.</span></div></footer>
 </div>
 </body>

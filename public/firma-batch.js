@@ -19,10 +19,19 @@ function countSelected(){
  $("signButton").disabled=count===0||busy;
  $("signButton").textContent=busy?"Registrando tu gesto…":count?"Registrar mi apoyo a "+count+(count===1?" causa":" causas"):"Seleccioná una causa para continuar";
  const preview=$("selectedPreview");preview.replaceChildren();
- if(!count){preview.append($el("span","","Elegí una causa para empezar."));return}
- const choices=[...selected].map(id=>connected.get(id)).filter(Boolean);
- for(const c of choices.slice(0,3))preview.append($el("span","selected-chip",c.title));
- if(count>3)preview.append($el("span","selected-extra","+"+(count-3)+" más"));
+ if(!count){preview.append($el("span","","Elegí una causa para empezar."))}
+ else{
+  for(const id of selected){
+   const c=connected.get(id);if(!c)continue;
+   const chip=$el("button","selected-chip-btn");
+   chip.type="button";chip.setAttribute("aria-label","Quitar "+c.title+" de mi selección");
+   chip.append($el("span","",c.title),$el("span","remove-symbol","×"));
+   chip.addEventListener("click",()=>selectCause(id,false));
+   preview.append(chip);
+  }
+ }
+ $("mobileBar").hidden=count===0;
+ $("mobileBarCount").textContent=count+(count===1?" causa elegida":" causas elegidas");
 }
 function selectCause(id,checked){
  if(!connected.has(id))return;
@@ -73,9 +82,10 @@ function causeCard(c){
  return row;
 }
 function filterCatalog(reset=true){
- const query=$("search").value.trim().toLocaleLowerCase("es");
+ const normalize=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+ const query=normalize($("search").value.trim());
  const cat=$("category").value;
- filtered=all.filter(c=>(mode==="all"||c.kind==="connected")&&(!cat||c.category===cat)&&(!query||[c.title,c.summary,c.organization,c.category].some(v=>String(v||"").toLocaleLowerCase("es").includes(query))));
+ filtered=all.filter(c=>(mode==="all"||c.kind==="connected")&&(!cat||c.category===cat)&&(!query||[c.title,c.summary,c.organization,c.category].some(v=>normalize(v).includes(query))));
  if(reset){shown=0;$("causes").replaceChildren();}
  const end=Math.min(filtered.length,shown+12);
  const fragment=document.createDocumentFragment();
@@ -83,6 +93,9 @@ function filterCatalog(reset=true){
  $("causes").append(fragment);shown=end;
  $("more").hidden=shown===filtered.length;
  $("visibleCount").textContent=filtered.length.toLocaleString("es-AR")+" causas"+(mode==="all"?" documentadas":" para firma única");
+ const eligible=filtered.filter(c=>c.kind==="connected").length;
+ $("selectAll").disabled=eligible===0;
+ $("selectAll").textContent=eligible?"Elegir "+eligible+(eligible===1?" firmable":" firmables"):"Sin firmas únicas disponibles";
  if(!filtered.length){const blank=$el("div","library-note","No encontramos causas con esos filtros. Probá otra búsqueda.");$("causes").append(blank)}
 }
 function renderCats(){
@@ -110,7 +123,7 @@ async function submit(e){
   if(!data.receiptId||!/^[a-f0-9]{64}$/.test(data.receiptToken||"")||deliveredIds.size!==ids.length||ids.some(id=>!deliveredIds.has(id)))throw new Error("El comprobante no corresponde a todas las causas.");
   receipt={receiptId:data.receiptId,receiptToken:data.receiptToken,causes:ids,date:new Date().toISOString()};
   try{const previous=JSON.parse(localStorage.getItem(receiptKey)||"[]");localStorage.setItem(receiptKey,JSON.stringify([receipt,...previous].slice(0,20)))}catch{}
-  showSuccess();
+  updateHistoryBadge();showSuccess();
  }catch(err){$("feedback").textContent=err instanceof Error?err.message:"No pudimos completar el registro."}
  finally{lock(false)}
 }
@@ -136,12 +149,55 @@ async function revoke(){
   const r=await fetch(API+"/api/revocar",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({receiptToken:receipt.receiptToken})});
   const d=await r.json();if(!r.ok||!d.revoked)throw new Error(d.error||"No pudimos confirmar la eliminación");
   try{const all=JSON.parse(localStorage.getItem(receiptKey)||"[]");localStorage.setItem(receiptKey,JSON.stringify(all.filter(x=>x.receiptId!==receipt.receiptId)))}catch{}
-  $("revokeStatus").textContent="Tu registro fue eliminado.";$("revoke").hidden=true;
+  $("revokeStatus").textContent="Tu registro fue eliminado.";$("revoke").hidden=true;updateHistoryBadge();
  }catch(err){$("revokeStatus").textContent=err instanceof Error?err.message:"No pudimos completar la eliminación."}
  finally{$("revoke").disabled=false}
 }
+function readReceiptHistory(){
+ try{
+  const items=JSON.parse(localStorage.getItem(receiptKey)||"[]");
+  if(!Array.isArray(items))return [];
+  return items.filter(x=>x&&typeof x.receiptId==="string"&&typeof x.receiptToken==="string"&&/^[a-f0-9]{64}$/.test(x.receiptToken)&&Array.isArray(x.causes)&&x.causes.length>=1&&x.causes.length<=20).slice(0,20);
+ }catch{return []}
+}
+function updateHistoryBadge(){
+ const n=readReceiptHistory().length;
+ $("receiptHistoryCount").textContent=n?n.toString():"";
+}
+function renderHistory(){
+ const list=$("receiptHistoryList");list.replaceChildren();
+ const items=readReceiptHistory();
+ if(!items.length){list.append($el("p","receipt-dialog-intro","Todavía no tenés comprobantes guardados en este dispositivo."));return;}
+ for(const item of items){
+  const row=$el("article","receipt-history-item");
+  row.append($el("strong","","Registro #"+item.receiptId));
+  const date=Date.parse(item.date);
+  row.append($el("small","",item.causes.length+" causas · "+(Number.isFinite(date)?new Date(date).toLocaleString("es-AR"):"Fecha no disponible")));
+  const actions=$el("div","receipt-history-actions"),status=$el("span","history-status"),button=$el("button","","Eliminar registro");
+  button.type="button";
+  button.setAttribute("aria-label","Eliminar registro "+item.receiptId);
+  button.addEventListener("click",async()=>{
+   if(!window.confirm("¿Eliminar este registro de UnGesto? Esto no elimina posibles firmas en las plataformas externas."))return;
+   button.disabled=true;status.textContent="Comprobando…";
+   try{
+    const response=await fetch(API+"/api/revocar",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({receiptToken:item.receiptToken})});
+    const data=await response.json();
+    if(!response.ok||!data.revoked)throw new Error(data.error||"No pudimos confirmar la eliminación");
+    localStorage.setItem(receiptKey,JSON.stringify(readReceiptHistory().filter(x=>x.receiptId!==item.receiptId)));
+    if(receipt&&receipt.receiptId===item.receiptId){$("revoke").hidden=true;$("revokeStatus").textContent="Tu registro fue eliminado.";}
+    renderHistory();updateHistoryBadge();
+   }catch(err){status.textContent=err instanceof Error?err.message:"No pudimos revocar el registro";button.disabled=false;}
+  });
+  actions.append(status,button);row.append(actions);list.append(row);
+ }
+}
 async function init(){
  for(const button of document.querySelectorAll("[data-mode]"))button.classList.toggle("active",button.dataset.mode===mode);
+ $("receiptHistoryOpen").addEventListener("click",()=>{renderHistory();$("receiptDialog").showModal();});
+ $("receiptHistoryClose").addEventListener("click",()=>$("receiptDialog").close());
+ $("receiptDialog").addEventListener("click",e=>{if(e.target===$("receiptDialog"))$("receiptDialog").close();});
+ $("mobileToForm").addEventListener("click",()=>$("signPanel").scrollIntoView({behavior:"smooth",block:"start"}));
+ updateHistoryBadge();
  $("signForm").addEventListener("submit",submit);
  $("signAgain").addEventListener("click",reset);$("revoke").addEventListener("click",revoke);
  $("copyReceipt").addEventListener("click",async()=>{

@@ -45,3 +45,23 @@ test("the legacy library link returns to the clean integrated explorer",async()=
  assert.match(js,/get\("vista"\)===\x22firmables\x22/);
  assert.doesNotMatch(page,/id="actionNetworkPanel"/);
 });
+
+test("selected causes can be removed individually without a second signing action",async()=>{
+ const html=await read("../public/index.html");
+ const js=await read("../public/firma-batch.js");
+ assert.match(html,/id="selectedPreview"/);
+ assert.match(html,/id="mobileBar"/);
+ assert.match(js,/Quitar .* de mi selección/);
+ assert.match(js,/chip\.addEventListener\("click",\(\)=>selectCause\(id,false\)\)/);
+ assert.equal((js.match(/fetch\(API\+"\/api\/firmar"/g)||[]).length,1);
+});
+test("receipt history is recoverable on the same device and revocable without claiming external delivery",async()=>{
+ const html=await read("../public/index.html");
+ const js=await read("../public/firma-batch.js");
+ assert.match(html,/id="receiptHistoryOpen"/);
+ assert.match(html,/id="receiptDialog"/);
+ assert.match(js,/function readReceiptHistory\(\)/);
+ assert.match(js,/function renderHistory\(\)/);
+ assert.match(js,/api\/revocar/);
+ assert.match(html,/no firmas recibidas/i);
+});
