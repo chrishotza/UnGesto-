@@ -1,0 +1,58 @@
+name: Build massive petition catalog
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '8 5 * * *'
+  push:
+    paths:
+      - 'scripts/import-uk-petitions.mjs'
+      - 'scripts/build-catalog-db.py'
+      - '.github/workflows/mass-catalog.yml'
+permissions:
+  contents: write
+concurrency:
+  group: ungesto-mass-catalog
+  cancel-in-progress: false
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check importer and database contracts
+        run: node --test tests/uk-import.test.mjs
+      - name: Import public petitions from the Parliament API
+        run: node scripts/import-uk-petitions.mjs
+      - name: Build searchable SQLite database
+        run: python scripts/build-catalog-db.py
+      - name: Verify generated data
+        run: |
+          python - <<'PY'
+          import json, sqlite3
+          from pathlib import Path
+          root=Path('public/data')
+          data=json.loads((root/'uk-petitions.json').read_text())['records']
+          assert len(data)>0
+          assert all(x['eligibility']=='british_citizen_or_uk_resident' for x in data)
+          db=sqlite3.connect(root/'ungesto-catalog.sqlite')
+          count=db.execute('SELECT COUNT(*) FROM campaigns').fetchone()[0]
+          assert count==len(data)+34,(count,len(data))
+          print('Verified:',count,'catalog records; ',len(data),'official UK records')
+          PY
+      - name: Commit verified catalog data to GitHub
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data/uk-petitions.json public/data/catalog-stats.json public/data/ungesto-catalog.sqlite
+          if ! git diff --cached --quiet; then
+            git commit -m 'data: refresh official petition catalog and SQLite index [skip ci]'
+            git push
+          fi
+      - name: Report the catalog summary
+        run: cat public/data/catalog-stats.json >> "$GITHUB_STEP_SUMMARY"
