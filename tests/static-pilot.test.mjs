@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
 test("static pilot provides cause selection without storing signers",async()=>{
- const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const html=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  assert.match(html,/id="cards"/);
  assert.match(html,/id="consent"/);
  assert.match(html,/id="officialLink"/);
@@ -22,13 +22,13 @@ test("static pilot prohibits foreign-domain embedded widgets",async()=>{
 
 import {Script} from "node:vm";
 test("pilot includes the exact 24 source URLs of its consent catalog",async()=>{
- const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const html=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  const catalog=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
  assert.equal(catalog.causes.length,34);
  for(const c of catalog.causes)assert.ok(html.includes(JSON.stringify(c.id)));
 });
 test("public pilot inline JS is parseable",async()=>{
- const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const html=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  const match=html.match(/<script>([\s\S]*?)<\/script>/);
  assert.ok(match);
  assert.doesNotThrow(()=>new Script(match[1]));
@@ -47,14 +47,14 @@ test("only allowlisted real agency contacts are published",async()=>{
  }
 });
 test("direct advocacy is opt-in via mail client and never marked sent by this site",async()=>{
- const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const html=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  assert.match(html,/draftLetter\(p,v\)/);assert.match(html,/mailto:/);
  assert.match(html,/El envío debe confirmarse/);
  assert.doesNotMatch(html,/fetch\([^)]*directSend[^)]*method\s*:\s*["']POST/);
 });
 
 test("Rainforest Rescue selected campaigns can be combined in one addressed letter without server transmission",async()=>{
- const s=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const s=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  const catalog=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
  assert.equal(catalog.causes.filter(x=>x.organization==="Rainforest Rescue").length,13);
  assert.match(s,/function fullRainforestLetter\(\)/);
@@ -67,14 +67,14 @@ test("Rainforest Rescue selected campaigns can be combined in one addressed lett
 test("Greenpeace bundled letter only includes explicitly selected causes",async()=>{
  const c=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
  assert.equal(c.causes.filter(x=>x.organization==="Greenpeace Internacional").length,3);
- const page=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const page=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  assert.match(page,/function greenpeaceSelected\(\)/);
  assert.match(page,/mailto:info\.int@greenpeace\.org/);
  assert.match(page,/Please do not add me to any newsletters/);
 });
 
 test("Action Network official signing route keeps opt-outs off, requires user consent, and resumes only known campaigns",async()=>{
- const page=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const page=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  assert.match(page,/id="actionNetworkPanel"/);
  for(const option of ["subscription_user","subscription_group","subscription_referrer"]){
   assert.ok(page.includes('u.searchParams.set("'+option+'","false")'));
@@ -87,7 +87,7 @@ test("Action Network official signing route keeps opt-outs off, requires user co
 });
 
 test("initialization order: all DOM helpers exist before attaching provider handlers",async()=>{
- const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const html=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  const firstHelper=html.indexOf("const byId=id=>document.getElementById(id)");
  const firstHandler=html.indexOf('byId("actionNetworkSign").addEventListener');
  assert.ok(firstHelper>0 && firstHelper<firstHandler,"byId must be initialized before first event listener");

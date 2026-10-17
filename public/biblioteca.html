@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#174832"><meta name="description" content="UnGesto: elegí causas reales y firmá en el sistema oficial receptor. Gratis y sin suscripciones de UnGesto.">
+<title>UnGesto | Firmas que llegan</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+:root{font-family:'DM Sans',sans-serif;color:#153e2d;background:#f6f8f2;font-synthesis:none}
+*{box-sizing:border-box}body{margin:0}.wrap{max-width:1040px;margin:auto;padding:0 23px}
+nav{height:74px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #dfe8de}
+.brand{font:600 26px Fraunces,serif;color:#17563a}.brand span{color:#67a776}
+nav small{color:#6a7d6d;font-weight:650}
+header{background:linear-gradient(130deg,#e7f3e5,#f7f8ef);padding:60px 0 55px;border-bottom:1px solid #dde7d9}
+.overline{letter-spacing:.12em;text-transform:uppercase;color:#387d50;font-size:11px;font-weight:800}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600}
+h1{font-size:clamp(40px,6vw,69px);line-height:1.1;letter-spacing:-.035em;max-width:790px;margin:16px 0}
+h1 em{font-style:italic;color:#1c7650}header p{font-size:16px;color:#526a56;line-height:1.7;max-width:670px}
+.trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:21px}.trust span{background:#fff;border:1px solid #d5e4d3;border-radius:99px;padding:9px 13px;font-size:12px;font-weight:700}
+main{padding:44px 0 75px}.heading{display:flex;justify-content:space-between;align-items:center;gap:15px}.heading h2{font-size:33px;margin:0 0 10px}
+small.muted{font-size:12px;color:#728478}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:25px}
+.card{display:flex;gap:15px;align-items:start;border:1px solid #dce6da;background:#fffefa;border-radius:17px;padding:22px;cursor:pointer;transition:border-color .15s}
+.card:hover{border-color:#7db68a}.card:has(input:checked){border-color:#3d9963;background:#ecf7e9}
+.card input{accent-color:#176747;width:23px;height:23px;flex-shrink:0;margin:2px 0}
+.card h3{font-size:23px;margin:2px 0 10px;line-height:1.24}.card p{color:#657668;font-size:12px;line-height:1.65;margin:0 0 11px}
+.card small{font-weight:700;font-size:10px;color:#2d8654}
+.actions{margin-top:24px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+.summary{font-size:13px;font-weight:700;color:#316348}.actions button,.buttons button,.buttons a,.copy{font:700 13px 'DM Sans',sans-serif;border:0;border-radius:11px;background:#176747;color:white;padding:14px 19px;cursor:pointer;text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+button:disabled{cursor:not-allowed;opacity:.43}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #87b994;outline-offset:3px}
+.note{display:flex;gap:12px;background:#e9f2e6;border:1px solid #d4e5d1;border-radius:13px;padding:15px 17px;margin-top:28px;color:#58715c;line-height:1.65;font-size:12px}
+#flow[hidden],#choose[hidden]{display:none}
+.progress{display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px;font-weight:800;color:#32724b;margin-bottom:23px}
+.stage{border:1px solid #d6e5d2;background:white;border-radius:19px;padding:23px}
+.stage h2{font-size:30px;margin:7px 0 12px}.stage p{font-size:13px;color:#5d7564;line-height:1.7}
+textarea{display:block;width:100%;min-height:77px;border:1px solid #d4e4d1;border-radius:10px;background:#fff;padding:13px;font:13px 'DM Sans',sans-serif;color:#18472f;resize:vertical}
+.copy{margin-top:10px;background:#e8f2e5;color:#1e6b44;border:1px solid #c8dfcb;font-size:11px;padding:9px 13px}
+.privacy{background:#f1f6ee;padding:15px;border-radius:13px;margin:21px 0;font-size:12px;line-height:1.65}
+.privacy label{display:flex;align-items:start;gap:10px;cursor:pointer}.privacy input{width:18px;height:18px;accent-color:#176747;flex-shrink:0}
+.provider iframe{width:100%;height:940px;border:0;background:white}
+.provider{margin-top:17px;border:1px solid #dce9d8;border-radius:12px;overflow:hidden}
+.provider[hidden]{display:none}
+.buttons{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:24px}.buttons .back{background:#eaf1e7;color:#1d613e}
+.buttons a{background:#fff;color:#216945;border:1px solid #aecfb3}
+footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
+@media(max-width:700px){header{padding:40px 0}.cards{grid-template-columns:1fr}.heading{align-items:start;flex-direction:column}.actions{flex-direction:column;align-items:stretch}.actions button{justify-content:center}.stage{padding:16px}.provider iframe{height:1050px}}
+.tools{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:18px}.tools input,.tools select,.identity input{border:1px solid #cfdfca;background:white;border-radius:10px;padding:12px 14px;font:13px 'DM Sans',sans-serif;color:#1c4d34}.tools input{flex:1;min-width:220px}.tools select{min-width:140px}.tools button{margin:0!important}.identity{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:15px 0}.identity>div{display:flex;align-items:flex-start;flex-direction:column;gap:7px}.identity input{width:100%}.identity button{margin:0!important}.local-data{background:#eef5eb;border-radius:11px;padding:10px 13px}.card[hidden]{display:none}@media(max-width:700px){.identity{grid-template-columns:1fr}.tools input,.tools select{width:100%}}
+.directDelivery{margin-top:22px;border:1px solid #b5d5b9;background:#e9f5e7;border-radius:14px;padding:19px}.directDelivery>strong{font:600 20px Fraunces,Georgia,serif;color:#205339}.directDelivery p{font-size:12px;color:#516e58;line-height:1.65}.directDelivery>div{display:flex;gap:15px;flex-wrap:wrap;margin-bottom:15px}.directDelivery small{font-size:11px;color:#376849}.directAction{display:inline-flex;align-items:center;gap:8px;background:#176747;color:white!important;text-decoration:none;font-size:12px;font-weight:800;border-radius:10px;padding:13px 17px}.sourceInfo{margin-left:13px;display:inline-flex;font-size:11px;font-weight:700;color:#356a4b!important}.directDelivery[hidden]{display:none}@media(max-width:680px){.directAction,.sourceInfo{margin:7px 0;display:flex;justify-content:center}.directDelivery{padding:15px}}
+.action-sign-panel{margin:22px 0;background:linear-gradient(120deg,#e2f2de,#f4f9ed);border:2px solid #9ecba3;border-radius:17px;padding:21px}.action-sign-panel[hidden]{display:none}.action-sign-panel h3{font-size:25px;margin:10px 0 8px;color:#19583b}.action-sign-panel p{font-size:12px;line-height:1.7;color:#43654c}.action-sign-panel small{display:block;margin-top:13px;font-size:11px;line-height:1.6;color:#57735d}.officialBadge{font-size:10px;letter-spacing:1px;font-weight:800;color:#29724a}.officialSignButton{background:#176747!important;color:white!important;text-decoration:none;font-size:13px;font-weight:800;padding:14px 19px;border-radius:11px;display:inline-block}.officialSignButton[aria-disabled="true"]{opacity:.45;pointer-events:none;cursor:not-allowed}
+
+.navExtras{display:flex;align-items:center;gap:17px}.navExtras a{font-size:12px;font-weight:700;text-decoration:none;color:#2e7b51}.navExtras small{font-size:10px}.heroLinks{display:flex;gap:17px;flex-wrap:wrap}.heroLinks a{font-weight:800;color:#21734a;font-size:13px;text-decoration:none}.heroLinks a:hover{text-decoration:underline}
+.library{padding:68px 23px 85px}.libraryHeader h2{font-size:clamp(34px,5.5vw,57px);line-height:1.12;letter-spacing:-1.7px;margin:15px 0}.libraryHeader h2 em{color:#28764e}.libraryHeader>p{font-size:14px;line-height:1.75;color:#56715c;max-width:690px}.libraryFacts{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:21px 0 28px}.libraryFacts span{font-weight:850;color:#225f42;font-size:13px;background:#e4f2e4;border-radius:99px;padding:11px 15px}.libraryFacts a{font-size:12px;font-weight:800;color:#176747}.eligibility{border:1px solid #d4e6cc;background:#eaf4e5;border-radius:15px;padding:17px 20px;margin:20px 0 20px}.eligibility label{display:flex;align-items:flex-start;gap:10px;color:#2c6245;font-size:12px;line-height:1.65;font-weight:700;cursor:pointer}.eligibility input{accent-color:#176747;flex-shrink:0;width:19px;height:19px;margin-top:0}.eligibility small{display:block;margin:6px 0 0 29px;font-size:11px;color:#617c67;line-height:1.5}.libraryToolbar{display:flex;gap:9px;flex-wrap:wrap}.libraryToolbar input,.libraryToolbar select{background:white;border:1px solid #d4e5d1;border-radius:10px;padding:12px 14px;font:13px 'DM Sans',sans-serif;color:#26503b}.libraryToolbar input{flex:1;min-width:220px}.libraryStatus{font-size:12px;font-weight:650;color:#45684e;margin:14px 0}.ukCards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ukCard{background:white;border:1px solid #d9e4d5;border-radius:14px;padding:20px;min-width:0}.ukCard h3{font-size:20px;line-height:1.25;letter-spacing:-.5px;margin:10px 0}.ukCard p{font-size:12px;color:#5b7561;line-height:1.65;margin:10px 0 13px}.ukCard .ukMeta{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;color:#558166;font-size:11px;font-weight:750}.ukCategory{background:#e7f3e5;padding:5px 10px;border-radius:99px;color:#247548}.ukAction{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.ukAction a{font-size:12px;color:#176747;font-weight:800}.ukAction a.signEligible{display:inline-flex;background:#176747;color:white;text-decoration:none;border-radius:9px;padding:11px 13px}.ukAction .locked{color:#85978a;font-size:11px}.libraryMore{text-align:center;padding:23px 0}.libraryMore button{background:#e5f2e5;color:#176747;border:1px solid #c0dcc6;border-radius:11px;font-weight:800;padding:12px 22px;cursor:pointer}.libraryFoot{font-size:11px;color:#778c7c;line-height:1.7}.ukCards a:focus-visible{outline:2px solid #147e43}
+@media(max-width:700px){.navExtras{gap:9px}.navExtras small{display:none}.navExtras a{font-size:10px}.library{padding:48px 16px}.ukCards{grid-template-columns:1fr}.libraryToolbar input,.libraryToolbar select{width:100%}}
+.featuredCampaign{padding:45px 23px 6px}.featuredLayout{border:1px solid #cbe4c8;background:linear-gradient(120deg,#e5f2dc,#f7f9ee);padding:32px 39px;border-radius:19px}.featuredLayout h2{font:600 clamp(31px,5vw,51px)/1.13 Fraunces,Georgia,serif;letter-spacing:-1.4px;margin:16px 0}.featuredLayout em{color:#22774d}.featuredLayout>p{color:#4f6b58;font-size:14px;line-height:1.75;max-width:710px}.featuredLayout small{display:block;font-size:11px;font-weight:750;color:#53815f}.featuredButtons{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:22px 0}.featuredButtons a{font-size:12px;font-weight:800;text-decoration:none;color:#176747}.featuredButtons .featuredSign{background:#176747;color:white;border-radius:11px;padding:14px 17px}.featuredLayout .fineprint{font-size:11px;color:#6a846c}@media(max-width:680px){.featuredCampaign{padding:26px 14px}.featuredLayout{padding:21px}.featuredButtons a{width:100%;text-align:center}}
+</style></head><body>
+<div class="wrap"><nav><div class="brand">un<span>gesto.</span></div><div class="navExtras"><a href="/manifiesto.html">Nuestro manifiesto</a><a href="#biblioteca">Base de peticiones</a><small>FIRMAS OFICIALES · PILOTO</small></div></nav></div>
+<header><div class="wrap"><div class="overline">Ayudar no debería ser complicado</div><h1>Tu voz puede llegar <em>a donde importa.</em></h1><p>Seleccioná las causas que apoyás y usá sus canales oficiales de firma, directamente desde este espacio cuando el proveedor lo permita. Sin donaciones ni newsletters de UnGesto.</p>
+<div class="trust"><span>✓ Gratis</span><span>✓ Sin crear cuenta en UnGesto</span><span>✓ Formulario del receptor</span></div>
+<p class="heroLinks"><a href="/manifiesto.html">Conocé la propuesta de UnGesto ↗</a> <a href="#biblioteca">Explorá miles de peticiones públicas ↗</a></p></div></header>
+
+<section class="featuredCampaign wrap" aria-labelledby="featuredTitle">
+ <div class="featuredLayout">
+  <span class="overline">UNA CAUSA PARA EMPEZAR · FIRMA EN SU PLATAFORMA OFICIAL</span>
+  <h2 id="featuredTitle">Patty merece un santuario, <em>no una vida en soledad.</em></h2>
+  <p>La organización Voters For Animal Rights pide trasladar a Patty, una elefanta que vive aislada en el zoológico del Bronx, a un santuario acreditado. Es una petición real con un receptor concreto.</p>
+  <small>Voters For Animal Rights · Receptor Action Network · Petición «Send Patty to Sanctuary»</small>
+  <div class="featuredButtons"><a class="featuredSign" href="https://actionnetwork.org/petitions/send-patty-to-sanctuary?subscription_user=false&amp;subscription_group=false&amp;subscription_referrer=false" target="_blank" rel="noopener noreferrer">Firmar la petición oficial ↗</a><a href="/manifiesto.html">Conocer la propuesta UnGesto ↗</a></div>
+  <p class="fineprint">La firma se realiza y valida en Action Network, no en UnGesto. Revisá que los boletines estén desmarcados. UnGesto no registra tu firma como entregada sin confirmación.</p>
+ </div>
+</section>
+<main class="wrap">
+<section id="choose"><div class="heading"><h2>¿Qué causas querés apoyar?</h2><small class="muted">Elegí libremente. Ninguna está seleccionada.</small></div>
+<div class="tools"><input id="search" type="search" aria-label="Buscar causas" placeholder="Buscar por tema, causa u organización" maxlength="100"/><select id="category" aria-label="Categoría"><option value="">Todas las categorías</option></select><button type="button" id="selectVisible" class="copy">Marcar visibles</button><button type="button" id="clearSelection" class="copy">Desmarcar</button></div><div id="cards" class="cards" aria-label="Peticiones reales"></div>
+<div class="actions"><span id="selectedCount" class="summary">0 causas elegidas</span><button id="begin" disabled>Continuar a firmas oficiales →</button></div>
+<div class="note"><span>ⓘ</span><span>Las plataformas externas pueden pedir confirmar tu correo o completar su formulario. UnGesto no enviará información a ninguna causa que no hayas elegido, ni interpretará una visita como una firma aceptada.</span></div>
+</section>
+<section id="flow" hidden><div class="progress"><button class="copy" id="back" style="margin:0">← Volver a las causas</button><span id="progress"></span></div>
+<div class="stage"><small id="providerName" class="overline">OPENPETITION</small><h2 id="stageTitle"></h2><p id="stageDescription"></p>
+<div class="identity"><div><label for="fullName" class="overline">Nombre (opcional)</label><input type="text" id="fullName" maxlength="130" autocomplete="name" placeholder="Nombre y apellido"/><button type="button" id="copyName" class="copy">Copiar nombre</button></div><div><label for="email" class="overline">Correo (opcional)</label><input type="email" id="email" maxlength="254" autocomplete="email" placeholder="tu@email.com"/><button type="button" id="copyEmail" class="copy">Copiar correo</button></div></div><p class="local-data">Tus datos quedan solo en esta pestaña. No se envían a UnGesto ni se rellenan automáticamente los formularios de terceros.</p><label class="overline" for="message">Mensaje personal general (opcional)</label><textarea id="message" maxlength="1000" placeholder="Escribilo una sola vez. Podés copiarlo al formulario del destinatario si acepta comentarios."></textarea>
+<button id="copy" class="copy">Copiar mi mensaje</button>
+<div id="groupLetter" class="directDelivery" hidden>
+ <strong>Un solo mensaje para todas tus causas de Rainforest Rescue</strong>
+ <p id="groupCount"></p>
+ <p>Estas peticiones pertenecen a la misma organización. Podés enviar <b>una única carta</b> que incluye tu declaración de apoyo individual a cada causa elegida, directamente a su contacto público oficial. Sin crear una suscripción ni enviar trece correos separados.</p>
+ <p><b>Destinatario:</b> info@rainforest-rescue.org</p>
+ <div class="buttons">
+ <a id="groupCompose" class="directAction" rel="noopener">Preparar correo con mis apoyos ↗</a>
+ <button type="button" id="copyGroupLetter" class="copy">Copiar carta completa</button>
+ <a class="sourceInfo" href="https://www.rainforest-rescue.org/contact" target="_blank" rel="noopener noreferrer">Contacto oficial ↗</a>
+ </div>
+ <small>Es una comunicación directa a la organización, no una firma registrada en su contador. Tu correo sólo se envía cuando presionás «Enviar» en tu aplicación.</small>
+</div>
+<div id="greenpeaceGroup" class="directDelivery" hidden>
+ <strong>Una sola carta para tus campañas de Greenpeace</strong>
+ <p id="greenpeaceCount"></p>
+ <p>Esta carta reúne únicamente las causas de Greenpeace Internacional que marcaste. Podés enviarla a su email público general. No se crea ninguna lista de correo desde UnGesto.</p>
+ <p><b>Destinatario:</b> info.int@greenpeace.org</p>
+ <div class="buttons"><a id="greenpeaceCompose" class="directAction" rel="noopener">Preparar correo con mis apoyos ↗</a>
+ <button id="copyGreenpeaceLetter" type="button" class="copy">Copiar carta completa</button>
+ <a class="sourceInfo" target="_blank" rel="noopener noreferrer" href="https://www.greenpeace.org/international/about/worldwide/">Ver contacto oficial ↗</a></div>
+ <small>Esta carta llega al buzón de Greenpeace solo cuando la enviás desde tu correo. No es un voto confirmado en las peticiones de Greenpeace.</small>
+</div>
+<div class="privacy"><label><input id="consent" type="checkbox"><span>Quiero abrir el formulario oficial de esta causa. El proveedor indicado procesará los datos que introduzca y puede solicitar una confirmación de correo. No deseo suscripciones publicitarias opcionales.</span></label></div>
+<div class="buttons"><button id="load" disabled>Mostrar formulario oficial</button><a id="officialLink" target="_blank" rel="noopener noreferrer">Abrir petición original ↗</a></div>
+<section id="actionNetworkPanel" class="action-sign-panel" hidden>
+ <span class="officialBadge">FIRMA DIRECTAMENTE EN LA PLATAFORMA RECEPTORA</span>
+ <h3>Firmá esta petición de verdad</h3>
+ <p>Action Network guarda tu firma en su propia plataforma. Te llevamos al formulario con las casillas de suscripción a emails desmarcadas. Revisá los datos y pulsá <strong>Sign</strong> allí. No enviamos nada a tus espaldas.</p>
+ <div class="buttons"><a id="actionNetworkSign" class="officialSignButton" aria-disabled="true">Abrir firma oficial y continuar ↗</a></div>
+ <small>Action Network puede recordar tus datos para las siguientes causas. Si el formulario lo permite, al terminar volverás a UnGesto para seguir con las restantes. La aceptación queda a cargo del receptor, no de nuestro contador.</small>
+</section>
+<div id="provider" class="provider" hidden></div>
+<div id="directDelivery" class="directDelivery" hidden>
+ <strong>Enviar tu apoyo directamente al organismo</strong>
+ <p>Esta causa tiene un contacto público oficial. Si querés, UnGesto prepara una carta dirigida a ese organismo, con tu nombre y tu mensaje. <b>Se envía únicamente cuando confirmás «Enviar» en tu correo.</b> Esto no reemplaza la firma de la petición original.</p>
+ <div><small id="directAgency"></small><small id="directContact"></small></div>
+ <a id="directSend" class="directAction" rel="noopener">Preparar carta en mi correo ↗</a>
+ <a id="directSource" target="_blank" rel="noopener noreferrer" class="sourceInfo">Verificar contacto en el sitio oficial ↗</a>
+ <p id="directFeedback" role="status"></p>
+</div>
+<p id="providerStatus" role="status"></p>
+<div class="buttons"><button id="prev" class="back">← Anterior</button><button id="next">Siguiente causa →</button></div>
+</div></section>
+<section id="biblioteca" class="library wrap" aria-labelledby="libraryTitle">
+ <div class="libraryHeader"><span class="overline">BASE PÚBLICA DE PETICIONES · DATOS OFICIALES</span>
+ <h2 id="libraryTitle">Una base gigante. <em>Fuentes reales.</em></h2>
+ <p>Estas peticiones proceden de la API del Parlamento del Reino Unido y se actualizan a diario. Se muestran como fuentes informativas, no como recomendaciones automáticas de UnGesto.</p>
+ <div class="libraryFacts"><span id="libraryCount">Cargando catálogo oficial…</span><a href="/data/ungesto-catalog.sqlite" download>Descargar base SQLite ↧</a><a href="/manifiesto.html">Por qué existe UnGesto ↗</a></div>
+ </div>
+ <div class="eligibility"><label><input type="checkbox" id="ukEligible"/> Soy ciudadano británico o resido en el Reino Unido. Entiendo que el Parlamento comprobará mis datos y que solo las personas elegibles pueden firmar.</label><small>Podés explorar las peticiones aunque no cumplas los requisitos. Las firmas de estas campañas solo se aceptan mediante el sistema oficial británico.</small></div>
+ <div class="libraryToolbar"><input id="ukSearch" type="search" maxlength="120" placeholder="Buscar peticiones por tema o palabra (en inglés)" aria-label="Buscar en peticiones británicas"/><select id="ukCategory" aria-label="Filtrar por temática"><option value="">Todas las temáticas</option></select><select id="ukSort" aria-label="Ordenar peticiones"><option value="signatures">Más firmas</option><option value="closing">Próximas a cerrar</option></select></div>
+ <div id="ukStatus" role="status" aria-live="polite" class="libraryStatus"></div>
+ <div id="ukCards" class="ukCards"></div>
+ <div class="libraryMore"><button id="ukMore" hidden type="button">Ver más peticiones ↓</button></div>
+ <p class="libraryFoot">Fuente: UK Parliament Petitions. Títulos y descripciones originales en inglés. Recuento de firmas observado en la última actualización, sin promesa de entrega desde UnGesto. No se recopilan datos personales al explorar.</p>
+</section>
+</main>
+<footer><div class="wrap">UnGesto es independiente de openPetition. Este piloto no almacena datos personales ni confirma firmas por su cuenta. Las firmas pertenecen a la plataforma que recibe y verifica cada solicitud.</div></footer>
+<script>
+"use strict";
+const petitions=[{"id":"an-omaha-coal","title":"Cerrar la planta de carbón de North Omaha","description":"Exigí que la empresa eléctrica cumpla su compromiso de abandonar el carbón.","source":"https://actionnetwork.org/petitions/tell-oppd-keep-your-promise-to-close-the-north-omaha-coal-plant-by-2026","organization":"Action Network","category":"Clima","statement":"Pido a OPPD que cumpla su compromiso de abandonar el carbón en North Omaha y proteja la salud de su comunidad."},{"id":"an-dow-plastics","title":"Evitar vertidos plásticos de Dow al Golfo","description":"Apoyá medidas contra la descarga de residuos plásticos industriales hacia el Golfo de México.","source":"https://actionnetwork.org/petitions/dont-let-dow-turn-the-gulf-coast-into-a-corporate-plastic-dumping-ground","organization":"Action Network","category":"Océanos","statement":"Pido impedir vertidos industriales de plástico que amenacen las aguas, las especies y las comunidades del Golfo de México."},{"id":"an-la-shelters","title":"Financiación para refugios de animales de Los Ángeles","description":"Pedí un presupuesto suficiente para los refugios y servicios de bienestar animal.","source":"https://actionnetwork.org/petitions/protect-los-angeles-animals-and-shelters-from-harmful-budget-cuts","organization":"Action Network","category":"Animales","statement":"Apoyo financiar adecuadamente los refugios y servicios municipales de protección animal de Los Ángeles."},{"id":"an-protect-big-cats","title":"Mantener las protecciones de grandes felinos","description":"Oponete a reformas que facilitarían el tráfico y exhibición comercial de grandes felinos.","source":"https://actionnetwork.org/petitions/these-loopholes-will-harm-big-cats-oppose-this-dangerous-and-misleading-bill","organization":"Action Network","category":"Animales","statement":"Apoyo mantener las protecciones legales frente a la cría, el comercio y la exhibición abusiva de grandes felinos."},{"id":"an-new-york-plastic","title":"Menos envases descartables en Nueva York","description":"Respaldá la reducción de envases plásticos y el mejoramiento del reciclaje.","source":"https://actionnetwork.org/petitions/new-york-is-not-disposable","organization":"Action Network","category":"Clima","statement":"Apoyo leyes que reduzcan los envases plásticos descartables y mejoren la infraestructura de reciclaje en Nueva York."},{"id":"an-groupon-horses","title":"Proteger a los caballos de paseos turísticos","description":"Pedí a Groupon que retire sus anuncios de paseos en carruajes tirados por caballos.","source":"https://actionnetwork.org/petitions/sign-tell-groupon-to-end-horse-carriage-ride-sales","organization":"Action Network","category":"Animales","statement":"Pido a Groupon que deje de comercializar paseos en carruajes tirados por caballos y promueva alternativas sin explotación animal."},{"id":"an-bristol-sound","title":"Reducir el ruido en East Bristol","description":"Pedí barreras acústicas junto a la autopista M32 para proteger a los residentes.","source":"https://actionnetwork.org/petitions/protect-east-bristol-from-noise-pollution-acoustic-barriers-on-m32-now","organization":"Action Network","category":"Salud","statement":"Apoyo barreras acústicas para reducir la contaminación sonora de la autopista M32 que afecta a East Bristol."},{"id":"an-horse-fire-protection","title":"Seguridad contra incendios en establos","description":"Exigí alarmas y rociadores para proteger a los caballos de hipódromos en Nueva York.","source":"https://actionnetwork.org/petitions/petition-require-fire-sprinklers-and-smoke-detectors-in-every-racetrack-barn-in-new-york","organization":"Action Network","category":"Animales","statement":"Solicito detectores de humo y sistemas contra incendios en establos de hipódromos para proteger la vida de los caballos."},{"id":"an-patty-sanctuary","title":"Trasladar a Patty a un santuario","description":"Pedí que la elefanta Patty sea trasladada a un santuario acreditado y deje de vivir aislada.","source":"https://actionnetwork.org/petitions/send-patty-to-sanctuary","organization":"Action Network","category":"Animales","statement":"Apoyo el traslado de Patty a un santuario acreditado y el fin del aislamiento de elefantes en el Bronx Zoo."},{"id":"an-support-animals-housing","title":"Viviendas para personas con animales de asistencia","description":"Defendé las protecciones de vivienda para personas con discapacidad y animales de apoyo.","source":"https://actionnetwork.org/petitions/demand-housing-protections-for-disabled-americans-and-their-companion-animals","organization":"Action Network","category":"Derechos humanos","statement":"Apoyo las protecciones de vivienda y adaptaciones razonables para personas con discapacidad que dependen de animales de apoyo."},{"id":"openpet-rockview-park","title":"Convertir Rockview en parque estatal","description":"Apoyá que tierras de Pensilvania se preserven como parque público y protejan la cuenca de Spring Creek.","source":"https://www.openpetition.org/us/petition/online/turn-sci-rockview-into-a-pennsylvania-state-park","organization":"openPetition","category":"Bosques","statement":"Apoyo proteger los terrenos de Rockview mediante su transformación en un parque estatal, conservando la cuenca de Spring Creek y creando acceso público responsable."},{"id":"openpet-pennsylvania-water","title":"Defender el agua ante centros de datos en Pensilvania","description":"Pedí controles ambientales para proteger agua, salud y comunidades ante la expansión de centros de datos.","source":"https://www.openpetition.org/us/petition/online/protect-the-commonwealth-of-pa-and-residents-from-the-harms-of-unregulated-data-centers","organization":"openPetition","category":"Clima","statement":"Apoyo regulaciones y evaluaciones ambientales para proteger el agua, la salud y las comunidades de Pensilvania ante la expansión de centros de datos sin controles suficientes."},{"id":"guatemala","title":"Defender el derecho a protestar en Guatemala","description":"Pedí la libertad de Luis Pacheco y Héctor Chaclán, defensores de los derechos indígenas.","source":"https://www.amnesty.org/es/petition/liberen-a-luis-pacheco-y-hector-chaclan/","organization":"Amnistía Internacional","category":"Derechos humanos","statement":"Solicito garantías para el derecho a la protesta y el debido proceso de Luis Pacheco y Héctor Chaclán, líderes indígenas de Guatemala."},{"id":"educacion-rusia","title":"Defender la educación libre de adoctrinamiento","description":"Exigí que las escuelas respeten el derecho de sus estudiantes a aprender y expresar opiniones.","source":"https://www.amnesty.org/es/petition/stop-indoctrination-in-russian-schools/","organization":"Amnistía Internacional","category":"Educación","statement":"Apoyo el derecho de estudiantes y docentes a una educación que respete la libertad de pensamiento, el acceso a información plural y los derechos humanos."},{"id":"palawan","title":"Defender los bosques indígenas de Palawan","description":"Apoyá a las comunidades que defienden sus tierras y fuentes de agua frente a la minería de níquel.","source":"https://www.rainforest-rescue.org/petitions/1324/philippines-stand-with-the-indigenous-resistance-to-nickel-mining-in-palawan","organization":"Rainforest Rescue","category":"Bosques","statement":"Apoyo los derechos de los pueblos indígenas de Palawan y la defensa de sus territorios, bosques y fuentes de agua frente a la explotación minera que amenaza su entorno y sus medios de vida."},{"id":"nigeria-petroleo","title":"Defender Nigeria de los daños de la industria petrolera","description":"Apoyá a quienes reclaman protección ambiental frente a la extracción de petróleo y gas.","source":"https://www.rainforest-rescue.org/petitions/1277/the-oil-industry-is-devastating-nigeria-s-environment-for-germany-s-benefit","organization":"Rainforest Rescue","category":"Clima","statement":"Pido responsabilidad por los daños causados por la industria petrolera en Nigeria y políticas que prioricen la salud y el ambiente."},{"id":"nias-vertido","title":"Detener el vertido de bitumen en Nias","description":"Exigí respuesta ambiental al derrame de bitumen de un buque hundido frente a Indonesia.","source":"https://www.rainforest-rescue.org/petitions/1279/indonesia-fight-the-marine-bitumen-spill-off-nias-island","organization":"Rainforest Rescue","category":"Océanos","statement":"Reclamo medidas urgentes para controlar el derrame de bitumen y restaurar los ecosistemas marinos de la isla de Nias."},{"id":"sumatra-tigres","title":"Detener una mina de oro en el bosque de los tigres","description":"Protegé el ecosistema de Leuser frente a un proyecto minero que amenaza especies únicas.","source":"https://www.rainforest-rescue.org/petitions/1276/indonesia-no-to-a-gold-mine-in-sumatra-s-tiger-forest","organization":"Rainforest Rescue","category":"Animales","statement":"Solicito detener los planes de minería aurífera que amenazan los bosques de Sumatra y la supervivencia de tigres y otras especies de Leuser."},{"id":"april-paper","title":"Frenar la destrucción forestal de APRIL","description":"Pedí a bancos e inversores que corten vínculos con APRIL/RGE por sus impactos sobre selvas y comunidades.","source":"https://www.rainforest-rescue.org/petitions/1288/stop-april-indonesia-s-ruthless-paper-and-pulp-giant","organization":"Rainforest Rescue","category":"Bosques","statement":"Apoyo que inversores y compradores exijan a APRIL/RGE detener la deforestación y reparar los daños sociales y ambientales."},{"id":"deep-sea","title":"Frenar la minería en aguas profundas","description":"Pedí que no se exploten ecosistemas del fondo marino cuya biodiversidad todavía conocemos muy poco.","source":"https://www.greenpeace.org/international/act/the-deep-ocean-is-not-for-sale/","organization":"Greenpeace Internacional","category":"Océanos","statement":"Apoyo la protección de los ecosistemas de aguas profundas y la prevención de actividades mineras que puedan causar daños graves e irreversibles a su biodiversidad."},{"id":"openpet-battery-recycling","title":"Garantizar el reciclaje gratuito de baterías","description":"Solicitá sistemas de reciclaje accesibles de baterías para reducir contaminación del suelo y del agua en Massachusetts.","source":"https://www.openpetition.org/us/petition/online/enforce-free-battery-recycling-in-ma","organization":"openPetition","category":"Clima","statement":"Apoyo medidas que garanticen la recuperación y el reciclaje gratuito de baterías en Massachusetts, evitando que sus sustancias peligrosas lleguen al suelo y al agua."},{"id":"nigeria-timber","title":"Hacer cumplir la prohibición forestal en Nigeria","description":"Reclamá medidas efectivas contra la tala ilegal y la protección de comunidades y especies amenazadas.","source":"https://www.rainforest-rescue.org/petitions/1318/nigeria-s-forests-cannot-wait-enforce-the-timber-export-ban-now","organization":"Rainforest Rescue","category":"Bosques","statement":"Pido a las autoridades de Nigeria que hagan cumplir la prohibición de exportación de madera y protejan los bosques y a sus defensores."},{"id":"biodiversidad-comercio","title":"La biodiversidad no es una mercancía","description":"Pedí que se priorice la conservación efectiva frente a los mecanismos de compensación de daños.","source":"https://www.rainforest-rescue.org/petitions/1296/biodiversity-offsetting-is-a-false-solution-nature-is-not-a-commodity","organization":"Rainforest Rescue","category":"Clima","statement":"Reclamo políticas de protección real de la biodiversidad que no sustituyan la conservación por compensaciones comerciales."},{"id":"iran-justicia","title":"Pedir justicia para las víctimas en Irán","description":"Apoyá un mecanismo internacional de justicia frente a graves abusos de derechos humanos.","source":"https://www.amnesty.org/es/petition/demand-international-justice-for-crimes-against-humanity-in-iran/","organization":"Amnistía Internacional","category":"Derechos humanos","statement":"Apoyo mecanismos independientes de investigación y justicia frente a posibles crímenes de lesa humanidad y otras violaciones graves de derechos humanos en Irán."},{"id":"brasil-plaguicidas","title":"Prohibir la fumigación aérea sobre comunidades","description":"Pedí que Brasil proteja a las familias rurales y sus cultivos de fumigaciones con pesticidas.","source":"https://www.rainforest-rescue.org/petitions/1284/brazil-ban-the-aerial-spraying-of-pesticides","organization":"Rainforest Rescue","category":"Salud","statement":"Apoyo la prohibición de fumigaciones aéreas que pongan en riesgo la salud y los cultivos de las comunidades rurales de Brasil."},{"id":"sudan","title":"Proteger a la población civil en Sudán","description":"Sumate al pedido de protección internacional para las personas amenazadas por el conflicto armado.","source":"https://www.amnesty.org/es/petition/call-for-the-deployment-of-an-international-protection-force-in-sudan/","organization":"Amnistía Internacional","category":"Derechos humanos","statement":"Expreso mi apoyo a la protección urgente de la población civil de Sudán y a medidas internacionales conformes con los derechos humanos y el derecho humanitario."},{"id":"defensores","title":"Proteger a quienes cuidan la Tierra","description":"Reclamá reconocimiento de los territorios y derechos de comunidades indígenas y costeras.","source":"https://www.greenpeace.org/international/act/defend-earth-defenders/","organization":"Greenpeace Internacional","category":"Clima","statement":"Apoyo a quienes defienden el medioambiente, sus comunidades y territorios, y reclamo garantías para su seguridad, participación y derechos."},{"id":"ocean-2030","title":"Proteger el 30% de los océanos para 2030","description":"Pedí a los gobiernos que creen santuarios marinos para proteger la vida que habita el océano.","source":"https://www.greenpeace.org/international/act/ocean-sanctuaries/","organization":"Greenpeace Internacional","category":"Océanos","statement":"Apoyo la protección efectiva de al menos el 30 % del océano para 2030 mediante santuarios marinos y políticas que preserven la biodiversidad y los ecosistemas oceánicos."},{"id":"brasil-cultivos","title":"Proteger la agricultura frente a plantaciones industriales","description":"Apoyá a las comunidades rurales de Brasil que enfrentan la expansión de monocultivos forestales.","source":"https://www.rainforest-rescue.org/petitions/1320/brazil-we-need-fertile-farmland-not-industrial-timber-plantations","organization":"Rainforest Rescue","category":"Bosques","statement":"Apoyo la protección de tierras agrícolas fértiles, bosques y comunidades frente a la expansión de plantaciones industriales en Brasil."},{"id":"animales-leuser","title":"Proteger la fauna única de Leuser","description":"Ayudá a conservar el ecosistema donde conviven orangutanes, tigres, elefantes y rinocerontes.","source":"https://www.rainforest-rescue.org/petitions/1040/protect-leuser-s-iconic-wildlife","organization":"Rainforest Rescue","category":"Animales","statement":"Solicito medidas de conservación efectivas para proteger el ecosistema de Leuser y las especies amenazadas que habitan allí, incluidos orangutanes, tigres, rinocerontes y elefantes."},{"id":"openpet-kodagu-hills","title":"Proteger las colinas y los bosques de Kodagu","description":"Defendé las colinas ecológicamente sensibles de Kodagu frente a proyectos comerciales de gran escala.","source":"https://www.openpetition.org/petition/online/beyond-malma-betta-end-the-exploitation-of-kodagus-eco-sensitive-hills","organization":"openPetition","category":"Bosques","statement":"Pido que las autoridades protejan las zonas ecológicamente sensibles de Kodagu, sus montañas, bosques y fuentes de agua frente al desarrollo comercial perjudicial."},{"id":"sabana-proteger","title":"Proteger las sabanas y sus ecosistemas","description":"Reclamá que no se sustituyan ecosistemas de sabana por reforestaciones inadecuadas.","source":"https://www.rainforest-rescue.org/petitions/1282/protect-savannas-no-to-misguided-reforestation","organization":"Rainforest Rescue","category":"Bosques","statement":"Apoyo la conservación de sabanas naturales y rechazo su transformación mediante programas de plantación de árboles inadecuados."},{"id":"monos-brasil","title":"Salvar a los monos aulladores de Brasil","description":"Reclamá medidas para proteger a estos animales frente a descargas eléctricas mortales.","source":"https://www.rainforest-rescue.org/petitions/1292/brazil-howler-monkeys-need-protection-from-deadly-electric-shocks","organization":"Rainforest Rescue","category":"Animales","statement":"Solicito medidas para evitar la muerte de monos aulladores por descargas eléctricas en Brasil y promover infraestructuras seguras para la fauna silvestre."},{"id":"tripa-orangutanes","title":"Salvar el hábitat de los orangutanes de Tripa","description":"Protegé los bosques de turba de Sumatra frente al avance de plantaciones de palma.","source":"https://www.rainforest-rescue.org/petitions/1290/indonesia-protect-the-habitat-of-tripa-s-orangutans","organization":"Rainforest Rescue","category":"Animales","statement":"Solicito detener la destrucción de los bosques de turba de Tripa y proteger el hábitat de los orangutanes amenazados."}];
+
+const widgets=Object.create(null);
+const directByCause=Object.create(null);
+const byId=id=>document.getElementById(id);
+const selected=new Set();
+function buildActionNetworkUrl(p){
+ const u=new URL(p.source);
+ if(u.protocol!=="https:"||u.hostname!=="actionnetwork.org"||!/^\/petitions\/[a-z0-9-]+\/?$/.test(u.pathname))throw new Error("Petición no autorizada");
+ u.search="";u.hash="";
+ u.searchParams.set("subscription_user","false");
+ u.searchParams.set("subscription_group","false");
+ u.searchParams.set("subscription_referrer","false");
+ const returnTo=new URL("/",location.origin);returnTo.searchParams.set("ungesto_return",p.id);
+ u.searchParams.set("redirect",returnTo.toString());
+ return u.toString();
+}
+function refreshActionPanel(){
+ const p=flow[cursor],isAction=p && p.organization==="Action Network",panel=byId("actionNetworkPanel");
+ panel.hidden=!isAction;
+ if(!isAction)return;
+ const link=byId("actionNetworkSign");
+ if(byId("consent").checked){
+  link.href=buildActionNetworkUrl(p);
+  link.setAttribute("aria-disabled","false");
+ }else{
+  link.removeAttribute("href");link.setAttribute("aria-disabled","true");
+ }
+}
+byId("actionNetworkSign").addEventListener("click",(event)=>{
+ const p=flow[cursor];
+ if(!byId("consent").checked||!p||p.organization!=="Action Network"){event.preventDefault();return;}
+ // Only non-personal campaign identifiers are kept through the external website.
+ sessionStorage.setItem("ungesto_action_flow",JSON.stringify({ids:flow.map(c=>c.id),current:p.id}));
+});
+
+const cardElements=new Map();
+let flow=[],cursor=0;
+petitions.forEach(p=>{
+ const card=document.createElement("label");card.className="card";
+ const input=document.createElement("input");input.type="checkbox";input.value=p.id;input.addEventListener("change",()=>{
+   if(input.checked)selected.add(p.id);else selected.delete(p.id);
+   byId("selectedCount").textContent=selected.size+" "+(selected.size===1?"causa elegida":"causas elegidas");
+   byId("begin").disabled=selected.size===0;
+ });
+ const data=document.createElement("div");const h=document.createElement("h3");h.textContent=p.title;
+ const desc=document.createElement("p");desc.textContent=p.description;
+ const org=document.createElement("small");org.textContent=p.organization+" · formulario externo";
+ if(["openpet-pennsylvania-water","openpet-battery-recycling"].includes(p.id)){const badge=document.createElement("small");badge.textContent=" · Carta directa al organismo";badge.style.color="#176747";org.appendChild(badge)}if(["Rainforest Rescue","Greenpeace Internacional"].includes(p.organization)){const badge=document.createElement("small");badge.textContent=" · Apoyo agrupado a la organización";badge.style.color="#176747";org.appendChild(badge)}data.append(h,desc,org);card.append(input,data);byId("cards").appendChild(card);cardElements.set(p.id,card);
+});
+const cats=[...new Set(petitions.map(p=>p.category))].sort();
+for(const cat of cats){const option=document.createElement("option");option.value=cat;option.textContent=cat;byId("category").appendChild(option);}
+function visiblePetitions(){const q=byId("search").value.trim().toLowerCase(),cat=byId("category").value;return petitions.filter(p=>(!cat||p.category===cat)&&(!q||[p.title,p.description,p.category,p.organization].some(s=>s.toLowerCase().includes(q))))}
+function updateCards(){const ids=new Set(visiblePetitions().map(p=>p.id));for(const p of petitions)cardElements.get(p.id).hidden=!ids.has(p.id);byId("selectedCount").textContent=selected.size+" "+(selected.size===1?"causa elegida":"causas elegidas");byId("begin").disabled=selected.size===0;}
+byId("search").addEventListener("input",updateCards);byId("category").addEventListener("change",updateCards);
+byId("selectVisible").addEventListener("click",()=>{for(const p of visiblePetitions()){selected.add(p.id);cardElements.get(p.id).querySelector("input").checked=true;}updateCards();});
+byId("clearSelection").addEventListener("click",()=>{selected.clear();for(const card of cardElements.values())card.querySelector("input").checked=false;updateCards();});
+updateCards();
+async function copyField(id,button){try{await navigator.clipboard.writeText(byId(id).value);byId(button).textContent="Copiado ✓";}catch{byId(button).textContent="Copialo manualmente";}}
+byId("copyName").addEventListener("click",()=>copyField("fullName","copyName"));
+byId("copyEmail").addEventListener("click",()=>copyField("email","copyEmail"));
+async function loadDirectRoutes(){
+ try{
+  const r=await fetch("direct-advocacy.json",{cache:"no-store"});if(!r.ok)return;
+  const cfg=await r.json();if(cfg.schema_version!=="1.0.0")return;
+  for(const v of cfg.routes||[]){
+    if(v.type!=="direct_advocacy_email_not_petition_signature")continue;
+    if(!petitions.some(p=>p.id===v.causeId))continue;
+    if(!/^[\w.\-+]+@(?:pa\.gov|mass\.gov)$/i.test(v.recipient))continue;
+    if(!/^https:\/\/(?:dced\.pa\.gov|www\.mass\.gov)\//.test(v.source))continue;
+    directByCause[v.causeId]=v;
+  }
+ }catch{}
+}
+loadDirectRoutes();
+function draftLetter(p,v){
+ const fullName=byId("fullName").value.trim();
+ const email=byId("email").value.trim();
+ const msg=byId("message").value.trim();
+ const body=[
+  "To: "+v.agency,
+  "",
+  "I am writing to express my personal support for the following public-interest request:",
+  p.title,
+  "",
+  p.statement,
+  "",
+  msg ? "My additional message:\n"+msg+"\n" : "",
+  "Related public petition: "+p.source,
+  "",
+  "Sincerely,",
+  fullName || "[Your name]",
+  email ? "Reply-to contact: "+email : ""
+ ].filter(Boolean).join("\n");
+ return "mailto:"+v.recipient+"?subject="+encodeURIComponent(v.subject)+"&body="+encodeURIComponent(body);
+}
+function rainforestSelected(){
+ return flow.filter(p=>p.organization==="Rainforest Rescue");
+}
+function fullRainforestLetter(){
+ const campaigns=rainforestSelected(),name=byId("fullName").value.trim(),msg=byId("message").value.trim(),email=byId("email").value.trim();
+ const paragraphs=campaigns.map((p,i)=>(i+1)+". "+p.title+"\nMy declaration: "+p.statement+"\nOriginal petition: "+p.source);
+ return ["Dear Rainforest Rescue team,",
+  "",
+  "I am voluntarily writing to express my support for "+campaigns.length+" of your ongoing petitions. I have individually selected the causes listed below and authorize this message to be sent to you. Please do not add me to any mailing lists or newsletters.",
+  "",
+  ...paragraphs.flatMap(x=>[x,""]),
+  msg?"My additional comment:\n"+msg+"\n":"",
+  "Sincerely,",
+  name||"[Your full name]",
+  email?"Contact email (if desired): "+email:""
+ ].filter(Boolean).join("\n");
+}
+function greenpeaceSelected(){return flow.filter(p=>p.organization==="Greenpeace Internacional");}
+function fullGreenpeaceLetter(){
+ const causes=greenpeaceSelected(),name=byId("fullName").value.trim(),email=byId("email").value.trim(),extra=byId("message").value.trim();
+ const lines=causes.map((p,i)=>(i+1)+". "+p.title+"\nI support this request: "+p.statement+"\nOriginal action: "+p.source);
+ return ["Dear Greenpeace International team,",
+  "",
+  "I voluntarily support the "+causes.length+" campaign(s) I have explicitly selected below. This is my personal statement and I ask that it be forwarded to the relevant campaign teams. Please do not add me to any newsletters, marketing lists or recurring outreach.",
+  "",
+  ...lines.flatMap(x=>[x,""]),
+  extra?"My additional note:\n"+extra:"", "",
+  "Sincerely,",name||"[Your name]",email?"Contact email (optional): "+email:""
+ ].filter(Boolean).join("\n");
+}
+function refreshGreenpeaceLink(){
+ const causes=greenpeaceSelected(),box=byId("greenpeaceGroup");
+ box.hidden=!causes.length;if(!causes.length)return;
+ byId("greenpeaceCount").textContent=causes.length+" declaraciones seleccionadas, un solo destinatario.";
+ const subj="UnGesto: my support for "+causes.length+" selected Greenpeace campaigns";
+ byId("greenpeaceCompose").href="mailto:info.int@greenpeace.org?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(fullGreenpeaceLetter());
+}
+byId("greenpeaceCompose").addEventListener("click",refreshGreenpeaceLink);
+byId("copyGreenpeaceLetter").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fullGreenpeaceLetter());byId("copyGreenpeaceLetter").textContent="Carta copiada ✓"}catch{byId("copyGreenpeaceLetter").textContent="Copiala manualmente"}});
+function refreshGroupLink(){
+ const campaigns=rainforestSelected(); const box=byId("groupLetter");
+ box.hidden=campaigns.length===0;if(!campaigns.length)return;
+ byId("groupCount").textContent=campaigns.length+" declaraciones seleccionadas para enviar a Rainforest Rescue.";
+ const subject="UnGesto — support for "+campaigns.length+" individually selected rainforest petitions";
+ byId("groupCompose").href="mailto:info@rainforest-rescue.org?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(fullRainforestLetter());
+}
+byId("groupCompose").addEventListener("click",refreshGroupLink);
+byId("copyGroupLetter").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fullRainforestLetter());byId("copyGroupLetter").textContent="Carta copiada ✓"}catch{byId("copyGroupLetter").textContent="Copiala manualmente"}});
+function refreshDirectLink(){
+ refreshGroupLink();refreshGreenpeaceLink(); const p=flow[cursor],v=directByCause[p.id],box=byId("directDelivery");
+ box.hidden=!v; if(!v)return;
+ byId("directAgency").textContent="Organismo: "+v.agency;
+ byId("directContact").textContent="Destinatario: "+v.recipient;
+ byId("directSource").href=v.source;
+ const link=byId("directSend");
+ link.href=draftLetter(p,v);
+ byId("directFeedback").textContent="El envío debe confirmarse en tu aplicación de correo. UnGesto no puede comprobar la entrega.";
+}
+byId("directSend").addEventListener("click",()=>{refreshDirectLink();});
+byId("fullName").addEventListener("input",refreshDirectLink);
+byId("email").addEventListener("input",refreshDirectLink);
+byId("message").addEventListener("input",refreshDirectLink);
+async function loadWidgets(){
+ try{
+ const response=await fetch("provider-widgets.json",{cache:"no-store"});
+ if(!response.ok)throw Error("No config");
+ const config=await response.json();
+ if(location.origin!==config.authorizedOrigin)return;
+ for(const w of config.campaigns||[]) {
+  if(w.active && /^[a-f0-9]{64}$/.test(w.widgetId) && petitions.some(p=>p.id===w.causeId))widgets[w.causeId]=w.widgetId;
+ }
+ }catch{}
+}
+loadWidgets();
+function widgetHTML(id){
+ const safeId=/^[a-f0-9]{64}$/.test(id)?id:"";
+ return `<!doctype html><html lang="es"><head><meta charset="utf-8"><style>body{margin:0;font-family:sans-serif}</style></head>
+ <body><div id="op_widget_container_${safeId}"></div>
+ <script>var OPWIDGET={"base_url":"https://www.openpetition.org","api_key":"${safeId}","options":{"primarycolor":"#176747","secondarycolor":"#3e3d40","backgroundcolor":"#ffffff","mainfontsize":"16px"}};</scr`+`ipt>
+ <script src="https://www.openpetition.de/javascript/widget.js"></scr`+`ipt></body></html>`;
+}
+function display(){
+ const p=flow[cursor];if(!p)return;
+ byId("progress").textContent="Petición "+(cursor+1)+" de "+flow.length;
+ byId("stageTitle").textContent=p.title;byId("stageDescription").textContent=p.description+" · Declaración: "+p.statement;byId("providerName").textContent=p.organization.toUpperCase();
+ byId("officialLink").href=p.source;byId("consent").checked=false;byId("load").disabled=true;
+ byId("provider").hidden=true;byId("provider").replaceChildren();byId("providerStatus").textContent="";
+ refreshDirectLink();refreshActionPanel();byId("prev").disabled=cursor===0;byId("next").textContent=cursor===flow.length-1?"Terminar selección ✓":"Siguiente causa →";
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+byId("begin").addEventListener("click",()=>{flow=petitions.filter(p=>selected.has(p.id));cursor=0;byId("choose").hidden=true;byId("flow").hidden=false;display();});
+function resumeAfterActionNetworkReturn(){
+ const returned=new URLSearchParams(location.search).get("ungesto_return");
+ if(!returned)return;
+ let saved;try{saved=JSON.parse(sessionStorage.getItem("ungesto_action_flow")||"null")}catch{return;}
+ if(!saved||!Array.isArray(saved.ids)||saved.current!==returned)return;
+ const uniqueIds=[...new Set(saved.ids)].filter(id=>petitions.some(p=>p.id===id));
+ const idx=uniqueIds.indexOf(returned);if(idx<0||uniqueIds.length===0)return;
+ for(const id of uniqueIds){selected.add(id);cardElements.get(id).querySelector("input").checked=true;}
+ flow=petitions.filter(p=>selected.has(p.id));
+ const previous=flow.findIndex(p=>p.id===returned);
+ if(previous<0)return;
+ cursor=Math.min(previous+1,flow.length-1);
+ byId("choose").hidden=true;byId("flow").hidden=false;display();
+ const status=byId("providerStatus");
+ status.textContent=previous+1<flow.length
+ ? "Volviste desde el formulario oficial. UnGesto no verifica el resultado de esa firma. Podés seguir con la próxima causa."
+ : "Volviste de Action Network. Completaste el recorrido de causas seleccionadas; revisá en la plataforma la confirmación de tus firmas.";
+ try{sessionStorage.removeItem("ungesto_action_flow");window.history.replaceState(null,"",location.pathname)}catch{}
+}
+resumeAfterActionNetworkReturn();
+byId("back").addEventListener("click",()=>{byId("flow").hidden=true;byId("choose").hidden=false;window.scrollTo(0,0);});
+byId("consent").addEventListener("change",e=>{byId("load").disabled=!e.target.checked;refreshActionPanel();});
+byId("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(byId("message").value);byId("copy").textContent="Mensaje copiado ✓";}catch{byId("copy").textContent="Copialo manualmente";}});
+byId("load").addEventListener("click",()=>{
+ const p=flow[cursor];const container=byId("provider");container.replaceChildren();container.hidden=false;
+ const widgetId=p.organization==="openPetition"?widgets[p.id]:undefined;
+ if(!widgetId){const link=document.createElement("a");link.href=p.source;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Abrir formulario oficial de "+p.organization+" ↗"; if(p.organization==="Action Network"){link.href=buildActionNetworkUrl(p);}link.style.cssText="display:block;padding:28px;color:#176747;font-weight:800;text-align:center";container.appendChild(link);byId("providerStatus").textContent="Abrí la petición en el sitio de "+p.organization+" y completá su formulario oficial. Esa plataforma valida la firma.";return;}
+ const frame=document.createElement("iframe");frame.title="Formulario oficial de "+p.title;frame.setAttribute("sandbox","allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox");frame.referrerPolicy="strict-origin-when-cross-origin";frame.srcdoc=widgetHTML(widgetId);container.appendChild(frame);
+ byId("providerStatus").textContent="openPetition gestiona la firma y la confirmación por correo. Este paso no se marca automáticamente como firmado.";
+});
+byId("prev").addEventListener("click",()=>{if(cursor>0){cursor--;display()}});
+byId("next").addEventListener("click",()=>{if(cursor+1<flow.length){cursor++;display();}else{byId("flow").hidden=true;byId("choose").hidden=false;window.scrollTo(0,0);}});
+</script>
+<script defer src="/global-library.js"></script>
+</body></html>

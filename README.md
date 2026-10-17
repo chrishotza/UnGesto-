@@ -4,7 +4,21 @@
 
 UnGesto es una plataforma solidaria gratuita que permite **leer títulos y descripciones, tildar las causas elegidas, completar los datos una sola vez y registrar adhesiones individuales en una única operación**.
 
-**Aplicación web:** https://ungesto-solidario.floot.app
+**Aplicación principal actual:** https://ungesto-firmas-oficiales.onrender.com
+
+**Backend persistente (Floot):** https://ungesto-solidario.floot.app
+
+## Producto principal: una sola firma para múltiples causas
+
+**UnGesto, nueva interfaz: https://ungesto-firmas-oficiales.onrender.com**
+
+La página inicial se reconstruyó desde cero: lista de 20 causas que el backend productivo de Floot reconoce, selección múltiple, un solo formulario de nombre/correo/mensaje, un solo botón y un único POST a `/api/firmar`. El servicio gratuito de Render `ungesto-firma-batch.onrender.com` actúa como proxy controlado hacia la base persistente de la aplicación Floot, sin guardar datos del firmante en Render y sin duplicar el envío entre plataformas.
+
+El backend valida IDs, consentimiento, límites y comprobante recibido. El éxito solo se muestra si Floot devuelve un recibo auténtico con exactamente las causas autorizadas. La revocación usa `/api/revocar`.
+
+**No equivale a firmas externas entregadas:** el receptor del registro es UnGesto. La comunicación con Greenpeace, Amnistía y Rainforest Rescue sigue pendiente de un mecanismo de recepción verificable; el producto no afirma lo contrario.
+
+**Biblioteca independiente**: https://ungesto-firmas-oficiales.onrender.com/biblioteca.html (más de 2.000 peticiones oficiales del Parlamento británico, elegibilidad británica). La biblioteca NO se mezcla con el formulario de firma.
 
 ## Estado real — octubre de 2026
 

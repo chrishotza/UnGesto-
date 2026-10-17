@@ -16,7 +16,7 @@ test("mass library only enables UK signature for eligible users",async()=>{
  assert.doesNotMatch(js,/innerHTML\s*=/);
 });
 test("public page includes manifesto, massive catalog and eligibility disclosure",async()=>{
- const page=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const page=await readFile(new URL("../public/biblioteca.html",import.meta.url),"utf8");
  assert.match(page,/manifiesto\.html/);
  assert.match(page,/id="biblioteca"/);
  assert.match(page,/id="ukEligible"/);
