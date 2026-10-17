@@ -162,7 +162,7 @@ async function init(){
   all=manifest.causes.map(c=>decorated({...c,category:c.category||"Otros"}));
   countSelected();renderCats();filterCatalog();
   Promise.all([
-   fetch("/catalog/causes.json").then(r=>r.ok?r.json():null).catch(()=>null),
+   fetch("/catalog.json").then(r=>r.ok?r.json():null).catch(()=>null),
    fetch("/data/uk-petitions.json").then(r=>r.ok?r.json():null).catch(()=>null),
    fetch("/data/catalog-stats.json").then(r=>r.ok?r.json():null).catch(()=>null)
   ]).then(([curated,uk,stats])=>{
