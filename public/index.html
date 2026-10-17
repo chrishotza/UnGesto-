@@ -58,6 +58,18 @@ footer{padding:27px 0;border-top:1px solid #dce6d9;color:#6f8070;font-size:11px}
 <div class="stage"><small id="providerName" class="overline">OPENPETITION</small><h2 id="stageTitle"></h2><p id="stageDescription"></p>
 <div class="identity"><div><label for="fullName" class="overline">Nombre (opcional)</label><input type="text" id="fullName" maxlength="130" autocomplete="name" placeholder="Nombre y apellido"/><button type="button" id="copyName" class="copy">Copiar nombre</button></div><div><label for="email" class="overline">Correo (opcional)</label><input type="email" id="email" maxlength="254" autocomplete="email" placeholder="tu@email.com"/><button type="button" id="copyEmail" class="copy">Copiar correo</button></div></div><p class="local-data">Tus datos quedan solo en esta pestaña. No se envían a UnGesto ni se rellenan automáticamente los formularios de terceros.</p><label class="overline" for="message">Mensaje personal general (opcional)</label><textarea id="message" maxlength="1000" placeholder="Escribilo una sola vez. Podés copiarlo al formulario del destinatario si acepta comentarios."></textarea>
 <button id="copy" class="copy">Copiar mi mensaje</button>
+<div id="groupLetter" class="directDelivery" hidden>
+ <strong>Un solo mensaje para todas tus causas de Rainforest Rescue</strong>
+ <p id="groupCount"></p>
+ <p>Estas peticiones pertenecen a la misma organización. Podés enviar <b>una única carta</b> que incluye tu declaración de apoyo individual a cada causa elegida, directamente a su contacto público oficial. Sin crear una suscripción ni enviar trece correos separados.</p>
+ <p><b>Destinatario:</b> info@rainforest-rescue.org</p>
+ <div class="buttons">
+ <a id="groupCompose" class="directAction" rel="noopener">Preparar correo con mis apoyos ↗</a>
+ <button type="button" id="copyGroupLetter" class="copy">Copiar carta completa</button>
+ <a class="sourceInfo" href="https://www.rainforest-rescue.org/contact" target="_blank" rel="noopener noreferrer">Contacto oficial ↗</a>
+ </div>
+ <small>Es una comunicación directa a la organización, no una firma registrada en su contador. Tu correo sólo se envía cuando presionás «Enviar» en tu aplicación.</small>
+</div>
 <div class="privacy"><label><input id="consent" type="checkbox"><span>Quiero abrir el formulario oficial de esta causa. El proveedor indicado procesará los datos que introduzca y puede solicitar una confirmación de correo. No deseo suscripciones publicitarias opcionales.</span></label></div>
 <div class="buttons"><button id="load" disabled>Mostrar formulario oficial</button><a id="officialLink" target="_blank" rel="noopener noreferrer">Abrir petición original ↗</a></div>
 <div id="provider" class="provider" hidden></div>
@@ -142,8 +154,34 @@ function draftLetter(p,v){
  ].filter(Boolean).join("\n");
  return "mailto:"+v.recipient+"?subject="+encodeURIComponent(v.subject)+"&body="+encodeURIComponent(body);
 }
+function rainforestSelected(){
+ return flow.filter(p=>p.organization==="Rainforest Rescue");
+}
+function fullRainforestLetter(){
+ const campaigns=rainforestSelected(),name=byId("fullName").value.trim(),msg=byId("message").value.trim(),email=byId("email").value.trim();
+ const paragraphs=campaigns.map((p,i)=>(i+1)+". "+p.title+"\nMy declaration: "+p.statement+"\nOriginal petition: "+p.source);
+ return ["Dear Rainforest Rescue team,",
+  "",
+  "I am voluntarily writing to express my support for "+campaigns.length+" of your ongoing petitions. I have individually selected the causes listed below and authorize this message to be sent to you. Please do not add me to any mailing lists or newsletters.",
+  "",
+  ...paragraphs.flatMap(x=>[x,""]),
+  msg?"My additional comment:\n"+msg+"\n":"",
+  "Sincerely,",
+  name||"[Your full name]",
+  email?"Contact email (if desired): "+email:""
+ ].filter(Boolean).join("\n");
+}
+function refreshGroupLink(){
+ const campaigns=rainforestSelected(); const box=byId("groupLetter");
+ box.hidden=campaigns.length===0;if(!campaigns.length)return;
+ byId("groupCount").textContent=campaigns.length+" declaraciones seleccionadas para enviar a Rainforest Rescue.";
+ const subject="UnGesto — support for "+campaigns.length+" individually selected rainforest petitions";
+ byId("groupCompose").href="mailto:info@rainforest-rescue.org?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(fullRainforestLetter());
+}
+byId("groupCompose").addEventListener("click",refreshGroupLink);
+byId("copyGroupLetter").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fullRainforestLetter());byId("copyGroupLetter").textContent="Carta copiada ✓"}catch{byId("copyGroupLetter").textContent="Copiala manualmente"}});
 function refreshDirectLink(){
- const p=flow[cursor],v=directByCause[p.id],box=byId("directDelivery");
+ refreshGroupLink(); const p=flow[cursor],v=directByCause[p.id],box=byId("directDelivery");
  box.hidden=!v; if(!v)return;
  byId("directAgency").textContent="Organismo: "+v.agency;
  byId("directContact").textContent="Destinatario: "+v.recipient;

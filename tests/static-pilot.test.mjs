@@ -50,3 +50,14 @@ test("direct advocacy is opt-in via mail client and never marked sent by this si
  assert.match(html,/El envío debe confirmarse/);
  assert.doesNotMatch(html,/fetch\([^)]*directSend[^)]*method\s*:\s*["']POST/);
 });
+
+test("Rainforest Rescue selected campaigns can be combined in one addressed letter without server transmission",async()=>{
+ const s=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const catalog=JSON.parse(await readFile(new URL("../catalog/causes.json",import.meta.url),"utf8"));
+ assert.equal(catalog.causes.filter(x=>x.organization==="Rainforest Rescue").length,13);
+ assert.match(s,/function fullRainforestLetter\(\)/);
+ assert.match(s,/rainforestSelected\(\)/);
+ assert.match(s,/mailto:info@rainforest-rescue\.org/);
+ assert.match(s,/Please do not add me to any mailing lists or newsletters/);
+ assert.match(s,/Es una comunicación directa a la organización, no una firma registrada/);
+});
