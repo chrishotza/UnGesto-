@@ -63,5 +63,5 @@ test("receipt history is recoverable on the same device and revocable without cl
  assert.match(js,/function readReceiptHistory\(\)/);
  assert.match(js,/function renderHistory\(\)/);
  assert.match(js,/api\/revocar/);
- assert.match(html,/no firmas recibidas/i);
+ assert.match(html,/no constituye todavía una firma aceptada por las organizaciones externas/i);
 });
