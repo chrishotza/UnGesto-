@@ -42,7 +42,8 @@ jobs:
           assert all(x['eligibility']=='british_citizen_or_uk_resident' for x in data)
           db=sqlite3.connect(root/'ungesto-catalog.sqlite')
           count=db.execute('SELECT COUNT(*) FROM campaigns').fetchone()[0]
-          assert count==len(data)+34,(count,len(data))
+          stats=json.loads((root/'catalog-stats.json').read_text())
+          assert count==len(data)+stats['local_curated'],(count,len(data),stats['local_curated'])
           print('Verified:',count,'catalog records; ',len(data),'official UK records')
           PY
       - name: Commit verified catalog data to GitHub
