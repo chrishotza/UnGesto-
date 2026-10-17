@@ -46,3 +46,13 @@ Las demás fuentes presentes en el catálogo son **referencias a peticiones**, n
 El primer piloto debe mostrar el formulario oficial embebido de una petición activa de openPetition, cargar el título completo y todas las condiciones del proveedor, y confirmar la firma solo tras la verificación del proveedor. Para una sola autorización distribuida a varias campañas requerimos APIs o acuerdos que admitan explícitamente ese modelo.
 
 Nunca replicar formularios protegidos ni enviar datos falsos, eludir captchas, crear cuentas o sumar correos comerciales por defecto.
+
+## Web piloto operativa — Render
+
+`https://ungesto-firmas-oficiales.onrender.com` está activa y permite escoger cualquiera de las 24 causas, revisar sus textos, reutilizar nombre, correo y comentario sin guardarlos y abrir el formulario del receptor. La web no usa widgets generados para otro dominio, ni llama a endpoints de firmas sin autorización. El sitio ha sido probado mediante navegación en navegador real.
+
+**No está probado** un envío masivo automático entre plataformas. La firma solo se recibe oficialmente cuando el destinatario la acepta y el usuario completa su verificación.
+
+## Petitions.nz
+
+La documentación del proveedor menciona widgets de formulario para firmas sin creación de cuenta y consents separados (https://www.petitions.nz/features/embed-on-your-website). Sin embargo, una petición inspeccionada no mostró opción Embed en su panel público de compartición. Se solicitó al equipo el procedimiento real para generar el widget y las condiciones de un API de recepción. No se ha desplegado un formulario embebido de Petitions.nz.

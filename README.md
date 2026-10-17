@@ -47,6 +47,20 @@ Más información: [Arquitectura](docs/ARCHITECTURE.md), [Integraciones](docs/IN
 
 UnGesto pretende que el usuario pueda firmar legalmente y de forma válida en muchas plataformas mediante un único consentimiento, **cuando existan acuerdos y APIs oficiales que lo permitan**, con resultados verificables por cada destino. Los envíos deben ser solo a campañas expresamente elegidas, sin newsletters por defecto, sin eludir CAPTCHA ni verificaciones requeridas.
 
+
+## Dos entornos actuales
+
+| Entorno | URL | Qué funciona |
+|---|---|---|
+| Aplicación principal (Floot) | https://ungesto-solidario.floot.app | Registro interno por lote con consentimiento y comprobante; 20 causas desplegadas |
+| Piloto de firmas receptoras (Render) | https://ungesto-firmas-oficiales.onrender.com | 24 causas buscables, selección múltiple, datos reutilizables solo en memoria y apertura de formularios originales de terceros |
+
+**Importante:** el piloto de Render ya está desplegado y ha pasado una prueba funcional con navegador real. La firma se dirige al formulario del destinatario y requiere que la persona complete las verificaciones pertinentes. Todavía **no existe entrega automática de una única firma a 24 receptores**. Ningún contador interno de UnGesto se presenta como prueba de entrega externa.
+
+Cuatro widgets oficiales de openPetition han sido creados para el dominio de Floot, de los cuales uno tiene confirmado el correo administrador. No se reutilizan como embebidos en Render porque fueron generados para otro dominio.
+
+Proveedores evaluados: openPetition (widget de formulario y confirmación), Action Network (mecanismos de firma con posible inclusión en listas), Petitions.nz (documenta embeds, método por campaña en investigación). Solicitudes de integración enviadas a las organizaciones.
+
 ## Participar
 
 Bienvenidas colaboraciones de desarrolladores, organizaciones y defensores de privacidad. No envíes información personal ni tokens secretos a issues.
