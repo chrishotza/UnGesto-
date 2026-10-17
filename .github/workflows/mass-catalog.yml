@@ -53,7 +53,14 @@ jobs:
           git add public/data/uk-petitions.json public/data/catalog-stats.json public/data/ungesto-catalog.sqlite
           if ! git diff --cached --quiet; then
             git commit -m 'data: refresh official petition catalog and SQLite index [skip ci]'
-            git push
+            for attempt in 1 2 3; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then exit 0; fi
+              sleep 2
+            done
+            echo 'Data push failed after rebasing three times' >&2
+            exit 1
           fi
       - name: Report the catalog summary
         run: cat public/data/catalog-stats.json >> "$GITHUB_STEP_SUMMARY"
