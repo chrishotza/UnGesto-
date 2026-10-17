@@ -85,3 +85,11 @@ test("Action Network official signing route keeps opt-outs off, requires user co
  assert.match(page,/if\(!byId\("consent"\).checked/);
  assert.doesNotMatch(page,/sessionStorage\.setItem\(["'](?:name|email|message)/i);
 });
+
+test("initialization order: all DOM helpers exist before attaching provider handlers",async()=>{
+ const html=await readFile(new URL("../public/index.html",import.meta.url),"utf8");
+ const firstHelper=html.indexOf("const byId=id=>document.getElementById(id)");
+ const firstHandler=html.indexOf('byId("actionNetworkSign").addEventListener');
+ assert.ok(firstHelper>0 && firstHelper<firstHandler,"byId must be initialized before first event listener");
+ assert.equal(html.split("const byId=id=>document.getElementById(id)").length-1,1);
+});

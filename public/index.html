@@ -110,6 +110,7 @@ const petitions=[{"id":"an-omaha-coal","title":"Cerrar la planta de carbón de N
 
 const widgets=Object.create(null);
 const directByCause=Object.create(null);
+const byId=id=>document.getElementById(id);
 const selected=new Set();
 function buildActionNetworkUrl(p){
  const u=new URL(p.source);
@@ -142,7 +143,6 @@ byId("actionNetworkSign").addEventListener("click",(event)=>{
 });
 
 const cardElements=new Map();
-const byId=id=>document.getElementById(id);
 let flow=[],cursor=0;
 petitions.forEach(p=>{
  const card=document.createElement("label");card.className="card";
