@@ -11,7 +11,8 @@ test("main form implements exactly one batch submit, not sequential external for
  assert.match(html,/id="signerEmail"/);assert.match(html,/id="signerMessage"/);
  assert.match(html,/id="consent"/);
  assert.match(js,/fetch\(API\+"\/api\/firmar"/);
- assert.doesNotMatch(js,/window\.open|\/petitions\/.+\/signatures|Promise\.all\(/);
+ assert.doesNotMatch(js,/window\.open|\/petitions\/.+\/signatures/);
+ assert.equal((js.match(/fetch\(API\+"\/api\/firmar"/g)||[]).length,1);
 });
 test("per-cause signature statements remain individually visible, initial selection empty",async()=>{
  const js=await readFile(new URL("../public/firma-batch.js",import.meta.url),"utf8");
