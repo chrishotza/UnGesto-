@@ -1,7 +1,8 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {readFile} from "node:fs/promises";
-import {validateBatch,validateRevoke,forwardToFloot,allowedOrigin} from "../server.mjs";
+import {validateBatch,validateRevoke,forwardToFloot,allowedOrigin,readJSON} from "../server.mjs";
+import {Readable} from "node:stream";
 const manifest=JSON.parse(await readFile(new URL("../public/operable-causes.json",import.meta.url),"utf8"));
 const ids=manifest.causes.map(x=>x.id);
 const valid={name:"Persona de ejemplo",email:"ejemplo@example.com",country:"AR",message:"Apoyo estas causas",causeIds:ids,readAndAuthorized:true,privacyAccepted:true};
@@ -42,4 +43,23 @@ test("deletion requires possession of the exact token",()=>{
 test("CORS origin is limited to the deployed frontends",()=>{
  assert.equal(allowedOrigin("https://ungesto-firmas-oficiales.onrender.com"),true);
  assert.equal(allowedOrigin("https://evil.invalid"),false);
+});
+
+test("JSON receiver preserves UTF-8 characters split across network chunks",async()=>{
+ const original={name:"María 💚 Ñandú",message:"Apoyo la protección del río 🌊"};
+ const bytes=Buffer.from(JSON.stringify(original),"utf8");
+ const emojiStart=bytes.indexOf(Buffer.from("💚","utf8"));
+ assert.ok(emojiStart>0);
+ const chunks=[
+  bytes.subarray(0,emojiStart+1),
+  bytes.subarray(emojiStart+1,emojiStart+3),
+  bytes.subarray(emojiStart+3),
+ ];
+ const parsed=await readJSON(Readable.from(chunks));
+ assert.deepEqual(parsed,original);
+});
+
+test("JSON receiver still rejects payloads above the 12 KiB boundary",async()=>{
+ const chunks=[Buffer.alloc(7000,0x20),Buffer.alloc(6000,0x20)];
+ await assert.rejects(readJSON(Readable.from(chunks)),err=>err.status===413);
 });
