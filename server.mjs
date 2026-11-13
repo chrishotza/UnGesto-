@@ -10,7 +10,7 @@ const TRUSTED_ORIGINS=new Set(["https://ungesto-firmas-oficiales.onrender.com","
 const API="https://ungesto-solidario.floot.app";
 const hits=new Map();
 const MAX_BYTES=12000;
-const MIME={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".sqlite":"application/vnd.sqlite3",".png":"image/png",".ico":"image/x-icon"};
+const MIME={".html":"text/html; charset=utf-8",".js":"text/javascript; charset=utf-8",".css":"text/css; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".ico":"image/x-icon"};
 
 export function validateBatch(input){
  if(!input||typeof input!=="object"||Array.isArray(input))throw Error("Solicitud incorrecta");
@@ -42,8 +42,12 @@ export async function forwardToFloot(resource,body,{fetchImpl=fetch}={}){
   if(!response.ok)throw Object.assign(new Error(data?.error||"No pudimos registrar los apoyos"),{status:response.status});
   if(resource==="/_api/endorsements"){
    if(!Array.isArray(data?.recorded)||data.recorded.length!==body.causeIds.length||!data.receiptId||!/^[a-f0-9]{64}$/.test(data.receiptToken||""))throw Error("No pudimos verificar el comprobante del registro");
-   const actual=new Set(data.recorded.map(c=>c.causeId));
+   const actual=new Set(data.recorded.map(c=>c?.causeId));
    if(body.causeIds.some(id=>!actual.has(id)))throw Error("El receptor interno devolvió causas diferentes");
+   // First-party recording is not external signing. Confirm every receipt.
+   if(data.recorded.some(c=>c?.status!=="recorded_in_ungesto"||
+                            c?.externalStatus!=="not_sent"))
+    throw Error("No pudimos confirmar el registro interno de todas las causas");
   }
   return data;
  } finally{clearTimeout(timeout);}
@@ -112,6 +116,13 @@ export async function handler(req,res){
  if(req.method!=="GET"&&req.method!=="HEAD"){json(res,405,{error:"Método no admitido"});return;}
  if(pathname==="/")pathname="/firma-batch.html";
  if(pathname.includes("\0")||pathname.includes("\\")||pathname.split("/").includes("..")){json(res,400,{error:"Ruta inválida"});return;}
+ // Never serve private databases, backups or dotfiles, even if
+ // accidentally copied into the static public directory.
+ const segments=pathname.split("/").filter(Boolean);
+ if(segments.some(segment=>segment.startsWith(".")||
+             /\.(?:sqlite3?|db|bak|env)$/i.test(segment))){
+  json(res,403,{error:"Recurso privado no disponible"});return;
+ }
  const filepath=resolve(ROOT,"."+pathname);
  if(!filepath.startsWith(ROOT+sep)){json(res,403,{error:"Ruta no autorizada"});return;}
  try{
