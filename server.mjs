@@ -72,14 +72,17 @@ function rate(req){
  if(prev.length>=10)return false;
  prev.push(now);hits.set(key,prev);return true;
 }
-async function readJSON(req){
- let raw="",len=0;
+export async function readJSON(req){
+ const chunks=[];
+ let len=0;
  for await(const part of req){
   len+=part.length;
   if(len>MAX_BYTES)throw Object.assign(new Error("Solicitud demasiado grande"),{status:413});
-  raw+=part.toString("utf8");
+  chunks.push(part);
  }
- try{return JSON.parse(raw)}catch{throw Error("Formato JSON incorrecto")}
+ // Decode once: UTF-8 multibyte characters can span network chunks.
+ try{return JSON.parse(Buffer.concat(chunks).toString("utf8"))}
+ catch{throw Error("Formato JSON incorrecto")}
 }
 export async function handler(req,res){
  cors(req,res);
