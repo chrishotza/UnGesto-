@@ -59,6 +59,22 @@ test("JSON receiver preserves UTF-8 characters split across network chunks",asyn
  assert.deepEqual(parsed,original);
 });
 
+test("JSON receiver fails closed on malformed UTF-8 without changing signer text",async()=>{
+ const valid=Buffer.from(JSON.stringify({name:"María",message:"Sí, apoyo"}),"utf8");
+ // A stray continuation byte was previously replaced with U+FFFD.
+ const trailing=Buffer.concat([valid.subarray(0,valid.length-1),Buffer.from([0x80]),valid.subarray(valid.length-1)]);
+ await assert.rejects(readJSON(Readable.from([trailing])),/Formato JSON incorrecto/);
+
+ // Truncated UTF-8 sequence deliberately split across stream chunks.
+ const truncated=Buffer.from('{"name":"', "utf8");
+ const parts=[truncated,Buffer.from([0xf0,0x9f]),Buffer.from('"}')];
+ await assert.rejects(readJSON(Readable.from(parts)),/Formato JSON incorrecto/);
+
+ // Correctly encoded U+FFFD is valid Unicode and must remain unchanged.
+ const replacement={name:"Carácter \uFFFD explícito"};
+ assert.deepEqual(await readJSON(Readable.from([Buffer.from(JSON.stringify(replacement))])),replacement);
+});
+
 test("JSON receiver still rejects payloads above the 12 KiB boundary",async()=>{
  const chunks=[Buffer.alloc(7000,0x20),Buffer.alloc(6000,0x20)];
  await assert.rejects(readJSON(Readable.from(chunks)),err=>err.status===413);
