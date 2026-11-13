@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-12T13:39:27.440Z",
+  "generated_at": "2026-11-13T12:58:27.307Z",
   "local_curated": 34,
-  "uk_official_active": 2176,
-  "total_distinct": 2210,
-  "uk_api_pages": 88,
+  "uk_official_active": 2170,
+  "total_distinct": 2204,
+  "uk_api_pages": 87,
   "uk_requirement": "british_citizen_or_uk_resident",
   "signature_delivery_claims": "none"
 }
