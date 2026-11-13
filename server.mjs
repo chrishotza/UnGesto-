@@ -85,8 +85,12 @@ export async function readJSON(req){
   chunks.push(part);
  }
  // Decode once: UTF-8 multibyte characters can span network chunks.
- try{return JSON.parse(Buffer.concat(chunks).toString("utf8"))}
- catch{throw Error("Formato JSON incorrecto")}
+ // Node Buffer.toString("utf8") silently inserts replacement characters on
+ // malformed byte sequences; never mutate consent/name text without notice.
+ try{
+  const text=new TextDecoder("utf-8",{fatal:true}).decode(Buffer.concat(chunks));
+  return JSON.parse(text);
+ }catch{throw Error("Formato JSON incorrecto")}
 }
 export async function handler(req,res){
  cors(req,res);
