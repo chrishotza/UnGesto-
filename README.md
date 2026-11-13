@@ -10,12 +10,12 @@ UnGesto busca que una persona pueda leer causas reales, elegir las que quiere ap
 
 | Función | Situación actual |
 |---|---|
-| Catálogo público | **2.210 peticiones** documentadas en la última importación; 34 curadas manualmente, de las que 20 son registrables mediante la base actual |
+| Catálogo público | **2.204 peticiones** documentadas en la importación del 13 de noviembre de 2026; 34 curadas manualmente, de las que 20 son registrables mediante la base actual |
 | Selección y búsqueda | Se pueden explorar las 2.210 fuentes y filtrar por tema, organización o palabra |
 | Registro único | Se pueden elegir hasta **20 causas conectadas** y registrarlas con **un solo formulario y una sola solicitud** |
 | Comprobante | La base persistente de Floot guarda las 20 adhesiones en una transacción y devuelve un comprobante revocable |
 | Firma oficial externa | **No está resuelta como envío múltiple**. El registro de UnGesto NO es un acuse de Greenpeace, Amnistía ni otra plataforma |
-| Biblioteca UK | **2.176 peticiones** abiertas importadas de la API oficial británica; solo pueden firmarlas ciudadanía/residentes UK en el portal del Parlamento |
+| Biblioteca UK | **2.170 peticiones** abiertas importadas de la API oficial británica (13 de noviembre de 2026); solo pueden firmarlas ciudadanía/residentes UK en el portal del Parlamento |
 
 El propósito del proyecto **no es coleccionar nombres ni inventar números de firmas**. La métrica que todavía falta conseguir es cada confirmación de recepción por parte de cada organización.
 
@@ -51,7 +51,7 @@ La biblioteca general ofrece descubrimiento de otras peticiones con fuentes y re
 
 Seguiremos construyendo conexiones que puedan demostrar esa recepción. No llamaremos «entregado» a nada que todavía no lo esté.
 
-Código abierto e independiente. Última actualización: octubre de 2026.
+Código abierto e independiente. Última actualización de cifras del catálogo: 13 de noviembre de 2026. La cantidad de peticiones abiertas puede variar en futuras importaciones.
 
 ## Compartir causas sin compartir datos personales
 

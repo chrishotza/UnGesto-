@@ -19,12 +19,20 @@ test("new app indexes all local and official causes with no fake external delive
  assert.doesNotThrow(()=>new Script(js));
  const catalog=JSON.parse(await read("../public/catalog.json"));
  const official=JSON.parse(await read("../public/data/uk-petitions.json"));
+ const stats=JSON.parse(await read("../public/data/catalog-stats.json"));
  const connected=JSON.parse(await read("../public/operable-causes.json"));
  const connectedIds=new Set(connected.causes.map(c=>c.id));
  assert.equal(connectedIds.size,20);
  assert.equal(catalog.causes.length,34);
- assert.equal(official.records.length,2176);
- assert.equal(20+14+2176,2210);
+ // The official UK open-petition count changes as petitions close. Validate
+ // it against the independently generated export summary, not a stale
+ // hardcoded count from an earlier snapshot.
+ assert.equal(stats.local_curated,catalog.causes.length);
+ assert.equal(stats.uk_official_active,official.records.length);
+ assert.equal(stats.total_distinct,catalog.causes.length+official.records.length);
+ assert.equal(stats.uk_requirement,"british_citizen_or_uk_resident");
+ assert.equal(stats.signature_delivery_claims,"none");
+ assert.ok(official.records.length>0);
  assert.match(js,/c\.kind==="connected"/);
  assert.match(js,/No pudimos registrar/);
  assert.match(js,/fetch\(API\+"\/api\/firmar"/);
